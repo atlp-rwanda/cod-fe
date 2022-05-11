@@ -10,8 +10,12 @@ function ChangeColor() {
   return (
     <div>
       <input type="text" onChange={(e) => setColor(e.target.value)} />
-      <button onClick={() => dispatch(changeColor(color))}>Change Barefoot Color</button>
-      <button onClick={() => dispatch(resetColor())}>Reset Barefoot Color</button>
+      <button type="button" onClick={() => dispatch(changeColor(color))}>
+        Change Barefoot Color
+      </button>
+      <button type="button" onClick={() => dispatch(resetColor())}>
+        Reset Barefoot Color
+      </button>
     </div>
   );
 }
