@@ -1,4 +1,6 @@
 <h1>COD-FE</h1>
+<img src="https://github.com/atlp-rwanda/cod-be/actions/workflows/node.js.yml/badge.svg">
+<img src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/NNesta/bb0f2667445560c93664f6fc01a3a352/raw/cod-fe__heads_develop.json">
 <hr><p>COD BAREFOOT Nomad Front End Development</p><h2>General Information</h2>
 <hr><ul>
 <li>Travels Management Web Application.</li>
