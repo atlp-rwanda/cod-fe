@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { changeColor, resetColor } from '../redux/features/dummy.feature';
