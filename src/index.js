@@ -1,10 +1,9 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom/client';
-
-import App from './components/App';
+import { Provider } from 'react-redux';
+import App from './components/app';
 import ChangeColor from './components/DummyComponent';
 
-import { Provider } from 'react-redux';
 import store from './redux/store';
 
 const container = document.getElementById('root');
@@ -16,6 +15,3 @@ root.render(
     <ChangeColor />
   </Provider>
 );
-
-
-
