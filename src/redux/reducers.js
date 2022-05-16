@@ -1,7 +1,7 @@
 import dummyReducer from './features/dummy.feature';
 
 const reducers = {
-    dummy: dummyReducer,
-}
+  dummy: dummyReducer,
+};
 
 export default reducers;

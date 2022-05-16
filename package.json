@@ -7,7 +7,8 @@
     "dev": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
     "test": "jest --config=jest.config.json",
-    "eslint-fix": "npx eslint src/**/*.{js,jsx} --fix"
+    "eslint-fix": "npx eslint src/**/*.{js,jsx} --fix",
+    "sass": "sass src/sass:src/css --watch --no-source-map"
   },
   "repository": "https://github.com/atlp-rwanda/cod-bn-fe.git",
   "author": "cod",
@@ -18,6 +19,7 @@
     "@babel/preset-react": "^7.16.7",
     "babel-jest": "^28.1.0",
     "babel-loader": "^8.2.5",
+    "css-loader": "^6.7.1",
     "eslint": "6.6.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.11.0",
@@ -31,6 +33,8 @@
     "jest-environment-jsdom": "^28.1.0",
     "prettier": "^2.0.5",
     "react-test-renderer": "^18.1.0",
+    "sass": "^1.51.0",
+    "style-loader": "^3.3.1",
     "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.9.0"

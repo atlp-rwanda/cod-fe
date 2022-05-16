@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { changeColor, resetColor } from '../redux/features/dummy.feature';
 
 function ChangeColor() {
-    //local state
+  // local state
   const [color, setColor] = useState('');
   const dispatch = useDispatch();
   return (
@@ -11,7 +11,6 @@ function ChangeColor() {
       <input type="text" onChange={(e) => setColor(e.target.value)} />
       <button onClick={() => dispatch(changeColor(color))}>Change Barefoot Color</button>
       <button onClick={() => dispatch(resetColor())}>Reset Barefoot Color</button>
-
     </div>
   );
 }
