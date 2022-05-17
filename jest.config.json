@@ -1,13 +1,19 @@
 {
-  "collectCoverage": true,
-  "testEnvironment": "jsdom",
-  "coverageThreshold": {
-    "global": {
-      "branches": 100,
-      "lines": 90
+    "collectCoverage": true,
+    "testEnvironment": "jsdom",
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "lines": 70
+      }
+    },
+    "coverageReporters": ["lcov", "text"],
+    "coverageDirectory": "coverage",
+    "testTimeout": 10000,
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.css$": "jest-transform-css"
     }
-  },
-  "coverageReporters": ["lcov", "text"],
-  "coverageDirectory": "coverage",
-  "testTimeout": 10000
-}
+    
+      
+  }
