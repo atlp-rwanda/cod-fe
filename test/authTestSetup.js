@@ -9,6 +9,6 @@ const renderWithRouter = (ui, {route = '/'} = {}) => {
     user: userEvent.setup(),
     ...render(ui, {wrapper: BrowserRouter}),
   }
-}
+}   
 
 export default renderWithRouter;

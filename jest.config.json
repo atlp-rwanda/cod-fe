@@ -14,6 +14,9 @@
       "^.+\\.js$": "babel-jest",
       "^.+\\.css$": "jest-transform-css"
     },
-    "setupFilesAfterEnv": ["./test/jest.setup.js"]
-
+    "setupFilesAfterEnv": ["./test/jest.setup.js"],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|svg)$": "babel-jest",
+      "^.+\\.(css|less|scss)$": "babel-jest"
+    }    
   }
