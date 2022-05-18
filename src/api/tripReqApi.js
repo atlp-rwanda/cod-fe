@@ -4,7 +4,7 @@ import { localUrl } from '.';
 const baseURl = localUrl;
 
 const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI2NmNmYzdjLWJlMmMtNDFmNS1iNDU5LWU4ODhiZmU4ODFhMSIsImVtYWlsIjoiZGVtb3VzZXJAY29kLmJlIiwiaWF0IjoxNjUzNDY4MzQwLCJleHAiOjE2NTM0NzE5NDB9.rgjCkNjBM7lX2N-ifIgzhrNzO7LFNKycIOahevesmQs';
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg2MWQ3YzlkLWE4YTgtNDMwOC1iY2U4LTJjNmM2YTY2Yzg0MSIsImVtYWlsIjoibWFuYWdlcjFAY29kLmJlIiwiaWF0IjoxNjUzNjM5NjgyLCJleHAiOjE2NTM2NDMyODJ9.st_lY4q_utSNnIH7yXdDQIF_WBD59kZAQIcB9rd3azE';
 
 const getAllTripReq = () => {
   return new Promise((resolve, reject) => {

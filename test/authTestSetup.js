@@ -1,9 +1,9 @@
-import { render } from './jest.setup'
-import userEvent from '@testing-library/user-event'
+import userEvent from '@testing-library/user-event';
+import { render } from './jest.setup';
 
 // test utils file
-const renderWithRouter = (ui, {route = '/'} = {}) => {
-  window.history.pushState({}, 'Test page', route)
+const renderWithRouter = (ui, { route = '/' } = {}) => {
+  window.history.pushState({}, 'Test page', route);
 
   return {
     user: userEvent.setup(),
