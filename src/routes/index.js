@@ -8,6 +8,7 @@ import SignupView from '../views/pages/SignupView';
 import HomeUserView from '../views/pages/HomeUserView';
 import TripApproval from '../views/pages/TripApproval';
 import DashboardHeader from '../components/Header/DashboardHeader';
+import ProfileView from '../views/profile/ProfileView';
 
 const AllRoutes = () => (
   <Router>
@@ -16,6 +17,7 @@ const AllRoutes = () => (
       <Route path="/login" element={<LoginView />} />
       <Route path="/dummy" element={<App />} />
       <Route path="/dashboard" element={<HomeUserView />} />
+      <Route exact path="/profile" element={<ProfileView />} />
       <Route path="*" element={<PageNotFoundView />} />
       <Route path="/signup" element={<SignupView />} />
       <Route path="/approval" element={<TripApproval />} />

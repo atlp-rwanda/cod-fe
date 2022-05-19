@@ -87,7 +87,7 @@ function ApprovalComponent(props) {
     setMessage(res.data.message);
   };
   return (
-    <div className=" flex flex-col relative w-full sm:mx-8 md:mx-16 lg:mx-36 xl:mx-72 mt-6">
+    <div className="relative flex flex-col w-full mt-6  sm:mx-8 md:mx-16 lg:mx-36 xl:mx-72">
       {!hasProfile && User && error && <Alert message={error} heading="Error" variant="error" />}
       {(hasApproved || hasRejected) && User && message && (
         <Alert message={message} heading="Success" variant="success" />
@@ -97,11 +97,11 @@ function ApprovalComponent(props) {
           <h1 className=" w-[70%] text-2xl lg:text-3xl bg-yellow-600 text-center font-semibold p-1 rounded-md mx-8 lg:ml-20 shadow-xl">
             Trip request Approval
           </h1>
-          <h1 className="text-center text-xl p-2 font-medium mr-40 ml-20 lg:text-2xl">
+          <h1 className="p-2 ml-20 mr-40 text-xl font-medium text-center lg:text-2xl">
             Requester Information
           </h1>
-          <div className="flex flex-col ml-0 mr-40 sm:ml-12 sm:mr-36  lg:ml-20 lg:mr-44">
-            <span className="flex flex-row justify-between p-2 border-y border-gray-200 bg-gray-50">
+          <div className="flex flex-col ml-0 mr-40 sm:ml-12 sm:mr-36 lg:ml-20 lg:mr-44">
+            <span className="flex flex-row justify-between p-2 border-gray-200 border-y bg-gray-50">
               <h2>Names:</h2>
               <h2>
                 {User.firstname} ${User.lastname}
@@ -109,7 +109,7 @@ function ApprovalComponent(props) {
             </span>
             <button
               type="button"
-              className="bg-yellow-600 w-40 mx-auto mt-4 rounded-md font-medium p-1 hover:bg-white hover:text-primary shadow-2xl"
+              className="w-40 p-1 mx-auto mt-4 font-medium bg-yellow-600 rounded-md shadow-2xl hover:bg-white hover:text-primary"
               onClick={viewProfile}
             >
               View Profile
@@ -117,54 +117,54 @@ function ApprovalComponent(props) {
           </div>
         </div>
       )}
-      <h1 className="mr-40 ml-20 text-xl lg:text-2xl py-4 font-medium text-center">
+      <h1 className="py-4 ml-20 mr-40 text-xl font-medium text-center lg:text-2xl">
         Trip Information
       </h1>
-      <div className=" ml-12 mr-36  lg:ml-20 lg:mr-44">
-        <span className="flex flex-row justify-between p-2 border-gray-200 bg-gray-50 border-y border-gray-200 bg-gray-50">
+      <div className="ml-12  mr-36 lg:ml-20 lg:mr-44">
+        <span className="flex flex-row justify-between p-2 border-gray-200 bg-gray-50 border-y">
           <h2 className="">accomodation:</h2>
           <h2 className="w-[75px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
             {accomodationName}
           </h2>
         </span>
-        <span className="flex flex-row justify-between p-2 border-y border-gray-200 bg-gray-50">
+        <span className="flex flex-row justify-between p-2 border-gray-200 border-y bg-gray-50">
           <h2>Departure:</h2>
           <h2 className="w-[75px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
             {departure}
           </h2>
         </span>
-        <span className="flex flex-row justify-between p-2 border-y border-gray-200 bg-gray-50">
+        <span className="flex flex-row justify-between p-2 border-gray-200 border-y bg-gray-50">
           <h2>Destination:</h2>
           <h2 className="w-[75px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
             {String(destination)}
           </h2>
         </span>
-        <span className="flex flex-row justify-between p-2 border-y border-gray-200 bg-gray-50">
+        <span className="flex flex-row justify-between p-2 border-gray-200 border-y bg-gray-50">
           <h2>Status:</h2>
           <h2 className="w-[75px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
             {status}
           </h2>
         </span>
 
-        <span className="flex flex-row justify-between p-2 border-y border-gray-200 bg-gray-50">
+        <span className="flex flex-row justify-between p-2 border-gray-200 border-y bg-gray-50">
           <h2>Date of Travel:</h2>
           <h2 className="w-[75px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
             {dateOfTravelString}
           </h2>
         </span>
-        <span className="flex flex-row justify-between p-2 border-y border-gray-200 bg-gray-50">
+        <span className="flex flex-row justify-between p-2 border-gray-200 border-y bg-gray-50">
           <h2>Date of Return:</h2>
           <h2 className="w-[75px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
             {dateOfReturnString}
           </h2>
         </span>
-        <span className="flex flex-row justify-between p-2 border-y border-gray-200 bg-gray-50">
+        <span className="flex flex-row justify-between p-2 border-gray-200 border-y bg-gray-50">
           <h2>Date trip requested:</h2>
           <h2 className="w-[75px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
             {createdAtString}
           </h2>
         </span>
-        <span className="flex flex-row justify-between p-2 border-y border-gray-200 bg-gray-50">
+        <span className="flex flex-row justify-between p-2 border-gray-200 border-y bg-gray-50">
           <h2>Travel Reason:</h2>
           <h2 className={moreStyle.css}>
             <button
@@ -181,12 +181,12 @@ function ApprovalComponent(props) {
           </h2>
         </span>
         {status === 'pending' && User && (
-          <div className="flex flex-row items-center my-auto mx-auto w-72 lg:w-96">
+          <div className="flex flex-row items-center mx-auto my-auto w-72 lg:w-96">
             <button
               onClick={approve}
               data-testid="approve-button"
               type="button"
-              className="w-28 bg-green-500 lg:w-40  mx-auto mt-4 rounded-md font-medium p-1 hover:bg-white hover:text-green-500 shadow-2xl"
+              className="p-1 mx-auto mt-4 font-medium bg-green-500 rounded-md shadow-2xl w-28 lg:w-40 hover:bg-white hover:text-green-500"
             >
               Approve
             </button>
@@ -194,7 +194,7 @@ function ApprovalComponent(props) {
               onClick={reject}
               data-testid="reject-button"
               type="button"
-              className="bg-red-500 w-28  lg:w-40 mx-auto mt-4 rounded-md font-medium p-1 hover:bg-white hover:text-red-500 "
+              className="p-1 mx-auto mt-4 font-medium bg-red-500 rounded-md w-28 lg:w-40 hover:bg-white hover:text-red-500 "
             >
               Reject
             </button>
@@ -202,7 +202,7 @@ function ApprovalComponent(props) {
         )}
       </div>
       {modalOn && !profileLoading && (
-        <div className="bg-white ml-0 mr-20 h-full opacity-100 absolute inset-0 flex justify-center z-30">
+        <div className="absolute inset-0 z-30 flex justify-center h-full ml-0 mr-20 bg-white opacity-100">
           <ProfileModal data={profile} setModalOn={setModalOn} />
         </div>
       )}

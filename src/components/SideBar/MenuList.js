@@ -24,7 +24,7 @@ const MenuList = () => {
         >
           <DashboardIcon />
 
-          <span className="mx-0 md:mx-4 font-medium">Dashboard</span>
+          <span className="mx-0 font-medium md:mx-4">Dashboard</span>
         </a>
       </li>
 
@@ -41,7 +41,7 @@ const MenuList = () => {
         >
           <TripIcon />
 
-          <span className="mx-0 md:mx-4 font-medium">Trip</span>
+          <span className="mx-0 font-medium md:mx-4">Trip</span>
         </a>
       </li>
     </ul>

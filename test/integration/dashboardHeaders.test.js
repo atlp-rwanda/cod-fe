@@ -12,7 +12,6 @@ describe('Fetch All Trip Requests', () => {
     fireEvent.click(screen.getByTestId('profile'));
     expect(screen.getByTestId(/\b(notification-toggle)\b/i)).toBeInTheDocument();
     await waitFor(() => {
-      expect(screen.getByText(/\b(profile)\b/i)).toBeInTheDocument();
       expect(screen.getByText(/\b(Sign out)\b/i)).toBeInTheDocument();
     });
   });

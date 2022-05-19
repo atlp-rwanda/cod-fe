@@ -1,3 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../../styles/button.css';

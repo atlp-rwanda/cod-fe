@@ -24,7 +24,7 @@ const Signup = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      if ( message.length > 1 ) return navigate('../login');
+      if (message.length > 1) return navigate('../login');
     }, 300);
   }, [message]);
 
