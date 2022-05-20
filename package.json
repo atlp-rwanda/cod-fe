@@ -8,7 +8,9 @@
     "build": "webpack --mode production",
     "test": "jest --config=jest.config.json",
     "eslint-fix": "npx eslint src/**/*.{js,jsx} --fix",
-    "sass": "sass src/sass:src/css --watch --no-source-map"
+    "sass": "sass src/sass:src/css --watch --no-source-map",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": "https://github.com/atlp-rwanda/cod-bn-fe.git",
   "author": "cod",
@@ -17,6 +19,14 @@
     "@babel/core": "^7.17.10",
     "@babel/preset-env": "^7.17.10",
     "@babel/preset-react": "^7.16.7",
+    "@storybook/addon-actions": "^6.4.22",
+    "@storybook/addon-essentials": "^6.4.22",
+    "@storybook/addon-interactions": "^6.4.22",
+    "@storybook/addon-links": "^6.4.22",
+    "@storybook/react": "^6.4.22",
+    "@storybook/testing-library": "^0.0.11",
+    "@testing-library/jest-dom": "^5.16.4",
+    "autoprefixer": "^10.4.7",
     "babel-jest": "^28.1.0",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
@@ -32,10 +42,14 @@
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
     "jest-transform-css": "^4.0.1",
+    "msw": "^0.40.0",
+    "postcss": "^8.4.14",
     "prettier": "^2.0.5",
     "react-test-renderer": "^18.1.0",
+    "regenerator-runtime": "^0.13.9",
     "sass": "^1.51.0",
     "style-loader": "^3.3.1",
+    "tailwindcss": "^3.0.24",
     "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.9.0"
@@ -43,11 +57,18 @@
   "dependencies": {
     "@babel/eslint-parser": "^7.17.0",
     "@reduxjs/toolkit": "^1.8.1",
+    "@storybook/addon-postcss": "^2.0.0",
     "@testing-library/react": "^13.2.0",
+    "axios": "^0.27.2",
+    "css-loader": "^6.7.1",
+    "postcss-loader": "^7.0.0",
+    "postcss-preset-env": "^7.6.0",
+    "prop-types": "^15.8.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-redux": "^8.0.1",
     "react-router-dom": "^6.3.0",
-    "redux": "^4.2.0"
+    "redux": "^4.2.0",
+    "style-loader": "^3.3.1"
   }
 }

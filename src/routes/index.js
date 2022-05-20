@@ -4,6 +4,7 @@ import PageNotFoundView from '../views/PageNotFoundView';
 import App from '../views/DummyView';
 import HomeView from '../views/HomeView';
 import LoginView from '../views/LoginView';
+import SignupView from '../views/SignupView';
 
 const AllRoutes = () => (
   <Router>
@@ -12,6 +13,7 @@ const AllRoutes = () => (
       <Route path="/login" element={<LoginView />} />
       <Route path="/dummy" element={<App />} />
       <Route path="*" element={<PageNotFoundView />} />
+      <Route path="/signup" element={<SignupView />} />
     </Routes>
   </Router>
 );
