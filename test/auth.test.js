@@ -1,6 +1,6 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { render, fireEvent, screen } from './authTestSetup'
+import { render, fireEvent, screen } from './jest.setup'
 
 import Signup from '../src/components/Auth/Signup'
 import * as Auth from '../src/redux/features/auth.feature'
@@ -22,8 +22,8 @@ const wrongData = {
   
 describe("Authentication",()=>{
     test('fetches & receives a user after clicking the fetch user button', async () => {
-        render( <Signup />);  
-    
+        render( <Signup />,{route: '/login'});  
+
   // should show no error initially, and not be signed up in a user
   expect(screen.getByText(/Register/i)).toBeInTheDocument()
   expect(screen.queryByText(/Error:/i)).not.toBeInTheDocument()

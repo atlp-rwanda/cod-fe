@@ -1,28 +1,14 @@
-import React from 'react'
-import { render as rtlRender } from '@testing-library/react'
-import { configureStore } from '@reduxjs/toolkit'
-import { Provider } from 'react-redux'
-// Import your own reducer
-import * as Auth from '../src/redux/features/auth.feature'
+import { render } from './jest.setup'
+import userEvent from '@testing-library/user-event'
 
-const {registerReducer } = Auth.default;
-const { registerPending, registerSuccess, registerFail} = Auth;
+// test utils file
+const renderWithRouter = (ui, {route = '/'} = {}) => {
+  window.history.pushState({}, 'Test page', route)
 
-function render(
-  ui,
-  {
-    preloadedState,
-    store = configureStore({ reducer: { register: registerReducer }, preloadedState }),
-    ...renderOptions
-  } = {}
-) {
-  function Wrapper({ children }) {
-    return <Provider store={store}>{children}</Provider>
+  return {
+    user: userEvent.setup(),
+    ...render(ui, {wrapper: BrowserRouter}),
   }
-  return rtlRender(ui, { wrapper: Wrapper, ...renderOptions })
 }
 
-// re-export everything
-export * from '@testing-library/react'
-// override render method
-export { render }
+export default renderWithRouter;

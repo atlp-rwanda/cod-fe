@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const FormAction = ({ handleSubmit, type , action, text }) => {
+const FormAction = ({ handleSubmit, type, action, text }) => {
   return (
     <>
       {type === 'Button' ? (

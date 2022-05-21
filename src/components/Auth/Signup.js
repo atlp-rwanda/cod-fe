@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { signupFields } from '../../constants/formFields';
+import signupFields  from '../../constants/formFields';
 import register from '../../redux/actions/auth.action';
 import FormAction from './FormAction';
 import Input from './Input';
@@ -18,7 +19,14 @@ const Signup = () => {
   const [signupState, setSignupState] = useState(fieldsState);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { message, error } = useSelector((state) => state.register);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (message.length > 1) return navigate('../login');
+    }, 300);
+  }, [message]);
 
   const handleChange = (e) => setSignupState({ ...signupState, [e.target.id]: e.target.value });
 

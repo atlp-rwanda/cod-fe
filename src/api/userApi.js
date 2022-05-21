@@ -11,10 +11,10 @@ const registerUser = (userData) => {
       const registerRes = await api.post(`user/register`, userData);
       resolve(registerRes.data);
     } catch (error) {
-      if (error.response) {
+      if (error.response.data !== undefined) {
         reject(error.response.data);
       }
-      reject(error.message);
+      reject(error);
     }
   });
 };
