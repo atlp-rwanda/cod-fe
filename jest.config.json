@@ -3,7 +3,7 @@
     "testEnvironment": "jsdom",
     "coverageThreshold": {
       "global": {
-        "branches": 100,
+        "branches": 65,
         "lines": 70
       }
     },
@@ -13,7 +13,7 @@
     "transform": {
       "^.+\\.js$": "babel-jest",
       "^.+\\.css$": "jest-transform-css"
-    }
-    
-      
+    },
+    "setupFilesAfterEnv": ["./test/jest.setup.js"]
+
   }

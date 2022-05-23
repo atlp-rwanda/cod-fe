@@ -9,6 +9,11 @@ plugins:
   eslint:
     enabled: true
     channel: 'eslint-7'
+    config:
+      config: .eslintrc.json
+    checks:
+      no-param-reassign:
+        enabled: false
   fixme:
     enabled: true
   nodesecurity:

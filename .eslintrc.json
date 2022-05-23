@@ -32,6 +32,7 @@
         "react/state-in-constructor": "off",
         "react/jsx-no-undef": "off",
         "react/jsx-filename-extension": "off",
+        "react/jsx-props-no-spreading": "off",
         "no-undef": "off",
         "linebreak-style": 0
     }
