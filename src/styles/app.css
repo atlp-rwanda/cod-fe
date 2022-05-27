@@ -1,0 +1,6 @@
+.header-container{
+    background-image: url('../assets/images/header-bg.jpeg');
+}
+.capitalize-sentence{
+    text-transform: capitalize;
+}

@@ -1,11 +1,12 @@
 import React from 'react';
+import 'regenerator-runtime/runtime';
 import { render as rtlRender } from '@testing-library/react';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 
-import { server } from './mocks/server.js';
-import reducers from '../src/redux/reducers';
 import { BrowserRouter } from 'react-router-dom';
+import server from './mocks/server';
+import reducers from '../src/redux/reducers';
 
 function render(
   ui,

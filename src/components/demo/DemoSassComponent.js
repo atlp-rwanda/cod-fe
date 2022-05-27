@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../css/DemoSassCss.css';
+import '../../styles/DemoSassCss.css';
 
 export default function DemoSassComponent() {
   return (

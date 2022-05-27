@@ -1,6 +1,7 @@
 version: 2.1
 
-
+orbs:
+  cypress: cypress-io/cypress@1.29.0
 jobs:
   build:
    
@@ -34,5 +35,9 @@ jobs:
 workflows:
   test-deploy:
     jobs:
+      - cypress/run:
+          executor: cypress/base-14
+          install-command: yarn install --ignore-engines
+          verify-command: yarn cypress verify
       - build
       
