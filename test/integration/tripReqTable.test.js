@@ -9,7 +9,51 @@ import { columns } from '../../src/constants/reqColumns';
 // given
 const tripReqs = [
   {
+    id: '8b5c35f7-0459-4dae-8d61-a443dc56258',
+    userId: '861d7c9d-a8a8-4308-bce8-2c6c6a66c840',
+    departure: 'Huye',
+    destination: 'Huye',
+    dateOfTravel: '2022-05-13T09:51:05.975Z',
+    dateOfReturn: '2022-05-14T09:51:05.975Z',
+    travelReason:
+      'This is travel reason in testThis is travel reason in testThis is travel reason in testThis is travel reason in testThis is travel reason in test',
+    status: 'approved',
+    createdAt: '2022-05-12T09:51:20.590Z',
+    updatedAt: '2022-05-25T09:13:23.347Z',
     Accomodation: 'Demo',
+    lastname: 'User',
+    imgUrl: 'https://flyclipart.com/thumb2/profile-icon-png-black-196391.png',
+    User: {
+      id: '861d7c9d-a8a8-4308-bce8-2c6c6a66c847',
+      firstname: 'New Random',
+      lastname: 'Person',
+    },
+  },
+  {
+    id: '8b5c35f7-0459-4dae-8d61-a443dc5625b6',
+    userId: '861d7c9d-a8a8-4308-bce8-2c6c6a66c847',
+    departure: 'Huye',
+    destination: 'Huye',
+    dateOfTravel: '2022-05-13T09:51:05.975Z',
+    dateOfReturn: '2022-05-14T09:51:05.975Z',
+    travelReason:
+      'This is travel reason in testThis is travel reason in testThis is travel reason in testThis is travel reason in testThis is travel reason in test',
+    status: 'rejected',
+    createdAt: '2022-05-12T09:51:20.590Z',
+    updatedAt: '2022-05-25T09:13:23.347Z',
+    Accomodation: { name: 'D_emo' },
+    lastname: 'User',
+    imgUrl: 'D_emo',
+    User: {
+      id: '861d7c9d-a8a8-4308-bce8-2c6c6a66c847',
+      firstname: 'New Random',
+      lastname: 'Person',
+    },
+  },
+];
+/* {
+    Accomodation: 'Demo',
+    lastname: 'User',
     destination: 'Huye',
     dateOfReturn: '4 July 2022',
     status: 'approved',
@@ -17,12 +61,13 @@ const tripReqs = [
   },
   {
     Accomodation: { name: 'D_emo' },
+    lastname: 'User',
     destination: 'Huye',
     dateOfReturn: '4 July 2022',
     status: 'rejected',
     imgUrl: 'D_emo',
   },
-];
+]; */
 
 describe('Fetch All Trip Requests', () => {
   test('Should Render Component after login', async () => {
@@ -59,8 +104,11 @@ describe('Fetch All Trip Requests', () => {
       fireEvent.change(screen.getByTestId('search-table'), {
         target: { value: tripReqs[1].Accomodation.name },
       });
+      expect(await screen.findByText(/D_emo/i)).toBeInTheDocument();
       fireEvent.click(screen.getAllByTestId('tb-header')[0]);
       expect(screen.queryByText(/Demo/i)).not.toBeInTheDocument();
+      expect(screen.getByTestId('review-button')).toBeInTheDocument();
+      fireEvent.click(screen.getByTestId('review-button'));
     });
   });
 });

@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-nested-ternary */
 
-import React from 'react';
+import React, { useRef } from 'react';
 import 'regenerator-runtime/runtime';
 import {
   useTable,
@@ -83,7 +83,7 @@ function Table({ columns, trips }) {
     useSortBy,
     usePagination // new
   );
-
+  const count = useRef(0);
   // Render the UI for your table
   return (
     <div>
@@ -159,9 +159,11 @@ function Table({ columns, trips }) {
                               role="cell"
                             >
                               {cell.column.Cell.name === 'defaultRenderer' ? (
-                                <div className="text-sm text-gray-500">{cell.render('Cell')}</div>
+                                <div className="text-sm text-gray-500">
+                                  {cell.render('Cell', { count })}
+                                </div>
                               ) : (
-                                cell.render('Cell')
+                                cell.render('Cell', { count })
                               )}
                             </td>
                           );
