@@ -3,8 +3,11 @@ import * as ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import AllRoutes from './routes';
 import store from './redux/store';
-import './css/App.css';
 import './styles/index.scss';
+import './styles/app.css';
+import 'swiper/swiper.min.css';
+import 'swiper/components/pagination/pagination.min.css';
+import 'swiper/components/navigation/navigation.min.css';
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);

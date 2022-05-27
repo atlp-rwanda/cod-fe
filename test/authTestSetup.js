@@ -7,8 +7,8 @@ const renderWithRouter = (ui, { route = '/' } = {}) => {
 
   return {
     user: userEvent.setup(),
-    ...render(ui, {wrapper: BrowserRouter}),
-  }
-}   
+    ...render(ui, { wrapper: BrowserRouter }),
+  };
+};
 
 export default renderWithRouter;

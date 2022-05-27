@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import PageNotFoundView from '../views/PageNotFoundView';
-import App from '../views/DummyView';
-import HomeView from '../views/HomeView';
-import LoginView from '../views/LoginView';
-import SignupView from '../views/SignupView';
+import PageNotFoundView from '../views/errors/PageNotFoundView';
+import App from '../views/pages/DummyView';
+import HomeView from '../views/pages/HomeView';
+import LoginView from '../views/pages/LoginView';
+import SignupView from '../views/pages/SignupView';
 import HomeUserView from '../views/pages/HomeUserView';
 import TripApproval from '../views/pages/TripApproval';
 

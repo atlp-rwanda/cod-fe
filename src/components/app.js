@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import DemoSassComponent from './demo/DemoSassComponent';
+import '../styles/app.css';
 
 const App = () => {
   const barefootColor = useSelector((state) => state.dummy.color);

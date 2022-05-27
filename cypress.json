@@ -1,0 +1,7 @@
+{
+  "testFiles": "**/*.spec.{js,ts,jsx,tsx}",
+  "componentFolder": "cypress",
+  "baseUrl": "https://cod-fe-git-ch-create-landing-page-cod-bn.vercel.app",
+  "viewportWidth": 1920,
+  "viewportHeight": 1000
+}

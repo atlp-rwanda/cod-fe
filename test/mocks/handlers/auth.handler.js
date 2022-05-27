@@ -1,7 +1,7 @@
-/* eslint-disable import/prefer-default-export */
 import { rest } from 'msw';
 import baseURl from '../../../src/api';
 
+// eslint-disable-next-line import/prefer-default-export
 export const authHandlers = [
   rest.post(`${baseURl}api/user/register`, (req, res, ctx) => {
     if (req.body.password.length < 8) {

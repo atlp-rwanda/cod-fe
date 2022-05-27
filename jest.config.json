@@ -1,22 +1,23 @@
 {
-    "collectCoverage": true,
-    "testEnvironment": "jsdom",
-    "coverageThreshold": {
-      "global": {
-        "branches": 60,
-        "lines": 75
-      }
-    },
-    "coverageReporters": ["lcov", "text"],
-    "coverageDirectory": "coverage",
-    "testTimeout": 10000,
-    "transform": {
-      "^.+\\.js$": "babel-jest",
-      "^.+\\.css$": "jest-transform-css"
-    },
-    "setupFilesAfterEnv": ["./test/jest.setup.js"],
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|svg)$": "babel-jest",
-      "^.+\\.(css|less|scss)$": "babel-jest"
-    }    
+  "collectCoverage": true,
+  "testEnvironment": "jsdom",
+  "coverageThreshold": {
+    "global": {
+      "branches": 65,
+      "lines": 70
+    }
+  },
+  "coverageReporters": ["lcov", "text"],
+  "coverageDirectory": "coverage",
+  "testTimeout": 10000,
+  "transform": {
+    "^.+\\.js$": "babel-jest",
+    "^.+\\.css$": "jest-transform-css"
+  },
+  "setupFilesAfterEnv": ["./test/jest.setup.js"],
+  "roots": ["<rootDir>/test"],
+  "moduleNameMapper": {
+    "\\.(jpg|jpeg|png|svg)$": "babel-jest",
+    "^.+\\.(css|less|scss)$": "babel-jest"
   }
+}
