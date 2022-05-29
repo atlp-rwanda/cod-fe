@@ -51,35 +51,16 @@ const tripReqs = [
     },
   },
 ];
-/* {
-    Accomodation: 'Demo',
-    lastname: 'User',
-    destination: 'Huye',
-    dateOfReturn: '4 July 2022',
-    status: 'approved',
-    imgUrl: 'https://flyclipart.com/thumb2/profile-icon-png-black-196391.png',
-  },
-  {
-    Accomodation: { name: 'D_emo' },
-    lastname: 'User',
-    destination: 'Huye',
-    dateOfReturn: '4 July 2022',
-    status: 'rejected',
-    imgUrl: 'D_emo',
-  },
-]; */
 
 describe('Fetch All Trip Requests', () => {
   test('Should Render Component after login', async () => {
     render(<HomeUserView />);
-    expect(screen.getByText(/Trip/i)).toBeInTheDocument();
+    expect(screen.getByText(/\b(Trip)\b/i)).toBeInTheDocument();
     const spinner = screen.getByTestId('spinner');
     expect(spinner).toBeInTheDocument();
     expect(screen.getByRole('img', { name: 'logo' })).toBeInTheDocument();
-    expect(screen.getByText(/Trip/i)).toBeInTheDocument();
+    expect(screen.getByText(/\b(Trip)\b/i)).toBeInTheDocument();
     expect(screen.getByText(/Dashboard/i)).toBeInTheDocument();
-    expect(screen.getByRole('list')).toBeInTheDocument();
-    expect(screen.getByTestId('sidebar-toggle')).toBeInTheDocument();
     await waitFor(() => expect(spinner).not.toBeInTheDocument());
     waitFor(() => {
       expect(screen.findByTestId('tripReq-table'));
@@ -109,6 +90,12 @@ describe('Fetch All Trip Requests', () => {
       expect(screen.queryByText(/Demo/i)).not.toBeInTheDocument();
       expect(screen.getByTestId('review-button')).toBeInTheDocument();
       fireEvent.click(screen.getByTestId('review-button'));
+      expect(screen.queryByTestId('delete-button')).not.toBeInTheDocument();
+      fireEvent.click(screen.getByTestId('options-checkbox'));
+      await waitFor(() => {
+        expect(screen.getByTestId('delete-button')).toBeInTheDocument();
+        expect(screen.getByTestId('edit-button')).toBeInTheDocument();
+      });
     });
   });
 });

@@ -5,7 +5,7 @@ import logo from '../../assets/images/bn-dashboard.png';
 import MenuList from './MenuList';
 
 const SideBar = () => {
-  const [showSidebar, setShowSidebar] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(true);
 
   return (
     <>

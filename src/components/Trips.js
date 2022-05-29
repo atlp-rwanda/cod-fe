@@ -5,6 +5,7 @@ import { fetchTripReq } from '../redux/features/tripReq.feature';
 import Table from './tables/TripRequests';
 import { columns } from '../constants/reqColumns';
 import Spinner from './reusable/Spinnar';
+import TripsHeader from './Header/TripsHeader';
 
 const Trip = () => {
   const dispatch = useDispatch();
@@ -17,8 +18,17 @@ const Trip = () => {
   const reqColumns = React.useMemo(() => columns, []);
 
   return (
-    <div className="p-2 mt-[10vh]">
-      {!loading ? <Table columns={reqColumns} trips={trips} /> : <Spinner />}
+    <div className="px-2 mt-[5vh]">
+      {!loading ? (
+        <>
+          <TripsHeader />
+          <div className="flex flex-col p-8 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+            <Table columns={reqColumns} trips={trips} />
+          </div>
+        </>
+      ) : (
+        <Spinner />
+      )}
     </div>
   );
 };
