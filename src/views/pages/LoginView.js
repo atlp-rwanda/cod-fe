@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../../components/Auth/Header';
+import Login from '../../components/Auth/Login';
 import LandingHeader from '../../components/Header/landingPageHeader';
 
 const LoginView = () => {
@@ -14,6 +15,7 @@ const LoginView = () => {
             linkName="Signup"
             linkUrl="/signup"
           />
+          <Login />
         </div>
       </div>
     </>

@@ -6,6 +6,12 @@ const initialState = {
   message: '',
 };
 
+const loginInitialState = {
+  isLoading: false,
+  error: '',
+  isAuth: false,
+};
+
 export const registerSlice = createSlice({
   name: 'register',
   initialState,
@@ -28,5 +34,29 @@ export const registerSlice = createSlice({
   },
 });
 
+export const loginSlice = createSlice({
+  name: 'login',
+  initialState: loginInitialState,
+  reducers: {
+    loginPending: (state) => {
+      state.isLoading = true;
+      state.error = '';
+      state.isAuth = false;
+    },
+    loginSuccess: (state) => {
+      state.isLoading = false;
+      state.error = '';
+      state.isAuth = true;
+    },
+    loginFail: (state, payload) => {
+      state.isLoading = false;
+      state.error = payload;
+      state.isAuth = false;
+    },
+  },
+});
+
 export const { registerPending, registerSuccess, registerFail } = registerSlice.actions;
-export default { registerReducer: registerSlice.reducer };
+export const { loginPending, loginSuccess, loginFail } = loginSlice.actions;
+
+export default { registerReducer: registerSlice.reducer, loginReducer: loginSlice.reducer };

@@ -8,6 +8,7 @@ const reducers = {
   register: Auth.default.registerReducer,
   page: pageReducer,
   tripRequests: tripReqReducer,
+  login: Auth.default.loginReducer,
 };
 
 export default reducers;
