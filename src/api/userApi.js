@@ -2,7 +2,7 @@ import axios from 'axios';
 import regeneratorRuntime, { async } from 'regenerator-runtime'; //eslint-disable-line
 
 const api = axios.create({
-  baseURL: `https://z3a56d8ae-z32201c1c-gtw.z11b3bac6.rustrocks.cloud/api`,
+  baseURL: `http://127.0.0.1:7000/api`,
 });
 
 const registerUser = (userData) => {

@@ -1,9 +1,5 @@
-import {
-  AvatarCell,
-  SelectColumnFilter,
-  StatusPill,
-  ReviewTrip,
-} from '../components/tables/shared/reqActions';
+/* eslint-disable import/prefer-default-export */
+import { AvatarCell, SelectColumnFilter, StatusPill } from '../components/tables/shared/reqActions';
 
 const columns = [
   {
@@ -27,10 +23,6 @@ const columns = [
     Cell: StatusPill,
     Filter: SelectColumnFilter, // new
     filter: 'includes',
-  },
-  {
-    Header: 'Review',
-    Cell: ReviewTrip,
   },
 ];
 
