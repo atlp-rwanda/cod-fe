@@ -1,7 +1,7 @@
 import React from 'react';
 import { classNames } from './Utils';
 
-export function Button({ children, className, ...rest }) {
+export function Button({ child, className, ...rest }) {
   return (
     <button
       type="button"
@@ -11,7 +11,7 @@ export function Button({ children, className, ...rest }) {
       )}
       {...rest}
     >
-      {children}
+      {child}
     </button>
   );
 }

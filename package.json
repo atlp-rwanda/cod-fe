@@ -65,6 +65,7 @@
     "@babel/eslint-parser": "^7.17.0",
     "@cypress/react": "^5.12.5",
     "@cypress/webpack-dev-server": "^1.8.4",
+    "@headlessui/react": "^1.6.4",
     "@heroicons/react": "^1.0.6",
     "@reduxjs/toolkit": "^1.8.2",
     "@react-icons/all-files": "^4.1.0",

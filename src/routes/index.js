@@ -7,6 +7,7 @@ import LoginView from '../views/pages/LoginView';
 import SignupView from '../views/pages/SignupView';
 import HomeUserView from '../views/pages/HomeUserView';
 import TripApproval from '../views/pages/TripApproval';
+import DashboardHeader from '../components/Header/DashboardHeader';
 
 const AllRoutes = () => (
   <Router>
@@ -18,6 +19,7 @@ const AllRoutes = () => (
       <Route path="*" element={<PageNotFoundView />} />
       <Route path="/signup" element={<SignupView />} />
       <Route path="/approval" element={<TripApproval />} />
+      <Route path="/header" element={<DashboardHeader />} />
     </Routes>
   </Router>
 );

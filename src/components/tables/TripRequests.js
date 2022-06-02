@@ -22,6 +22,8 @@ import {
 import { Button, PageButton } from './shared/Button';
 import { SortIcon, SortUpIcon, SortDownIcon } from '../../assets/icons/TableIcons';
 import { getAllTripReq } from '../../api/tripReqApi';
+import MoreOptions from './shared/MoreOptions';
+import { useSelector } from 'react-redux';
 
 // Define a default UI for filtering
 function GlobalFilter({ preGlobalFilteredRows, globalFilter, setGlobalFilter }) {
@@ -108,6 +110,7 @@ function Table({ columns, trips }) {
         <div className="-my-2 overflow-x-auto -mx-4 sm:-mx-1 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+              {useSelector((state) => state.page.tripId) ? <MoreOptions /> : null}
               <table
                 {...getTableProps()}
                 className="min-w-full divide-y divide-gray-200"
@@ -180,10 +183,20 @@ function Table({ columns, trips }) {
       {/* Pagination */}
       <div className="py-3 flex items-center justify-between">
         <div className="flex-1 flex justify-between sm:hidden">
-          <Button onClick={() => previousPage()} disabled={!canPreviousPage} data-testid="btn-p">
+          <Button
+            onClick={() => previousPage()}
+            disabled={!canPreviousPage}
+            data-testid="btn-p"
+            child={<h3>Previous</h3>}
+          >
             Previous
           </Button>
-          <Button onClick={() => nextPage()} disabled={!canNextPage} data-testid="btn-n">
+          <Button
+            onClick={() => nextPage()}
+            disabled={!canNextPage}
+            data-testid="btn-n"
+            child={<h3>Next</h3>}
+          >
             Next
           </Button>
         </div>

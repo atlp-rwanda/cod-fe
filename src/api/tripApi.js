@@ -19,7 +19,6 @@ export const getProfile = (userId) => {
       .then((res) => resolve(res.data))
       .catch((error) => reject(error));
   });
-
 };
 export const approveRequest = (tripId) => {
   return new Promise((resolve, reject) => {
@@ -31,7 +30,8 @@ export const approveRequest = (tripId) => {
 };
 
 export const rejectRequest = (tripId) => {
-  return new Promise(async (resolve, reject) => { //eslint-disable-line
+  return new Promise(async (resolve, reject) => {
+    //eslint-disable-line
     axios
       .patch(`${baseURl}v1/trip/approve_reject/${tripId}`, { status: 'rejected' }, config)
       .then((res) => resolve(res.data))

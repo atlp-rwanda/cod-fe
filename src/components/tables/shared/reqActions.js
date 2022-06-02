@@ -4,8 +4,9 @@
 /* eslint-disable no-shadow */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { changeTripId } from '../../../redux/views/pages';
 import { classNames } from './Utils';
 
 // This is a custom filter UI for selecting
@@ -88,10 +89,18 @@ export function ReviewTrip(props) {
   );
 }
 export function AvatarCell({ value, column, row }) {
+  const dispatch = useDispatch();
   return (
     <div className="flex items-center">
-      <div className="flex-shrink-0 h-10 w-10">
-        <img className="h-10 w-10 rounded-full" src={row.original[column.imgAccessor]} alt="" />
+      <div className="mt-1">
+        <input
+          type="checkbox"
+          className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+          data-testid="options-checkbox"
+          id={`checkbox-${row.id}`}
+          onChange={() => dispatch(changeTripId(row.id))}
+          checked={row.id === useSelector((state) => state.page.tripId)}
+        />
       </div>
       <div className="ml-4">
         <div className="text-sm font-medium text-gray-900">{value}</div>
