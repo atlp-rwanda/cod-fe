@@ -68,7 +68,7 @@ export function ReviewTrip(props) {
   const data = useSelector((state) => state.tripRequests.trips[props.count.current]);
   props.count.current += 1;
   return (
-    <Link to="/approval" state={data}>
+    <Link to="/approval" state={{ ...data, index: props.count.current }}>
       <button type="button" data-testid="review-button">
         <svg
           xmlns="http://www.w3.org/2000/svg"

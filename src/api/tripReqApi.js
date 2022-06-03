@@ -4,7 +4,6 @@ import { localUrl } from '.';
 const baseURl = localUrl;
 
 const token = sessionStorage.getItem('AccessToken');
-
 const getAllTripReq = () => {
   return new Promise((resolve, reject) => {
     axios

@@ -1,44 +1,64 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-constant-condition */
 /* eslint-disable no-cond-assign */
 import React, { useEffect, useState } from 'react';
-import { getProfile, approveRequest, rejectRequest } from '../../api/tripApi';
+import { useNavigate } from 'react-router-dom';
+import { getProfile, reviewRequest } from '../../api/tripApi';
 import ProfileModal from '../ProfileModal';
 import Alert from '../Auth/Alert';
+import Spinner from '../reusable/Spinnar';
+import Row from './shared/Row';
 
 function ApprovalComponent(props) {
-  const { state } = props;
   const [hasProfile, setHasProfile] = useState(false);
-  const [hasApproved, setHasApproved] = useState(false);
-  const [hasRejected, setHasRejected] = useState(false);
+  const [hasReviewed, setHasReviewed] = useState(false);
   const [profileLoading, setProfileLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
   const [profile, setProfile] = useState({});
   const [modalOn, setModalOn] = useState(false);
   const [more, setMore] = useState(false);
   const [moreStyle, setMoreStyle] = useState({
-    css: 'w-[75px] lg:w-[150px] sm:w-[100px] max-h-[60px] max-w-[150px] text-left justify-center',
+    css: 'w-[128px] lg:w-[150px] sm:w-[100px] max-h-[60px] max-w-[150px] text-left justify-center',
     number: 40,
   });
-
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        setProfileLoading(true);
-        const response = await getProfile(state.User.id);
-        if (response.message === 'Profile Found') {
-          const { data } = response;
-          setProfile(data);
-          setHasProfile(true);
-        } else {
-          setHasProfile(false);
-        }
-
-        setProfileLoading(false);
-      } catch (err) {
-        console.log(err);
+  const navigate = useNavigate();
+  const { state } = props;
+  const { name: accomodationName } = state.Accomodation;
+  const {
+    departure,
+    destination,
+    dateOfTravel,
+    dateOfReturn,
+    createdAt,
+    travelReason,
+    id,
+    User,
+    status,
+  } = props.state;
+  const [stat, setStat] = useState(status);
+  const dateOfTravelString = new Date(dateOfTravel).toDateString();
+  const dateOfReturnString = new Date(dateOfReturn).toDateString();
+  const createdAtString = new Date(createdAt).toDateString();
+  const fetchProfile = async () => {
+    try {
+      setProfileLoading(true);
+      const response = await getProfile(state.User.id);
+      if (response.message === 'Profile Found') {
+        const { data } = response;
+        setProfile(data);
+        setHasProfile(true);
+      } else {
+        setHasProfile(false);
       }
-    };
+
+      setProfileLoading(false);
+    } catch (err) {
+      setError(err);
+    }
+  };
+  useEffect(() => {
     fetchProfile();
   }, []);
   const addStyle = () => {
@@ -49,67 +69,63 @@ function ApprovalComponent(props) {
       });
     } else {
       setMoreStyle({
-        css: 'w-[75px] lg:w-[150px] sm:w-[100px] max-h-[60px] max-w-[150px] text-left justify-center',
+        css: 'w-[128px] lg:w-[150px] sm:w-[100px] max-h-[60px] max-w-[150px] text-left justify-center',
         number: 40,
       });
     }
   };
-  const { name: accomodationName } = state.Accomodation;
-  const {
-    departure,
-    destination,
-    dateOfTravel,
-    dateOfReturn,
-    createdAt,
-    travelReason,
-    status,
-    id,
-    User,
-  } = state;
-  const dateOfTravelString = new Date(dateOfTravel).toDateString();
-  const dateOfReturnString = new Date(dateOfReturn).toDateString();
-  const createdAtString = new Date(createdAt).toDateString();
   const viewProfile = () => {
     if (hasProfile) {
       setModalOn(true);
     } else {
       setError('This user has no profile');
+      setTimeout(() => setError(''), 2000);
     }
   };
-  const approve = async () => {
-    const res = await approveRequest(id);
-    setHasApproved(true);
-    setMessage(res.data.message);
+  const approveOrReject = async (reviewStatus) => {
+    setIsLoading(true);
+    const res = await reviewRequest(id, reviewStatus);
+    setIsLoading(false);
+    if (res.status === 200) {
+      setStat(reviewStatus);
+      setHasReviewed(true);
+      setMessage(res.data.message);
+      setTimeout(() => {
+        setMessage('');
+      }, 3000);
+
+      return navigate('/dashboard');
+    }
+    setError('gone wrong please try again later');
+    setTimeout(() => setError(''), 2000);
+    return 'Error';
   };
-  const reject = async () => {
-    const res = await rejectRequest(id);
-    setHasRejected(true);
-    setMessage(res.data.message);
-  };
+
   return (
-    <div className="relative flex flex-col w-full mt-6  sm:mx-8 md:mx-16 lg:mx-36 xl:mx-72">
-      {!hasProfile && User && error && <Alert message={error} heading="Error" variant="error" />}
-      {(hasApproved || hasRejected) && User && message && (
+    <div className=" flex flex-col relative w-full sm:mx-8 md:mx-16 lg:mx-36 xl:mx-72 mt-6">
+      {User && error && <Alert message={error} heading="Error" variant="error" />}
+      {hasReviewed && User && message && (
         <Alert message={message} heading="Success" variant="success" />
       )}
+
       {User && (
         <div>
-          <h1 className=" w-[70%] text-2xl lg:text-3xl bg-yellow-600 text-center font-semibold p-1 rounded-md mx-8 lg:ml-20 shadow-xl">
+          <h1 className=" w-[70%] flex justify-center text-2xl lg:text-3xl bg-yellow-600 font-semibold p-1 rounded-md mx-8 lg:ml-20 shadow-xl">
             Trip request Approval
           </h1>
           <h1 className="p-2 ml-20 mr-40 text-xl font-medium text-center lg:text-2xl">
             Requester Information
           </h1>
-          <div className="flex flex-col ml-0 mr-40 sm:ml-12 sm:mr-36 lg:ml-20 lg:mr-44">
-            <span className="flex flex-row justify-between p-2 border-gray-200 border-y bg-gray-50">
+          <div className="flex flex-col lg:ml-20 lg:mr-44">
+            <Row>
               <h2>Names:</h2>
               <h2>
                 {User.firstname} ${User.lastname}
               </h2>
-            </span>
+            </Row>
             <button
               type="button"
-              className="w-40 p-1 mx-auto mt-4 font-medium bg-yellow-600 rounded-md shadow-2xl hover:bg-white hover:text-primary"
+              className="bg-yellow-600 w-40 mx-auto mt-4 rounded-md font-medium p-1 hover:bg-yellow-500 hover:py-[.3rem] shadow-2xl"
               onClick={viewProfile}
             >
               View Profile
@@ -117,58 +133,65 @@ function ApprovalComponent(props) {
           </div>
         </div>
       )}
-      <h1 className="py-4 ml-20 mr-40 text-xl font-medium text-center lg:text-2xl">
-        Trip Information
-      </h1>
-      <div className="ml-12  mr-36 lg:ml-20 lg:mr-44">
-        <span className="flex flex-row justify-between p-2 border-gray-200 bg-gray-50 border-y">
+      <h1 className="text-xl lg:text-2xl py-4 font-medium text-center">Trip Information</h1>
+      <div className=" lg:ml-20 lg:mr-44">
+        <span className="flex justify-between p-2 border-gray-200 bg-gray-50 border-y ">
           <h2 className="">accomodation:</h2>
-          <h2 className="w-[75px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
+          <h2 className="w-[128px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
             {accomodationName}
           </h2>
         </span>
-        <span className="flex flex-row justify-between p-2 border-gray-200 border-y bg-gray-50">
+        <Row>
           <h2>Departure:</h2>
-          <h2 className="w-[75px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
+          <h2 className="w-[128px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
             {departure}
           </h2>
-        </span>
-        <span className="flex flex-row justify-between p-2 border-gray-200 border-y bg-gray-50">
+        </Row>
+        <Row>
           <h2>Destination:</h2>
-          <h2 className="w-[75px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
-            {String(destination)}
+          <h2 className="w-[128px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
+            {String(destination).replace(/,/g, ' >> ')}
           </h2>
-        </span>
-        <span className="flex flex-row justify-between p-2 border-gray-200 border-y bg-gray-50">
+        </Row>
+        <Row>
           <h2>Status:</h2>
-          <h2 className="w-[75px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
-            {status}
-          </h2>
-        </span>
+          <div className="w-[128px] lg:w-[150px] sm:w-[100px] max-w-[150px] flex justify-left">
+            <h2
+              className={`rounded-md text-center px-1 ${
+                (stat === 'approved' && 'bg-green-100 text-green-800') ||
+                (stat === 'rejected' && 'bg-red-100 text-red-800') ||
+                (stat === 'pending' && 'bg-gray-100 text-gray-800')
+              }`}
+            >
+              {stat}
+            </h2>
+          </div>
+        </Row>
 
-        <span className="flex flex-row justify-between p-2 border-gray-200 border-y bg-gray-50">
+        <Row>
           <h2>Date of Travel:</h2>
-          <h2 className="w-[75px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
+          <h2 className="w-[128px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
             {dateOfTravelString}
           </h2>
-        </span>
-        <span className="flex flex-row justify-between p-2 border-gray-200 border-y bg-gray-50">
+        </Row>
+        <Row>
           <h2>Date of Return:</h2>
-          <h2 className="w-[75px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
+          <h2 className="w-[128px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
             {dateOfReturnString}
           </h2>
-        </span>
-        <span className="flex flex-row justify-between p-2 border-gray-200 border-y bg-gray-50">
+        </Row>
+        <Row>
           <h2>Date trip requested:</h2>
-          <h2 className="w-[75px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
+          <h2 className="w-[128px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
             {createdAtString}
           </h2>
-        </span>
-        <span className="flex flex-row justify-between p-2 border-gray-200 border-y bg-gray-50">
+        </Row>
+        <Row>
           <h2>Travel Reason:</h2>
           <h2 className={moreStyle.css}>
             <button
               type="button"
+              data-testid="travel-reason"
               onClick={() => {
                 setMore(!more);
                 addStyle();
@@ -179,33 +202,47 @@ function ApprovalComponent(props) {
                 : travelReason}{' '}
             </button>
           </h2>
-        </span>
-        {status === 'pending' && User && (
-          <div className="flex flex-row items-center mx-auto my-auto w-72 lg:w-96">
-            <button
-              onClick={approve}
-              data-testid="approve-button"
-              type="button"
-              className="p-1 mx-auto mt-4 font-medium bg-green-500 rounded-md shadow-2xl w-28 lg:w-40 hover:bg-white hover:text-green-500"
-            >
-              Approve
-            </button>
-            <button
-              onClick={reject}
-              data-testid="reject-button"
-              type="button"
-              className="p-1 mx-auto mt-4 font-medium bg-red-500 rounded-md w-28 lg:w-40 hover:bg-white hover:text-red-500 "
-            >
-              Reject
-            </button>
+        </Row>
+        {isLoading ? (
+          <div className="mx-72">
+            <Spinner />
           </div>
+        ) : (
+          stat === 'pending' &&
+          User && (
+            <div className="flex items-center my-auto mx-auto w-72 lg:w-96">
+              <button
+                onClick={() => {
+                  approveOrReject('approved');
+                }}
+                data-testid="approve-button"
+                type="button"
+                className="w-28 bg-green-500 lg:w-40  mx-auto mt-4 rounded-md font-medium p-1 hover:bg-green-400 hover:py-[.3rem] shadow-2xl"
+              >
+                Approve
+              </button>
+              <button
+                onClick={() => {
+                  approveOrReject('rejected');
+                }}
+                data-testid="reject-button"
+                type="button"
+                className="bg-red-500 w-28  lg:w-40 mx-auto mt-4 rounded-md font-medium p-1 hover:bg-red-400 hover:py-[.3rem] "
+              >
+                Reject
+              </button>
+            </div>
+          )
         )}
       </div>
-      {modalOn && !profileLoading && (
-        <div className="absolute inset-0 z-30 flex justify-center h-full ml-0 mr-20 bg-white opacity-100">
-          <ProfileModal data={profile} setModalOn={setModalOn} />
-        </div>
-      )}
+      {modalOn &&
+        (profileLoading ? (
+          <Spinner />
+        ) : (
+          <div className="bg-white px-8 md:px-48 h-full opacity-100 absolute inset-0 flex justify-center z-30">
+            <ProfileModal data={profile} setModalOn={setModalOn} />
+          </div>
+        ))}
     </div>
   );
 }
