@@ -2,13 +2,13 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 function BreadCrumb() {
-    const { page } = useSelector((state) => state.page);
+  const { page } = useSelector((state) => state.page);
   return (
     <div>
       <nav className="flex" aria-label="Breadcrumb">
         <ol className="inline-flex items-center space-x-1 md:space-x-3">
           <li className="inline-flex items-center">
-            <a href="#" className="text-gray-700 hover:text-gray-900 inline-flex items-center" >
+            <a href="#" className="text-gray-700 hover:text-gray-900 inline-flex items-center">
               <svg
                 className="w-5 h-5 mr-2.5"
                 fill="currentColor"

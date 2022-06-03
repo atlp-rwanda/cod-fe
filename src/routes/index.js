@@ -9,6 +9,8 @@ import HomeUserView from '../views/pages/HomeUserView';
 import TripApproval from '../views/pages/TripApproval';
 import DashboardHeader from '../components/Header/DashboardHeader';
 import ProfileView from '../views/profile/ProfileView';
+import ResetForm from '../views/password/ResetForm';
+import NewPasswordForm from '../views/password/NewPasswordForm';
 
 const AllRoutes = () => (
   <Router>
@@ -22,6 +24,8 @@ const AllRoutes = () => (
       <Route path="/signup" element={<SignupView />} />
       <Route path="/approval" element={<TripApproval />} />
       <Route path="/header" element={<DashboardHeader />} />
+      <Route exact path="/password/reset" element={<ResetForm />} />
+      <Route exact path="/password/reset/:token" element={<NewPasswordForm />} />
     </Routes>
   </Router>
 );

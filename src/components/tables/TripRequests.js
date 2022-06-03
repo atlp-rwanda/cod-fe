@@ -19,11 +19,11 @@ import {
   ChevronRightIcon,
   ChevronDoubleRightIcon,
 } from '@heroicons/react/solid';
+import { useSelector } from 'react-redux';
 import { Button, PageButton } from './shared/Button';
 import { SortIcon, SortUpIcon, SortDownIcon } from '../../assets/icons/TableIcons';
 import { getAllTripReq } from '../../api/tripReqApi';
 import MoreOptions from './shared/MoreOptions';
-import { useSelector } from 'react-redux';
 
 // Define a default UI for filtering
 function GlobalFilter({ preGlobalFilteredRows, globalFilter, setGlobalFilter }) {
