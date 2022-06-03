@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { page: 'trips', tripId: null };
+const initialState = { page: 'trips', tripId: null, searchOption: 'global' };
 
 export const pageSlice = createSlice({
   name: 'page',
@@ -13,8 +13,11 @@ export const pageSlice = createSlice({
     changeTripId: (state, action) => {
       state.tripId = action.payload;
     },
+    changeSearchOption: (state, action) => {
+      state.searchOption = action.payload;
+    },
   },
 });
 
-export const { changePage, changeTripId } = pageSlice.actions;
+export const { changePage, changeTripId, changeSearchOption } = pageSlice.actions;
 export default pageSlice.reducer;

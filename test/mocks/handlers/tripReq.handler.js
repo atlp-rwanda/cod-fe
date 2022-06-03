@@ -2,7 +2,7 @@
 import { rest } from 'msw';
 import { localUrl } from '../../../src/api/index';
 // given
-const trips = [
+export const trips = [
   {
     Accomodation: { name: 'Serena' },
     destination: 'Kigali',

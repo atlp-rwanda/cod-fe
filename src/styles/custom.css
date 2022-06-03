@@ -1,0 +1,127 @@
+body {
+  background-color: #F5F5F5;
+}
+
+.profile-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  min-height: 400px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 100px;
+}
+
+.bg-white {
+  background-color: #FFFFFF;
+}
+
+.left-dashboard {
+  background-color: #FFFFFF;
+}
+
+.panel-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 25%;
+}
+
+.panel-right {
+  margin-left: 15px;
+  width: 65%;
+}
+
+.custom-rounded {
+  border-radius: 10px;
+}
+
+.panel-left, .panel-right {
+  min-height: 400px;
+}
+
+.panel-left a {
+  color: #C89648;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.custom-flex-forget {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.profile ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.profile ul li {
+  margin-bottom: 5px;
+  border-bottom: 1px solid #C89648;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.profile h4 {
+  margin: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+@media all and (max-device-width: 720px) {
+  .profile-div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    margin-left: 0px;
+    width: 100%;
+  }
+  .panel-left {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: auto;
+  }
+  .panel-right {
+    width: auto;
+  }
+}
+/*# sourceMappingURL=custom.css.map */

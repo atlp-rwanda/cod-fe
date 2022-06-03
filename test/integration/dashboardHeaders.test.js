@@ -8,7 +8,7 @@ describe('Fetch All Trip Requests', () => {
   test('Should Render Dashboard Header Component', async () => {
     render(<HomeUserView />);
     expect(screen.getByText(/\b(Home)\b/i)).toBeInTheDocument();
-    expect(screen.getByText(/\b(trips)\b/i)).toBeInTheDocument();
+
     fireEvent.click(screen.getByTestId('profile'));
     expect(screen.getByTestId(/\b(notification-toggle)\b/i)).toBeInTheDocument();
     await waitFor(() => {

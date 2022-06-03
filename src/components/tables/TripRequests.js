@@ -5,6 +5,7 @@
 
 import React, { useRef } from 'react';
 import 'regenerator-runtime/runtime';
+import { useSelector } from 'react-redux';
 import {
   useTable,
   useFilters,
@@ -19,37 +20,11 @@ import {
   ChevronRightIcon,
   ChevronDoubleRightIcon,
 } from '@heroicons/react/solid';
-import { useSelector } from 'react-redux';
 import { Button, PageButton } from './shared/Button';
 import { SortIcon, SortUpIcon, SortDownIcon } from '../../assets/icons/TableIcons';
 import { getAllTripReq } from '../../api/tripReqApi';
 import MoreOptions from './shared/MoreOptions';
-
-// Define a default UI for filtering
-function GlobalFilter({ preGlobalFilteredRows, globalFilter, setGlobalFilter }) {
-  const count = preGlobalFilteredRows.length;
-  const [value, setValue] = React.useState(globalFilter);
-  const onChange = useAsyncDebounce((value) => {
-    setGlobalFilter(value || undefined);
-  }, 200);
-
-  return (
-    <label className="flex gap-x-2 items-baseline">
-      <span className="text-gray-700">Search: </span>
-      <input
-        type="text"
-        className="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        value={value || ''}
-        onChange={(e) => {
-          setValue(e.target.value);
-          onChange(e.target.value);
-        }}
-        placeholder={`${count} records...`}
-        data-testid="search-table"
-      />
-    </label>
-  );
-}
+import { GlobalFilter } from './shared/Header';
 
 function Table({ columns, trips }) {
   // Use the state and functions returned from useTable to build your UI
@@ -98,7 +73,7 @@ function Table({ columns, trips }) {
         {headerGroups.map((headerGroup) =>
           headerGroup.headers.map((column) =>
             column.Filter ? (
-              <div className="mt-2 sm:mt-0" key={column.id}>
+              <div className="mt-2 sm:mt-0 self-start md:ml-12" key={column.id}>
                 {column.render('Filter')}
               </div>
             ) : null

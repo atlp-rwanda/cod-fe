@@ -1,10 +1,10 @@
-import { PlusIcon, FilterIcon } from '@heroicons/react/outline';
+import { PlusIcon } from '@heroicons/react/outline';
 import React from 'react';
 import { Button } from '../tables/shared/Button';
 
 function TripsHeader() {
   return (
-    <div className="py-2 flex gap-6">
+    <div className="py-2 flex flex-col md:flex-row gap-6">
       <Button
         child={
           <a href="./dashboard" className="flex items-center">
@@ -14,13 +14,13 @@ function TripsHeader() {
         }
       />
 
-      <Button
+      {/* <Button
         child={
           <a href="#" className="flex items-center">
             <FilterIcon className="h-8 " /> Filter
           </a>
         }
-      />
+      /> */}
     </div>
   );
 }
