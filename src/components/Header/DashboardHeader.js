@@ -11,7 +11,7 @@ const user = {
 };
 
 const userNavigation = [
-  { name: 'Your Profile', href: '#' },
+  { name: 'Your Profile', href: 'profile' },
   { name: 'Settings', href: '#' },
   { name: 'Sign out', href: '#' },
 ];
@@ -23,27 +23,27 @@ function classNames(...classes) {
 export default function DashboardHeader() {
   return (
     <>
-      <div className="p-8 flex md:justify-between bg-white shadow-inner">
+      <div className="flex p-8 bg-white shadow-inner md:justify-between">
         <BreadCrumb />
         <div className="flex items-center ">
           <button
             type="button"
-            className="bg-gray-800 p-1 rounded-full text-yellow-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-yellow-800 focus:ring-white"
+            className="p-1 text-yellow-400 bg-gray-800 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-yellow-800 focus:ring-white"
             data-testid="notification-toggle"
           >
             <span className="sr-only">View notifications</span>
-            <BellIcon className="h-6 w-6" aria-hidden="true" />
+            <BellIcon className="w-6 h-6" aria-hidden="true" />
           </button>
 
           {/* Profile dropdown */}
-          <Menu as="div" className="ml-3 relative">
+          <Menu as="div" className="relative ml-3">
             <div>
               <Menu.Button
                 data-testid="profile"
-                className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                className="flex items-center max-w-xs text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
               >
                 <span className="sr-only">Open user menu</span>
-                <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="" />
+                <img className="w-8 h-8 rounded-full" src={user.imageUrl} alt="" />
               </Menu.Button>
             </div>
             <Transition
@@ -55,7 +55,7 @@ export default function DashboardHeader() {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+              <Menu.Items className="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 {userNavigation.map((item) => (
                   <Menu.Item key={item.name}>
                     {({ active }) => (

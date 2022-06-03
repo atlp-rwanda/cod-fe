@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: ['regenerator-runtime/runtime.js', path.join(__dirname, 'src', 'index.js')],
@@ -45,5 +46,6 @@ module.exports = {
       filename: 'index.html',
       template: path.join(__dirname, 'src', 'index.html'),
     }),
+    new Dotenv(),
   ],
 };

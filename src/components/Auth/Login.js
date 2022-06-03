@@ -1,4 +1,4 @@
-/*eslint-disable consistent-return */
+/* eslint-disable consistent-return */
 
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

@@ -32,10 +32,11 @@
         "react/state-in-constructor": "off",
         "react/jsx-no-undef": "off",
         "react/jsx-filename-extension": "off",
-        "react/jsx-props-no-spreading": "off",
         "no-undef": "off",
         "react/prop-types": "off",
         "react/jsx-props-no-spreading":"off",
-        "linebreak-style": 0
+        "linebreak-style": 0,
+        "jsx-a11y/label-has-associated-control": "off",
+        "jsx-a11y/label-has-for":"off"
     }
 }
