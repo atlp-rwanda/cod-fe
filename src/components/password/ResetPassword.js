@@ -26,9 +26,7 @@ const ResetPassword = () => {
     setEmail((values) => ({ ...values, [name]: value }));
   };
 
-  const buttonStyles = {
-    
-  };
+  const buttonStyles = {};
 
   return (
     <form onSubmit={handleSubmit}>

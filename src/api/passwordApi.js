@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { localUrl} from '.';
 
-const apiUrl = 'http://127.0.0.1:7000/';
+const apiUrl = localUrl;
 const checkEmail = async (emailId) => {
   try {
     const response = await axios.post(`${apiUrl}api/v1/forgot-password`, {

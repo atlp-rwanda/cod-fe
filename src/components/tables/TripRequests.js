@@ -73,7 +73,7 @@ function Table({ columns, trips }) {
         {headerGroups.map((headerGroup) =>
           headerGroup.headers.map((column) =>
             column.Filter ? (
-              <div className="mt-2 sm:mt-0 self-start md:ml-12" key={column.id}>
+              <div className="self-start mt-2 sm:mt-0 md:ml-12" key={column.id}>
                 {column.render('Filter')}
               </div>
             ) : null
@@ -81,10 +81,10 @@ function Table({ columns, trips }) {
         )}
       </div>
       {/* table */}
-      <div className="mt-4 flex flex-col">
-        <div className="-my-2 overflow-x-auto -mx-4 sm:-mx-1 lg:-mx-8">
-          <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+      <div className="flex flex-col mt-4">
+        <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-1 lg:-mx-8">
+          <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+            <div className="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
               {useSelector((state) => state.page.tripId) ? <MoreOptions /> : null}
               <table
                 {...getTableProps()}
@@ -99,7 +99,7 @@ function Table({ columns, trips }) {
                         // we can add them into the header props
                         <th
                           scope="col"
-                          className="group px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                          className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase group"
                           data-testid="tb-header"
                           {...column.getHeaderProps(column.getSortByToggleProps())}
                         >
@@ -156,8 +156,8 @@ function Table({ columns, trips }) {
         </div>
       </div>
       {/* Pagination */}
-      <div className="py-3 flex items-center justify-between">
-        <div className="flex-1 flex justify-between sm:hidden">
+      <div className="flex items-center justify-between py-3">
+        <div className="flex justify-between flex-1 sm:hidden">
           <Button
             onClick={() => previousPage()}
             disabled={!canPreviousPage}
@@ -176,7 +176,7 @@ function Table({ columns, trips }) {
           </Button>
         </div>
         <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
-          <div className="flex gap-x-2 items-baseline">
+          <div className="flex items-baseline gap-x-2">
             <span className="text-sm text-gray-700">
               Page <span className="font-medium">{state.pageIndex + 1}</span> of{' '}
               <span className="font-medium">{pageOptions.length}</span>
@@ -184,7 +184,7 @@ function Table({ columns, trips }) {
             <label>
               <span className="sr-only">Items Per Page</span>
               <select
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 value={state.pageSize}
                 onChange={(e) => {
                   setPageSize(Number(e.target.value));
@@ -200,7 +200,7 @@ function Table({ columns, trips }) {
           </div>
           <div>
             <nav
-              className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
+              className="relative z-0 inline-flex -space-x-px rounded-md shadow-sm"
               aria-label="Pagination"
             >
               <PageButton
@@ -210,7 +210,7 @@ function Table({ columns, trips }) {
                 data-testid="page-0"
               >
                 <span className="sr-only">First</span>
-                <ChevronDoubleLeftIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                <ChevronDoubleLeftIcon className="w-5 h-5 text-gray-400" aria-hidden="true" />
               </PageButton>
               <PageButton
                 onClick={() => previousPage()}
@@ -218,11 +218,11 @@ function Table({ columns, trips }) {
                 data-testid="btn-prev"
               >
                 <span className="sr-only">Previous</span>
-                <ChevronLeftIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                <ChevronLeftIcon className="w-5 h-5 text-gray-400" aria-hidden="true" />
               </PageButton>
               <PageButton onClick={() => nextPage()} disabled={!canNextPage} data-testid="btn-next">
                 <span className="sr-only">Next</span>
-                <ChevronRightIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                <ChevronRightIcon className="w-5 h-5 text-gray-400" aria-hidden="true" />
               </PageButton>
               <PageButton
                 className="rounded-r-md"
@@ -231,7 +231,7 @@ function Table({ columns, trips }) {
                 data-testid="page-1"
               >
                 <span className="sr-only">Last</span>
-                <ChevronDoubleRightIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                <ChevronDoubleRightIcon className="w-5 h-5 text-gray-400" aria-hidden="true" />
               </PageButton>
             </nav>
           </div>
