@@ -1,8 +1,10 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Menu, Transition } from '@headlessui/react';
 import { BellIcon } from '@heroicons/react/outline';
 import BreadCrumb from './BreadCrumb';
 import profile from '../../assets/images/profile.png';
+import { changePage } from '../../redux/views/pages';
 
 const user = {
   name: '',
@@ -21,11 +23,13 @@ function classNames(...classes) {
 }
 
 export default function DashboardHeader() {
+  const [page, setPage] = useState('trips');
+  const dispatch = useDispatch();
   return (
     <>
       <div className="flex p-8 bg-white shadow-inner md:justify-between">
         <BreadCrumb />
-        <div className="flex px-8 items-center ">
+        <div className="flex items-center px-8 ">
           <button
             type="button"
             className="p-1 text-yellow-400 bg-gray-800 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-yellow-800 focus:ring-white"
@@ -60,7 +64,10 @@ export default function DashboardHeader() {
                   <Menu.Item key={item.name}>
                     {({ active }) => (
                       <a
-                        href={item.href}
+                        href="#"
+                        onFocus={() => setPage('profile')}
+                        onClick={() => dispatch(changePage(page))}
+                        data-testid="user-profile"
                         className={classNames(
                           active ? 'bg-gray-100' : '',
                           'block px-4 py-2 text-sm text-gray-700'

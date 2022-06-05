@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import { changePassword } from '../../api/passwordApi';
 import Alert from '../Auth/Alert';
+
 const NewPassword = () => {
   const [error, setError] = useState({ status: false, message: '' });
   const [password, getPassword] = useState({});
@@ -20,13 +21,13 @@ const NewPassword = () => {
     }
     return navigate('/login');
   };
-  
+
   const newInput = (e) => {
     const { name } = e.target;
     const email = e.target.value;
     getPassword((values) => ({ ...values, [name]: email }));
   };
-  
+
   return (
     <form onSubmit={resetPassword}>
       {error.status && <Alert message={error.message} heading="Error" variant="error" />}
@@ -42,7 +43,7 @@ const NewPassword = () => {
       <button
         className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 mt-10"
         type="submit"
-        style={{ }}
+        style={{}}
       >
         Save
       </button>

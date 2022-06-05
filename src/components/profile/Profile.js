@@ -12,6 +12,7 @@ import getToken from '../../api/refreshTokenApi';
 const Profile = () => {
   const profile = useSelector((state) => state.profile.value);
   const { message, error } = useSelector((state) => state.register);
+  console.log(error);
   const [userData, setUserData] = useState({});
   const [checked, setChecked] = useState(false);
   const dispatch = useDispatch();
@@ -56,15 +57,7 @@ const Profile = () => {
   return (
     <div className="profile-div">
       <div className="panel-left">
-        <div
-          className="bg-white custom-rounded hover:bg-gray-200"
-          style={{ height: '5%', marginBottom: '5px' }}
-        >
-          <a href="/dashboard">
-            <span className="mx-0 font-medium md:mx-4">Dashboard</span>
-          </a>
-        </div>
-        <div className="bg-white custom-rounded" style={{ height: '95%' }}>
+        <div className="bg-white custom-rounded" style={{ height: '100%' }}>
           {profile && Object.keys(profile).length > 0 && (
             <div className="profile" id="profile">
               <h4>My Profile</h4> <hr />
@@ -110,8 +103,8 @@ const Profile = () => {
       <div className="bg-white custom-rounded panel panel-right">
         <div className="profile-form">
           <form className="px-8 pt-6 pb-8 mb-4 bg-white rounded" onSubmit={handleSubmit}>
-            {error && <Alert message={error.payload} heading="Error" variant="error" />}
-            {message && <Alert message={message.payload} heading="Success" variant="success" />}
+            {error && <Alert message={typeof error.payload === 'string' ? error.payload: 'Unable to update profile'} heading="Error" variant="error" />}
+            {message && <Alert message={'Profile Updated'} heading="Success" variant="success" />}
             <div className="mb-4">
               <label htmlFor="gender" className="block mb-1 text-sm font-bold text-gray-700">
                 Gender
