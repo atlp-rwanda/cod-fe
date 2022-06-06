@@ -88,13 +88,13 @@ describe('Fetch All Trip Requests', () => {
       expect(await screen.findByText(/D_emo/i)).toBeInTheDocument();
       fireEvent.click(screen.getAllByTestId('tb-header')[0]);
       expect(screen.queryByText(/Demo/i)).not.toBeInTheDocument();
-      expect(screen.getByTestId('review-button')).toBeInTheDocument();
-      fireEvent.click(screen.getByTestId('review-button'));
+
       expect(screen.queryByTestId('delete-button')).not.toBeInTheDocument();
       fireEvent.click(screen.getByTestId('options-checkbox'));
       await waitFor(() => {
         expect(screen.getByTestId('delete-button')).toBeInTheDocument();
-        expect(screen.getByTestId('edit-button')).toBeInTheDocument();
+        expect(screen.getByTestId('view-button')).toBeInTheDocument();
+        fireEvent.click(screen.getByTestId('view-button'));
       });
     });
   });

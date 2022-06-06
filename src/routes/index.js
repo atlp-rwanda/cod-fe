@@ -9,6 +9,7 @@ import HomeUserView from '../views/pages/HomeUserView';
 import TripApproval from '../views/pages/TripApproval';
 import DashboardHeader from '../components/Header/DashboardHeader';
 import ProfileView from '../views/profile/ProfileView';
+import EditRequestView from '../views/pages/EditRequestView';
 
 const AllRoutes = () => (
   <Router>
@@ -20,8 +21,9 @@ const AllRoutes = () => (
       <Route exact path="/profile" element={<ProfileView />} />
       <Route path="*" element={<PageNotFoundView />} />
       <Route path="/signup" element={<SignupView />} />
-      <Route path="/approval" element={<TripApproval />} />
+      <Route path="/trip/review" element={<TripApproval />} />
       <Route path="/header" element={<DashboardHeader />} />
+      <Route path="/trip/edit" element={<EditRequestView />} />
     </Routes>
   </Router>
 );

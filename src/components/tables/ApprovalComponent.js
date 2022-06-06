@@ -92,9 +92,10 @@ function ApprovalComponent(props) {
       setMessage(res.data.message);
       setTimeout(() => {
         setMessage('');
+        navigate('/dashboard');
       }, 3000);
 
-      return navigate('/dashboard');
+      return true;
     }
     setError('gone wrong please try again later');
     setTimeout(() => setError(''), 2000);

@@ -5,7 +5,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { changeTripId } from '../../../redux/views/pages';
 import { classNames } from './Utils';
 
@@ -62,30 +61,6 @@ export function StatusPill({ value }) {
     >
       {status}
     </span>
-  );
-}
-export function ReviewTrip(props) {
-  const data = useSelector((state) => state.tripRequests.trips[props.count.current]);
-  props.count.current += 1;
-  return (
-    <Link to="/approval" state={{ ...data, index: props.count.current }}>
-      <button type="button" data-testid="review-button">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-          />
-        </svg>
-      </button>
-    </Link>
   );
 }
 export function AvatarCell({ value, column, row }) {

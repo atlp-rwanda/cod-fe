@@ -18,15 +18,11 @@ export const authHandlers = [
     return res(ctx.status(201), ctx.json({ Message: 'User created', status: 201 }), ctx.delay(100));
   }),
 
-  rest.post(baseURl + 'api/user/login', (req, res, ctx) => {
+  rest.post(`${baseURl}api/user/login`, (req, res, ctx) => {
     const { email } = req.body;
-    if (email .includes('error')) {
-      return res(
-        ctx.status(500),
-        ctx.json({ error: 'error', status: 500 }),
-        ctx.delay(100)
-      );   
-     }
+    if (email.includes('error')) {
+      return res(ctx.status(500), ctx.json({ error: 'error', status: 500 }), ctx.delay(100));
+    }
     if (email.includes('wrong')) {
       return res(
         ctx.status(400),
