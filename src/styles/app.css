@@ -1,6 +1,4 @@
-.header-container{
-    background-image: url('../assets/images/header-bg.jpeg');
+.header-container {
+  background-image: url("../assets/images/header-bg.jpeg");
 }
-.capitalize-sentence{
-    text-transform: capitalize;
-}
+/*# sourceMappingURL=app.css.map */

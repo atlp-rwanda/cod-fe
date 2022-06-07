@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { localUrl } from '.';
+import { localUrl, token } from '.';
 
 const baseURl = localUrl;
 
-const token = sessionStorage.getItem('AccessToken');
+// const token = sessionStorage.getItem('AccessToken');
+
 const getAllTripReq = () => {
   return new Promise((resolve, reject) => {
     axios

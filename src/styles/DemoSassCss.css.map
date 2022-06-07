@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAC;EACR,gBAAgB,EAAE,OAAO;EACzB,KAAK,EAAE,OAAO;CACf",
+    "sources": [
+        "DemoSassCss.scss"
+    ],
+    "names": [],
+    "file": "DemoSassCss.css"
+}

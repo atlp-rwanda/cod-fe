@@ -60,7 +60,7 @@ describe('Fetch All Trip Requests', () => {
     expect(spinner).toBeInTheDocument();
     expect(screen.getByRole('img', { name: 'logo' })).toBeInTheDocument();
     expect(screen.getByText(/\b(Trip)\b/i)).toBeInTheDocument();
-    expect(screen.getByText(/Dashboard/i)).toBeInTheDocument();
+    // expect(screen.getByText(/Dashboard/i)).toBeInTheDocument();
     await waitFor(() => expect(spinner).not.toBeInTheDocument());
     waitFor(() => {
       expect(screen.findByTestId('tripReq-table'));
@@ -70,6 +70,13 @@ describe('Fetch All Trip Requests', () => {
       expect(screen.queryByText(/Kivu/i)).toBeInTheDocument();
       expect(screen.queryByText(/Serena/i)).toBeInTheDocument();
     });
+    fireEvent.click(screen.getByTestId('5'));
+    fireEvent.click(screen.getByTestId('search-menu'));
+    // await waitFor(() => fireEvent.click(screen.getByTestId('a')));
+    fireEvent.change(screen.getByTestId('search-table'), {
+      target: { value: 'Kivu' },
+    });
+    // await waitFor(() => expect(screen.getByText(/Kivu/i)).toBeInTheDocument());
   });
 
   describe('test Table', () => {

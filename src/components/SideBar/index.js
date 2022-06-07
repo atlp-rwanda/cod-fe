@@ -8,7 +8,7 @@ const SideBar = () => {
   const [showSidebar, setShowSidebar] = useState(true);
 
   return (
-    <>
+    <div className=" invisible md:visible">
       {showSidebar ? (
         <button
           className="flex text-4xl text-yellow-600 items-center cursor-pointer fixed right-[17vw] md:left-[17vw] top-1 z-50 bg-white p-2 w-4 rounded"
@@ -46,7 +46,7 @@ const SideBar = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -25,7 +25,7 @@ export default function DashboardHeader() {
     <>
       <div className="flex p-8 bg-white shadow-inner md:justify-between">
         <BreadCrumb />
-        <div className="flex items-center ">
+        <div className="flex px-8 items-center ">
           <button
             type="button"
             className="p-1 text-yellow-400 bg-gray-800 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-yellow-800 focus:ring-white"
