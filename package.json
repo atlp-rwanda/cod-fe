@@ -111,6 +111,7 @@
     "react-toastify": "^9.0.4",
     "redux": "^4.2.0",
     "regenerator-runtime": "^0.13.9",
+    "socket.io-client": "^4.5.1",
     "start-server-and-test": "^1.14.0",
     "style-loader": "^3.3.1",
     "swiper": "6.8.4",
