@@ -6,11 +6,13 @@ const api = axios.create({
 });
 
 const registerUser = (userData) => {
-  return new Promise(async (resolve, reject) => {  //eslint-disable-line
+  return new Promise(async (resolve, reject) => {
+    //eslint-disable-line
     try {
       const registerRes = await api.post(`user/register`, userData);
       resolve(registerRes.data);
     } catch (error) {
+      ``;
       if (error.response.data !== undefined) {
         reject(error.response.data);
       }
@@ -20,7 +22,8 @@ const registerUser = (userData) => {
 };
 
 export const loginUser = (user) => {
-  return new Promise(async (resolve, reject) => {   //eslint-disable-line
+  return new Promise(async (resolve, reject) => {
+    //eslint-disable-line
     try {
       const res = await api.post(`user/login`, user);
       resolve(res.data);
@@ -41,7 +44,8 @@ export const loginUser = (user) => {
 };
 
 export const googleLoginUser = (token) => {
-  return new Promise(async (resolve, reject) => {  //eslint-disable-line
+  return new Promise(async (resolve, reject) => {
+    //eslint-disable-line
     try {
       const res = await api.post(`auth/google`, { token });
       resolve(res.data);
@@ -62,7 +66,8 @@ export const googleLoginUser = (token) => {
 };
 
 export const facebookLoginUser = (user) => {
-  return new Promise(async (resolve, reject) => {  //eslint-disable-line
+  return new Promise(async (resolve, reject) => {
+    //eslint-disable-line
     try {
       const res = await api.post(`auth/facebook`, { user });
       resolve(res.data);

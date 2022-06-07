@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiUrl = 'https://z3a56d8ae-z32201c1c-gtw.z11b3bac6.rustrocks.cloud/';
+const apiUrl = 'http://127.0.0.1:7000/';
 const checkEmail = async (emailId) => {
   try {
     const response = await axios.post(`${apiUrl}api/v1/forgot-password`, {
