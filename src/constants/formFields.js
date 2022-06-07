@@ -74,4 +74,11 @@ export const loginFields = [
   },
 ];
 
+export const resetPasswordField = {
+  name: 'email',
+  type: 'email',
+  placeholder: 'Email Address',
+  isRequired: true,
+};
+
 export default signupFields;

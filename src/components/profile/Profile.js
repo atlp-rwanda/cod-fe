@@ -56,8 +56,11 @@ const Profile = () => {
   return (
     <div className="profile-div">
       <div className="panel-left">
-        <div className="bg-white custom-rounded hover:bg-gray-200" style={{ height: '5%',marginBottom:'5px' }}>
-          <a href='/dashboard'>
+        <div
+          className="bg-white custom-rounded hover:bg-gray-200"
+          style={{ height: '5%', marginBottom: '5px' }}
+        >
+          <a href="/dashboard">
             <span className="mx-0 font-medium md:mx-4">Dashboard</span>
           </a>
         </div>
@@ -66,12 +69,27 @@ const Profile = () => {
             <div className="profile" id="profile">
               <h4>My Profile</h4> <hr />
               <ul>
-                <li><b>Gender: </b> {profile.gender}</li>
-                <li><b>Language: </b> {profile.language}</li>
-                <li><b>Location: </b> {profile.location}</li>
-                <li><b>birth Date: </b>{ (new Date(profile.birthdate)).toLocaleString()}</li>
-                <li><b>Currency: </b>{profile.currency}</li>
-                <li><b>Department: </b>{profile.departement}</li>
+                <li>
+                  <b>Gender: </b> {profile.gender}
+                </li>
+                <li>
+                  <b>Language: </b> {profile.language}
+                </li>
+                <li>
+                  <b>Location: </b> {profile.location}
+                </li>
+                <li>
+                  <b>birth Date: </b>
+                  {new Date(profile.birthdate).toLocaleString()}
+                </li>
+                <li>
+                  <b>Currency: </b>
+                  {profile.currency}
+                </li>
+                <li>
+                  <b>Department: </b>
+                  {profile.departement}
+                </li>
               </ul>
             </div>
           )}
@@ -173,13 +191,16 @@ const Profile = () => {
             </div>
             <div className="mb-4">
               <label className="block mb-2 text-sm font-bold text-gray-700">
-              <input
-                    className="float-left w-4 h-4 mt-1 mr-2 align-top transition duration-200 bg-white bg-center bg-no-repeat bg-contain border border-gray-300 rounded-sm appearance-none cursor-pointer form-check-input checked:bg-blue-600 checked:border-blue-600 focus:outline-none"
-                    type="checkbox"
-                    id="inlineCheckbox1"
-                    value="true"
-                    onChange={handleCheck}
-                  /><span className="inline-block text-gray-800 form-check-label">Are a manager ? </span>
+                <input
+                  className="float-left w-4 h-4 mt-1 mr-2 align-top transition duration-200 bg-white bg-center bg-no-repeat bg-contain border border-gray-300 rounded-sm appearance-none cursor-pointer form-check-input checked:bg-blue-600 checked:border-blue-600 focus:outline-none"
+                  type="checkbox"
+                  id="inlineCheckbox1"
+                  value="true"
+                  onChange={handleCheck}
+                />
+                <span className="inline-block text-gray-800 form-check-label">
+                  Are a manager ?{' '}
+                </span>
               </label>
             </div>
             <div className="flex items-center justify-between">

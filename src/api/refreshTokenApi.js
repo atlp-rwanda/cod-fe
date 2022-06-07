@@ -11,7 +11,7 @@ const getToken = async () => {
       const tokenResponse = await axios.post(`${baseURl}api/user/refresh`, {
         refreshTokenKey: refreshToken,
       });
-      
+
       sessionStorage.setItem('AccessToken', tokenResponse.data.accessToken);
       localStorage.setItem(
         'barefootNomad',

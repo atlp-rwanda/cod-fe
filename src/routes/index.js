@@ -10,6 +10,8 @@ import TripApproval from '../views/pages/TripApproval';
 import DashboardHeader from '../components/Header/DashboardHeader';
 import ProfileView from '../views/profile/ProfileView';
 import EditRequestView from '../views/pages/EditRequestView';
+import ResetForm from '../views/password/ResetForm';
+import NewPasswordForm from '../views/password/NewPasswordForm';
 
 const AllRoutes = () => (
   <Router>
@@ -24,6 +26,8 @@ const AllRoutes = () => (
       <Route path="/trip/review" element={<TripApproval />} />
       <Route path="/header" element={<DashboardHeader />} />
       <Route path="/trip/edit" element={<EditRequestView />} />
+      <Route exact path="/password/reset" element={<ResetForm />} />
+      <Route exact path="/password/reset/:token" element={<NewPasswordForm />} />
     </Routes>
   </Router>
 );

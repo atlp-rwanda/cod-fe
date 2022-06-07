@@ -32,10 +32,10 @@ const updateUserProfile = async (postData) => {
     }
     return { status: false, message: 'An error occured,try again!' };
   } catch (errorResponse) {
-    if(errorResponse.response.data.Error){
-      return { status: false, message:errorResponse.response.data.Error };
-    }  
-    return {status: false, message:'ERROR'}
+    if (errorResponse.response.data.Error) {
+      return { status: false, message: errorResponse.response.data.Error };
+    }
+    return { status: false, message: 'ERROR' };
   }
 };
 
