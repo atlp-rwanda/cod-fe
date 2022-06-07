@@ -3,9 +3,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { GoogleLogin } from 'react-google-login';
+import FacebookLogin from 'react-facebook-login';
 
 import { loginFields } from '../../constants/formFields';
-import { login } from '../../redux/actions/auth.action';
+import { login, googleLogin, facebookLogin } from '../../redux/actions/auth.action';
 import FormAction from './FormAction';
 import FormExtra from './FormExtra';
 import Input from './Input';
@@ -33,6 +35,13 @@ const Login = () => {
     setLoginState({ ...loginState, [e.target.id]: e.target.value });
   };
 
+  const handleGoogleSubmit = ({ tokenId }) => {
+    dispatch(googleLogin(tokenId));
+  };
+  const handelFacebookSubmit = (user) => {
+    const { email, name, userID } = user;
+    dispatch(facebookLogin({ email, name, userID }));
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = loginState;
@@ -61,7 +70,19 @@ const Login = () => {
       </div>
       <FormExtra />
       <FormAction handleSubmit={handleSubmit} text="Login" />
-      <FormAction handleSubmit={handleSubmit} text="Sign in with google" />
+      <FacebookLogin
+        appId="516206283379225"
+        autoLoad={false}
+        fields="name,email,picture"
+        callback={handelFacebookSubmit}
+        cssClass="group relative w-full flex justify-center py-2 px-2 border border-transparent text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 mt-4"
+      />
+      <GoogleLogin
+        clientId="615843052602-3io9vpipj2uiemdjteven18pm16l85b2.apps.googleusercontent.com"
+        buttonText="Sign in with google"
+        onSuccess={handleGoogleSubmit}
+        onFailure={handleGoogleSubmit}
+      />
     </form>
   );
 };

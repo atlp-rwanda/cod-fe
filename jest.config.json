@@ -3,8 +3,8 @@
   "testEnvironment": "jsdom",
   "coverageThreshold": {
     "global": {
-      "branches": 50,
-      "lines": 70
+      "branches": 40,
+      "lines": 50
     }
   },
   "coverageReporters": ["lcov", "text"],
