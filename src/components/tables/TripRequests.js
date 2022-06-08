@@ -20,6 +20,7 @@ import {
   ChevronRightIcon,
   ChevronDoubleRightIcon,
 } from '@heroicons/react/solid';
+import { useNavigate } from 'react-router-dom';
 import { Button, PageButton } from './shared/Button';
 import { SortIcon, SortUpIcon, SortDownIcon } from '../../assets/icons/TableIcons';
 import { getAllTripReq } from '../../api/tripReqApi';
@@ -27,6 +28,8 @@ import MoreOptions from './shared/MoreOptions';
 import { GlobalFilter } from './shared/Header';
 
 function Table({ columns, trips }) {
+  const navigate = useNavigate();
+  const data = useSelector((states) => states.tripRequests.trips);
   // Use the state and functions returned from useTable to build your UI
   // getAllTripReq().then((data) => console.log(data));
   const {
@@ -81,10 +84,18 @@ function Table({ columns, trips }) {
         )}
       </div>
       {/* table */}
-      <div className="flex flex-col mt-4">
-        <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-1 lg:-mx-8">
-          <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-            <div className="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
+      <div className="mt-4 flex flex-col">
+        <div className="-my-2 overflow-x-auto -mx-4 sm:-mx-1 lg:-mx-8">
+          <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+              <button
+                onClick={() => navigate('/trip/statistics', { state: data })}
+                type="button"
+                className="inline-flex items-center py-2 px-4 text-sm font-medium  text-blue-500 bg-white rounded-r-lg border border-blue-200 hover:bg-blue-100 hover:text-blue-600 focus:z-10 focus:ring-2 focus:ring-blue-600 focus:text-blue-600"
+                data-testid="statistics-button"
+              >
+                <span>Trip statistics</span>
+              </button>
               {useSelector((state) => state.page.tripId) ? <MoreOptions /> : null}
               <table
                 {...getTableProps()}

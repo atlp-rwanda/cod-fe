@@ -10,6 +10,7 @@ import TripApproval from '../views/pages/TripApproval';
 import DashboardHeader from '../components/Header/DashboardHeader';
 import ProfileView from '../views/profile/ProfileView';
 import EditRequestView from '../views/pages/EditRequestView';
+import TripStatisticsView from '../views/pages/TripStatisticsView';
 import ResetForm from '../views/password/ResetForm';
 import NewPasswordForm from '../views/password/NewPasswordForm';
 import { Destinations } from '../views/pages/Destinations';
@@ -27,6 +28,7 @@ const AllRoutes = () => (
       <Route path="/trip/review" element={<TripApproval />} />
       <Route path="/header" element={<DashboardHeader />} />
       <Route path="/trip/edit" element={<EditRequestView />} />
+      <Route path="/trip/statistics" element={<TripStatisticsView />} />
       <Route exact path="/password/reset" element={<ResetForm />} />
       <Route exact path="/password/reset/:token" element={<NewPasswordForm />} />
       <Route path="/mostdestinations" element={<Destinations />} />
