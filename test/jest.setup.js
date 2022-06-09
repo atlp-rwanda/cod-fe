@@ -29,12 +29,12 @@ function render(
 let store = {};
 
 beforeAll(() => {
-  //Mock local storage
+  // Mock local storage
   global.Storage.prototype.setItem = jest.fn((key, value) => {
     store[key] = value;
   });
   global.Storage.prototype.getItem = jest.fn((key) => store[key]);
-  //start up the mock server
+  // start up the mock server
   server.listen();
 });
 

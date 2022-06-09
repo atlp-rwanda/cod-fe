@@ -1,89 +1,89 @@
 import axios from 'axios';
 import regeneratorRuntime, { async } from 'regenerator-runtime'; //eslint-disable-line
-
-const api = axios.create({
-  baseURL: `https://z3a56d8ae-z32201c1c-gtw.z11b3bac6.rustrocks.cloud/api`,
-});
+import { localUrl } from '.';
 
 const registerUser = (userData) => {
-  return new Promise(async (resolve, reject) => {
-    //eslint-disable-line
-    try {
-      const registerRes = await api.post(`user/register`, userData);
-      resolve(registerRes.data);
-    } catch (error) {
-      ``;
-      if (error.response.data !== undefined) {
-        reject(error.response.data);
-      }
-      reject(error);
-    }
+  return new Promise((resolve, reject) => {
+    axios
+      .post(`${localUrl}api/user/register`, userData)
+      .then((registerRes) => resolve(registerRes.data))
+      .catch((error) => {
+        if (error.response.data !== undefined) {
+          reject(error.response.data);
+        }
+        reject(error);
+      });
   });
 };
 
 export const loginUser = (user) => {
-  return new Promise(async (resolve, reject) => {
-    //eslint-disable-line
-    try {
-      const res = await api.post(`user/login`, user);
-      resolve(res.data);
-      if (res.status === 200) {
-        sessionStorage.setItem('AccessToken', res.data.accessToken);
-        localStorage.setItem(
-          'barefootNomad',
-          JSON.stringify({ refreshToken: res.data.refreshToken })
-        );
-      }
-    } catch (error) {
-      if (error.response.data !== undefined) {
-        reject(error.response.data);
-      }
-      reject(error);
-    }
+  console.log(localUrl);
+  return new Promise((resolve, reject) => {
+    axios
+      .post(`${localUrl}api/user/login`, user)
+      .then((res) => {
+        resolve(res.data);
+        if (res.status === 200) {
+          localStorage.setItem(
+            'barefootNomad',
+            JSON.stringify({ refreshToken: res.data.refreshToken })
+          );
+          sessionStorage.setItem('AccessToken', res.data.accessToken);
+          sessionStorage.setItem('roleId', res.data.roleId);
+        }
+      })
+      .catch((error) => {
+        if (error.response.data !== undefined) {
+          reject(error.response.data);
+        }
+        reject(error);
+      });
   });
 };
 
 export const googleLoginUser = (token) => {
-  return new Promise(async (resolve, reject) => {
-    //eslint-disable-line
-    try {
-      const res = await api.post(`auth/google`, { token });
-      resolve(res.data);
-      if (res.status === 200) {
-        sessionStorage.setItem('AccessToken', res.data.data.accessToken);
-        localStorage.setItem(
-          'barefootNomad',
-          JSON.stringify({ refreshToken: res.data.data.refreshToken })
-        );
-      }
-    } catch (error) {
-      if (error.response.data !== undefined) {
-        reject(error.response.data);
-      }
-      reject(error);
-    }
+  return new Promise((resolve, reject) => {
+    axios
+      .post(`${authUrl}auth/google`, { token })
+      .then((res) => {
+        resolve(res.data);
+        if (res.status === 200) {
+          sessionStorage.setItem('AccessToken', res.data.data.accessToken);
+          localStorage.setItem(
+            'barefootNomad',
+            JSON.stringify({ refreshToken: res.data.data.refreshToken })
+          );
+        }
+      })
+      .catch((error) => {
+        if (error.response.data !== undefined) {
+          reject(error.response.data);
+        }
+        reject(error);
+      });
   });
 };
 
 export const facebookLoginUser = (user) => {
-  return new Promise(async (resolve, reject) => {
-    //eslint-disable-line
-    try {
-      const res = await api.post(`auth/facebook`, { user });
-      resolve(res.data);
-      if (res.status === 200) {
-        sessionStorage.setItem('AccessToken', res.data.data.accessToken);
-        localStorage.setItem(
-          'barefootNomad',
-          JSON.stringify({ refreshToken: res.data.data.refreshToken })
-        );
-      }
-    } catch (error) {
-      if (error.response.data !== undefined) {
-        reject(error.response.data);
-      }
-      reject(error);
-    }
+  return new Promise((resolve, reject) => {
+    axios
+      .post(`${authUrl}auth/facebook`, { user })
+      .then(() => {
+        resolve(res.data);
+        if (res.status === 200) {
+          sessionStorage.setItem('AccessToken', res.data.data.accessToken);
+          localStorage.setItem(
+            'barefootNomad',
+            JSON.stringify({ refreshToken: res.data.data.refreshToken })
+          );
+        }
+      })
+      .catch((error) => {
+        if (error.response.data !== undefined) {
+          reject(error.response.data);
+        }
+        reject(error);
+      });
   });
 };
 

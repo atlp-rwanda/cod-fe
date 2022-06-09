@@ -1,5 +1,7 @@
 import { rest } from 'msw';
-import baseURl from '../../../src/api';
+import { localUrl } from '../../../src/api';
+
+const baseURl = localUrl;
 
 // eslint-disable-next-line import/prefer-default-export
 export const authHandlers = [

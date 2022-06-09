@@ -24,10 +24,10 @@ const userId2 = '861d7c9d-a8a8-4308-bce8-2c6c6a66c840';
 
 // eslint-disable-next-line import/prefer-default-export
 export const approveHandlers = [
-  rest.get(`${baseURl}v1/user/profile/${userId}`, (req, res, ctx) => {
+  rest.get(`${baseURl}api/v1/user/profile/${userId}`, (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(profile), ctx.delay(100));
   }),
-  rest.get(`${baseURl}v1/user/profile/${userId2}`, (req, res, ctx) => {
+  rest.get(`${baseURl}api/v1/user/profile/${userId2}`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({ ...profile, message: 'not found', data: {} }),
@@ -35,7 +35,7 @@ export const approveHandlers = [
     );
   }),
   rest.patch(
-    `${baseURl}v1/trip/approve_reject/8b5c35f7-0459-4dae-8d61-a443dc5625b6`,
+    `${baseURl}api/v1/trip/approve_reject/8b5c35f7-0459-4dae-8d61-a443dc5625b6`,
     (req, res, ctx) => {
       if (req.body.status === 'approved') {
         return res(

@@ -5,6 +5,7 @@ import { tripReqReducer } from './features/tripReq.feature';
 import pageReducer from './views/pages';
 import * as profile from './features/profile.feature';
 import { searchOptionReducer } from './features/search.feature';
+import { getUsersReducer, setRoleReducer } from './features/userRole.feauture';
 
 const reducers = {
   dummy: dummyReducer,
@@ -15,6 +16,8 @@ const reducers = {
   searchOptions: searchOptionReducer,
   login: Auth.default.loginReducer,
   profile: profile.default.profileReducer,
+  users: getUsersReducer,
+  setNewRole: setRoleReducer,
 };
 
 export default reducers;

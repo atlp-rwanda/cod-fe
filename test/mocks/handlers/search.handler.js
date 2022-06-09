@@ -12,7 +12,7 @@ const search = {
 
 // eslint-disable-next-line import/prefer-default-export
 export const searchHandlers = [
-  rest.get(`${localUrl}v1/trip/search/byKey`, (req, res, ctx) => {
+  rest.get(`${localUrl}api/v1/trip/search/byKey`, (req, res, ctx) => {
     return res(ctx.json({ trips }));
   }),
 ];

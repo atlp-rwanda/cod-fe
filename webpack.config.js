@@ -48,6 +48,8 @@ module.exports = {
       filename: 'index.html',
       template: path.join(__dirname, 'src', 'index.html'),
     }),
-    new Dotenv(),
+    new Dotenv({
+      systemvars: true,
+    }),
   ],
 };

@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { localUrl } from '.';
 
-const baseURl = 'https://z3a56d8ae-z32201c1c-gtw.z11b3bac6.rustrocks.cloud/';
+const baseURl = localUrl;
 const getToken = async () => {
   try {
     if (sessionStorage.getItem('AccessToken') === null) {

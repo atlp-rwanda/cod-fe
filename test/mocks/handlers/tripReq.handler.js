@@ -20,7 +20,7 @@ export const trips = [
 ];
 
 export const tripReqHandlers = [
-  rest.get(`${localUrl}v1/trip`, (req, res, ctx) => {
+  rest.get(`${localUrl}api/v1/trip`, (req, res, ctx) => {
     return res(ctx.json({ trips }));
   }),
 ];
