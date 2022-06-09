@@ -7,7 +7,7 @@ import {
   loginSuccess,
   loginFail,
 } from '../features/auth.feature';
-import registerUser, { loginUser } from '../../api/userApi';
+import registerUser, { loginUser, googleLoginUser, facebookLoginUser } from '../../api/userApi';
 
 const register = (userData) => async (dispatch) => {
   try {
@@ -26,6 +26,32 @@ export const login = (user) => async (dispatch) => {
   try {
     dispatch(loginPending());
     const res = await loginUser(user);
+    return dispatch(loginSuccess(res.message));
+  } catch (error) {
+    if (error.message) {
+      return dispatch(loginFail(error.message));
+    }
+    return dispatch(loginFail(error.Error));
+  }
+};
+
+export const googleLogin = (token) => async (dispatch) => {
+  try {
+    dispatch(loginPending());
+    const res = await googleLoginUser(token);
+    return dispatch(loginSuccess(res.message));
+  } catch (error) {
+    if (error.message) {
+      return dispatch(loginFail(error.message));
+    }
+    return dispatch(loginFail(error.Error));
+  }
+};
+
+export const facebookLogin = (user) => async (dispatch) => {
+  try {
+    dispatch(loginPending());
+    const res = await facebookLoginUser(user);
     return dispatch(loginSuccess(res.message));
   } catch (error) {
     if (error.message) {

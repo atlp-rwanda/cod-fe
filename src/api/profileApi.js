@@ -1,8 +1,10 @@
 /* eslint-disable camelcase */
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
+import { localUrl } from '.';
 
-const baseURl = 'https://z3a56d8ae-z32201c1c-gtw.z11b3bac6.rustrocks.cloud/';
+const baseURl = localUrl;
+
 const getUserProfile = async () => {
   try {
     const currentToken = sessionStorage.getItem('AccessToken');

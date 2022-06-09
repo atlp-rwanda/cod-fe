@@ -1,10 +1,9 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { render, fireEvent, screen, store } from './jest.setup';
-
-import Login from '../src/components/Auth/Login';
+import { render, fireEvent, screen } from './jest.setup';
 import Signup from '../src/components/Auth/Signup';
 import * as Auth from '../src/redux/features/auth.feature';
+import Log from '../src/components/Auth/Log';
 
 const { registerReducer, loginReducer } = Auth.default;
 const { registerPending, registerSuccess, registerFail } = Auth;
@@ -80,7 +79,7 @@ describe('Authentication', () => {
   });
 
   test('Logins in the user after clicking login button', async () => {
-    render(<Login />);
+    render(<Log />, { route: '/dashboard' });
 
     expect(screen.getByText(/Login/i)).toBeInTheDocument();
     expect(screen.queryByText(/Error:/i)).not.toBeInTheDocument();
@@ -99,7 +98,7 @@ describe('Authentication', () => {
     fireEvent.change(screen.getByPlaceholderText('Email address'), {
       target: { value: wrongData.errorEmail },
     });
-    
+
     fireEvent.click(screen.getByText('Login'));
     expect(await screen.findByText(/Error/i)).toBeInTheDocument();
 

@@ -40,12 +40,16 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
+    port: 8080,
+    https: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.join(__dirname, 'src', 'index.html'),
     }),
-    new Dotenv(),
+    new Dotenv({
+      systemvars: true,
+    }),
   ],
 };

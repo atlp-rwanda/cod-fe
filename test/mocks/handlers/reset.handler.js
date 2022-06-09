@@ -1,36 +1,28 @@
 import { rest } from 'msw';
-const baseURl = "https://z3a56d8ae-z32201c1c-gtw.z11b3bac6.rustrocks.cloud/";
+import { localUrl } from '../../../src/api';
+
+const baseURl = localUrl;
 
 const passwordToken = {
   status: 201,
   data: {
-      Message: "Password Reset Link Sent Successfully",
-      emailToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Iml5YXJlbXllZkBnbWFpbC5jb20iLCJpZCI6Ijg3NTkxNzc2LTdjNzUtNGEyMi05M2ZlLWEzMzc3YzBiNzA4OCIsImlhdCI6MTY1NDUyOTMxOSwiZXhwIjoxNjU0NTMwMjE5fQ.0Nqyx5VYrPLk1xnOezEulpv2DCa7JGZrF-gNIuGy7zc"
-  }
+    Message: 'Password Reset Link Sent Successfully',
+    emailToken:
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Iml5YXJlbXllZkBnbWFpbC5jb20iLCJpZCI6Ijg3NTkxNzc2LTdjNzUtNGEyMi05M2ZlLWEzMzc3YzBiNzA4OCIsImlhdCI6MTY1NDUyOTMxOSwiZXhwIjoxNjU0NTMwMjE5fQ.0Nqyx5VYrPLk1xnOezEulpv2DCa7JGZrF-gNIuGy7zc',
+  },
 };
-const resetResponse={
+const resetResponse = {
   status: 200,
   data: {
-      message: "Password Updated successfully"
-  }
-}
-const token=passwordToken.data.emailToken;
+    data: { message: 'Password Updated successfully' },
+  },
+};
 // eslint-disable-next-line import/prefer-default-export
 export const resetHandlers = [
   rest.post(`${baseURl}api/v1/forgot-password`, (req, res, ctx) => {
-    console.log("testing");
     return res(ctx.status(201), ctx.json(passwordToken), ctx.delay(100));
   }),
-  rest.patch(`${baseURl}api/reset-password?token=${token}`,(req, res, ctx) => {
-    console.log(req.body);
-    if (req.body.email === 'bademail') {
-      return res(
-        ctx.status(404),
-        ctx.json({ data: { "status": 404, "Error": "User Not Found"} }),
-        ctx.delay(100)
-      );
-    }
+  rest.patch(`${baseURl}v1/reset-password`, (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(resetResponse), ctx.delay(200));
-  }
-  ),
+  }),
 ];

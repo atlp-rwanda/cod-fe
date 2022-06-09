@@ -3,12 +3,10 @@ import { localUrl, token } from '.';
 
 const baseURl = localUrl;
 
-// const token = sessionStorage.getItem('AccessToken');
-
 const getAllTripReq = () => {
   return new Promise((resolve, reject) => {
     axios
-      .get(`${baseURl}v1/trip`, {
+      .get(`${baseURl}api/v1/trip`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => resolve(res.data.data))
