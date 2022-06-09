@@ -1,13 +1,15 @@
 /* eslint-disable camelcase */
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
+import { localUrl } from '.';
 
-const baseURl = 'https://z3a56d8ae-z32201c1c-gtw.z11b3bac6.rustrocks.cloud/';
+const baseURl = localUrl;
+
 const getUserProfile = async () => {
   try {
     const currentToken = sessionStorage.getItem('AccessToken');
     const decode = jwt_decode(currentToken);
-    const response = await axios.get(`${baseURl}api/v1/user/profile/${decode.id}`, {
+    const response = await axios.get(`${baseURl}v1/user/profile/${decode.id}`, {
       headers: {
         authorization: `Bearer ${currentToken}`,
       },
@@ -22,7 +24,7 @@ const updateUserProfile = async (postData) => {
   try {
     const currentToken = sessionStorage.getItem('AccessToken');
     const decode = jwt_decode(currentToken);
-    const response = await axios.put(`${baseURl}api/v1/user/profile/${decode.id}`, postData, {
+    const response = await axios.put(`${baseURl}v1/user/profile/${decode.id}`, postData, {
       headers: {
         authorization: `Bearer ${currentToken}`,
       },

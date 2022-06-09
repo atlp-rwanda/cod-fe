@@ -1,7 +1,3 @@
-// http://localhost:8000/api/v1/trip/search/byKey?name=rub
-// http://localhost:8000/api/v1/trip/search/byKey?email=a
-// http://localhost:8000/api/v1/trip/search/byKey?destination=a
-// http://localhost:8000/api/v1/trip/search/byKey?departure=a
 import axios from 'axios';
 import regeneratorRuntime, { async } from 'regenerator-runtime'; //eslint-disable-line
 import { localUrl, token } from '.';

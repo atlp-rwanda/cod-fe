@@ -23,7 +23,7 @@ function classNames(...classes) {
 export default function DashboardHeader() {
   return (
     <>
-      <div className="flex p-8 bg-white shadow-inner md:justify-between">
+      <div className="flex p-8 bg-white shadow-inner md:justify-between z-50">
         <BreadCrumb />
         <div className="flex px-8 items-center ">
           <button

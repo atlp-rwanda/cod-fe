@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 import { localUrl } from '.';
 
 const baseURl = localUrl;
@@ -28,7 +27,7 @@ export const reviewRequest = async (tripId, status) => {
   }
 };
 export const editTripRequest = (tripId, data) => {
-  return new Promise(async (resolve, reject) => { //eslint-disable-line
+  return new Promise((resolve, reject) => {
     axios
       .put(`${baseURl}v1/trip/${tripId}`, data, config)
       .then((res) => resolve(res.data))

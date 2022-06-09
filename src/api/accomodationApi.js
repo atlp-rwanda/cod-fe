@@ -1,9 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import axios from 'axios';
-import { localUrl } from '.';
+import { localUrl, token } from '.';
 
 const baseURl = localUrl;
-const token = sessionStorage.getItem('AccessToken');
 const config = {
   headers: { Authorization: `Bearer ${token}` },
 };

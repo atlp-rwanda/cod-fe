@@ -1,8 +1,6 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { render, fireEvent, screen, store } from './jest.setup';
-
-import Login from '../src/components/Auth/Login';
+import { render, fireEvent, screen } from './jest.setup';
 import Signup from '../src/components/Auth/Signup';
 import * as Auth from '../src/redux/features/auth.feature';
 import Log from '../src/components/Auth/Log';
@@ -100,7 +98,7 @@ describe('Authentication', () => {
     fireEvent.change(screen.getByPlaceholderText('Email address'), {
       target: { value: wrongData.errorEmail },
     });
-    
+
     fireEvent.click(screen.getByText('Login'));
     expect(await screen.findByText(/Error/i)).toBeInTheDocument();
 

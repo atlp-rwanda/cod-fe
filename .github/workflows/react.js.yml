@@ -26,7 +26,6 @@ jobs:
 
       # basically install but only installs from package-lock
       - run: yarn
-      - run: yarn run test:intergration:cli
       - run: yarn test
       - run: yarn build
 
