@@ -75,7 +75,7 @@ const Testmonials = () => {
         loopFillGroupWithBlank
       >
         {cardDetails.map((cardDetail) => (
-          <SwiperSlide className="p-5">
+          <SwiperSlide className="p-5" key={cardDetail.cardNumber}>
             <FeedBackCard
               cardNumber={cardDetail.cardNumber}
               name={cardDetail.name}

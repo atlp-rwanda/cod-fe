@@ -51,7 +51,7 @@ const TopDestinations = () => {
         className="w-full h-max flex gap-x-10 justify-start"
       >
         {cardDetails.map((cardDetail) => (
-          <SwiperSlide className="p-5">
+          <SwiperSlide className="p-5" key={cardDetail.cardNumber}>
             <DestinationCard
               cardNumber={cardDetail.cardNumber}
               country={cardDetail.country}
