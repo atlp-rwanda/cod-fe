@@ -7,6 +7,7 @@ import {
   loginSuccess,
   loginFail,
 } from '../features/auth.feature';
+import { loggedInUser } from '../features/user.feature';
 import registerUser, { loginUser, googleLoginUser, facebookLoginUser } from '../../api/userApi';
 
 const register = (userData) => async (dispatch) => {
@@ -26,6 +27,7 @@ export const login = (user) => async (dispatch) => {
   try {
     dispatch(loginPending());
     const res = await loginUser(user);
+    dispatch(loggedInUser(user));
     return dispatch(loginSuccess(res.message));
   } catch (error) {
     if (error.message) {

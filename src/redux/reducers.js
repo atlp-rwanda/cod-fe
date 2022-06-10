@@ -10,6 +10,7 @@ import { getUsersReducer, setRoleReducer } from './features/userRole.feauture';
 import * as mostdestionations from './features/destinations.feature';
 import * as accommodation from './features/accomodations.feature';
 import accommodationFeature from './features/accommodation.feature';
+import * as user from './features/user.feature';
 
 const reducers = {
   dummy: dummyReducer,
@@ -22,6 +23,7 @@ const reducers = {
   login: Auth.default.loginReducer,
   profile: profile.default.profileReducer,
   users: getUsersReducer,
+  user: user.default.userReducer,
   setNewRole: setRoleReducer,
   mostDestinations: mostdestionations.default.destinationsReducer,
   allAccomodations: accommodation.default.accommodationReducer,
