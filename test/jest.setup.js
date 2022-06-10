@@ -54,3 +54,7 @@ afterAll(() => {
 export * from '@testing-library/react';
 // override render method
 export { render };
+jest.mock('react-chartjs-2', () => ({
+  Bar: () => null,
+  Doughnut: () => null,
+}));
