@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { localUrl} from '.';
 
-const apiUrl = 'http://127.0.0.1:7000/';
+const apiUrl = localUrl;
 const checkEmail = async (emailId) => {
   try {
-    const response = await axios.post(`${apiUrl}api/v1/forgot-password`, {
+    const response = await axios.post(`${apiUrl}v1/forgot-password`, {
       email: `${emailId.email}`,
     });
     const resetToken = response.data.data.emailToken;
@@ -18,7 +19,7 @@ const checkEmail = async (emailId) => {
 
 const changePassword = async (password, token) => {
   try {
-    const response = await axios.patch(`${apiUrl}api/v1/reset-password?token=${token}`, password);
+    const response = await axios.patch(`${apiUrl}v1/reset-password?token=${token}`, password);
     if (response.data.data.message) {
       return { status: false, message: response.data.data.message };
     }

@@ -109,6 +109,7 @@ body {
             justify-content: flex-start;
     margin-left: 0px;
     width: 100%;
+    min-height: auto;
   }
   .panel-left {
     display: -webkit-box;
@@ -119,9 +120,11 @@ body {
         -ms-flex-direction: column;
             flex-direction: column;
     width: auto;
+    margin: 5px;
   }
   .panel-right {
     width: auto;
+    margin: 5px;
   }
 }
 /*# sourceMappingURL=custom.css.map */

@@ -6,6 +6,8 @@ import pageReducer from './views/pages';
 import * as profile from './features/profile.feature';
 import { searchOptionReducer } from './features/search.feature';
 import { getUsersReducer, setRoleReducer } from './features/userRole.feauture';
+import * as mostdestionations from './features/destinations.feature';
+import * as accommodation from './features/accomodations.feature';
 
 const reducers = {
   dummy: dummyReducer,
@@ -18,6 +20,8 @@ const reducers = {
   profile: profile.default.profileReducer,
   users: getUsersReducer,
   setNewRole: setRoleReducer,
+  mostDestinations: mostdestionations.default.destinationsReducer,
+  allAccomodations: accommodation.default.accommodationReducer,
 };
 
 export default reducers;
