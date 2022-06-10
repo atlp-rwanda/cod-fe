@@ -5,7 +5,7 @@ import { localUrl } from '.';
 const registerUser = (userData) => {
   return new Promise((resolve, reject) => {
     axios
-      .post(`${localUrl}api/user/register`, userData)
+      .post(`${localUrl}user/register`, userData)
       .then((registerRes) => resolve(registerRes.data))
       .catch((error) => {
         if (error.response.data !== undefined) {
@@ -17,10 +17,9 @@ const registerUser = (userData) => {
 };
 
 export const loginUser = (user) => {
-  console.log(localUrl);
   return new Promise((resolve, reject) => {
     axios
-      .post(`${localUrl}api/user/login`, user)
+      .post(`${localUrl}user/login`, user)
       .then((res) => {
         resolve(res.data);
         if (res.status === 200) {
@@ -44,7 +43,7 @@ export const loginUser = (user) => {
 export const googleLoginUser = (token) => {
   return new Promise((resolve, reject) => {
     axios
-      .post(`${authUrl}auth/google`, { token })
+      .post(`${authUrl}google`, { token })
       .then((res) => {
         resolve(res.data);
         if (res.status === 200) {
@@ -67,7 +66,7 @@ export const googleLoginUser = (token) => {
 export const facebookLoginUser = (user) => {
   return new Promise((resolve, reject) => {
     axios
-      .post(`${authUrl}auth/facebook`, { user })
+      .post(`${authUrl}facebook`, { user })
       .then(() => {
         resolve(res.data);
         if (res.status === 200) {

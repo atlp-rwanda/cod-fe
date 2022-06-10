@@ -6,7 +6,7 @@ const baseURl = localUrl;
 const getAllTripReq = () => {
   return new Promise((resolve, reject) => {
     axios
-      .get(`${baseURl}api/v1/trip`, {
+      .get(`${baseURl}v1/trip`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => resolve(res.data.data))

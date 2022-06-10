@@ -9,7 +9,7 @@ const getToken = async () => {
         return false;
       }
       const { refreshToken } = JSON.parse(window.localStorage.getItem('barefootNomad'));
-      const tokenResponse = await axios.post(`${baseURl}api/user/refresh`, {
+      const tokenResponse = await axios.post(`${baseURl}user/refresh`, {
         refreshTokenKey: refreshToken,
       });
 

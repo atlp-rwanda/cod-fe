@@ -5,7 +5,7 @@ const baseURl = localUrl;
 
 // eslint-disable-next-line import/prefer-default-export
 export const editHandlers = [
-  rest.get(`${baseURl}api/v1/accommodations`, (req, res, ctx) => {
+  rest.get(`${baseURl}v1/accommodations`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -49,7 +49,7 @@ export const editHandlers = [
     );
   }),
 
-  rest.put(`${baseURl}api/v1/trip/8b5c35f7-0459-4dae-8d61-a443dc5625b6`, (req, res, ctx) => {
+  rest.put(`${baseURl}v1/trip/8b5c35f7-0459-4dae-8d61-a443dc5625b6`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({

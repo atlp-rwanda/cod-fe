@@ -60,16 +60,3 @@ const setRoleSlice = createSlice({
 
 export const getUsersReducer = getUsersSlice.reducer;
 export const setRoleReducer = setRoleSlice.reducer;
-
-export const login = (user) => async (dispatch) => {
-  try {
-    dispatch(loginPending());
-    const res = await loginUser(user);
-    return dispatch(loginSuccess(res.message));
-  } catch (error) {
-    if (error.message) {
-      return dispatch(loginFail(error.message));
-    }
-    return dispatch(loginFail(error.Error));
-  }
-};

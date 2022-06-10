@@ -7,7 +7,7 @@ const baseURl = localUrl;
 export const searchByName = (keyword) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const searchNameRes = await axios.get(`${baseURl}api/v1/trip/search/byKey?name=${keyword}`, {
+      const searchNameRes = await axios.get(`${baseURl}v1/trip/search/byKey?name=${keyword}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       resolve(searchNameRes.data);
@@ -24,12 +24,9 @@ export const searchByEmail = (keyword) => {
   return new Promise(async (resolve, reject) => {
     //eslint-disable-line
     try {
-      const searchEmailRes = await axios.get(
-        `${baseURl}api/v1/trip/search/byKey?email=${keyword}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      const searchEmailRes = await axios.get(`${baseURl}v1/trip/search/byKey?email=${keyword}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       resolve(searchEmailRes.data);
     } catch (error) {
       if (error.response.data !== undefined) {
@@ -44,7 +41,7 @@ export const searchByDestination = (keyword) => {
   return new Promise(async (resolve, reject) => {
     try {
       const searchNameRes = await axios.get(
-        `${baseURl}api/v1/trip/search/byKey?destination=${keyword}`,
+        `${baseURl}v1/trip/search/byKey?destination=${keyword}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -62,12 +59,9 @@ export const searchByDestination = (keyword) => {
 export const searchByDuration = (keyword) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const searchNameRes = await axios.get(
-        `${baseURl}api/v1/trip/search/byKey?duration=${keyword}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      const searchNameRes = await axios.get(`${baseURl}v1/trip/search/byKey?duration=${keyword}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       resolve(searchNameRes.data);
     } catch (error) {
       if (error.response.data !== undefined) {
