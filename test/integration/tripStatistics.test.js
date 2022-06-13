@@ -1,9 +1,11 @@
 import React from 'react';
+import { waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import configureStore from 'redux-mock-store';
 import { render, fireEvent, screen } from '../jest.setup';
 import TripStatistics from '../../src/components/tripRequest/TripStatistics';
 import 'jest-canvas-mock';
+
 
 HTMLCanvasElement.prototype.getContext = () => {
   return {};
@@ -82,22 +84,19 @@ describe('Approve or reject atrip request', () => {
     store = mockStore({
       statistics: {
         dataType: 'status',
-        isPie: true,
-        isBar: true,
-        data: [],
+        data: state,
       },
     });
   });
   test('Should Render approve table page', async () => {
-    render(<TripStatistics store={store} state={state} />);
-    // expect(await findByText('Grand Legacy')).toBeInTheDocument();
-
-    expect(screen.getByText('Trip Statistics')).toBeInTheDocument();
-    expect(screen.getByText('From')).toBeInTheDocument();
-    expect(screen.getByText('To')).toBeInTheDocument();
-    expect(screen.getByText('Approved Trips')).toBeInTheDocument();
-    fireEvent.change(screen.getByTestId('from'), { target: { value: '2020-05-05' } });
+    render(<TripStatistics store={store} />);
+    expect(screen.getByText('Total Trips')).toBeInTheDocument();
+    expect(screen.getByText('Approved')).toBeInTheDocument();
+    expect(screen.getByText('Pending')).toBeInTheDocument();
+    expect(screen.getByText('Rejected')).toBeInTheDocument();
+    fireEvent.change(screen.getByTestId('from'), { target: { value: '2022-09-09' } });
     fireEvent.change(screen.getByTestId('to'), { target: { value: '2000-05-05' } });
     fireEvent.click(screen.getByTestId('searchStat'));
+    fireEvent.click(screen.getByTestId('new-trip'));
   });
 });

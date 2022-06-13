@@ -23,7 +23,7 @@ function classNames(...classes) {
 }
 
 export default function DashboardHeader() {
-  const [page, setPage] = useState('trips');
+  const [page, setPage] = useState('dashboard');
   const dispatch = useDispatch();
   return (
     <>

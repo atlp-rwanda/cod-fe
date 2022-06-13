@@ -88,14 +88,6 @@ function Table({ columns, trips }) {
         <div className="-my-2 overflow-x-auto -mx-4 sm:-mx-1 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-              <button
-                onClick={() => navigate('/trip/statistics', { state: data })}
-                type="button"
-                className="inline-flex items-center py-2 px-4 text-sm font-medium  text-blue-500 bg-white rounded-r-lg border border-blue-200 hover:bg-blue-100 hover:text-blue-600 focus:z-10 focus:ring-2 focus:ring-blue-600 focus:text-blue-600"
-                data-testid="statistics-button"
-              >
-                <span>Trip statistics</span>
-              </button>
               {useSelector((state) => state.page.tripId) ? <MoreOptions /> : null}
               <table
                 {...getTableProps()}

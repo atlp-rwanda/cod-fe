@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { page: 'trips', tripId: null, searchOption: 'global' };
+const initialState = { page: 'dashboard', tripId: null, searchOption: 'global' };
 
 export const pageSlice = createSlice({
   name: 'page',

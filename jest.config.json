@@ -3,7 +3,7 @@
   "testEnvironment": "jsdom",
   "coverageThreshold": {
     "global": {
-      "branches": 50,
+      "branches": 45,
       "lines": 60
     }
   },
