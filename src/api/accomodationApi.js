@@ -8,11 +8,11 @@ const config = {
 };
 
 export const getAllAccomodations = (tripId, roomId) => {
-    return new Promise(async (resolve, reject) => { //eslint-disable-line
+  return new Promise(async (resolve, reject) => {
+    //eslint-disable-line
     axios
       .get(`${baseURl}v1/accommodations`, config)
       .then((res) => resolve(res.data))
       .catch((error) => reject(error));
   });
 };
- 

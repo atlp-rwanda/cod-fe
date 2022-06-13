@@ -28,6 +28,7 @@ const AllRoutes = () => (
          <Route path='accommodation' element={<Accommodation />} />
          <Route path='accommodation/:id' element={<Rooms />} />
          <Route path='trips' element={<Trip />} />
+         <Route path="topdestinations" element={<Destinations />} />
       </Route>
       <Route exact path="/profile" element={<ProfileView />} />
       <Route path="*" element={<PageNotFoundView />} />
@@ -38,7 +39,6 @@ const AllRoutes = () => (
       <Route path="/trip/statistics" element={<TripStatisticsView />} />
       <Route exact path="/password/reset" element={<ResetForm />} />
       <Route exact path="/password/reset/:token" element={<NewPasswordForm />} />
-      <Route path="/mostdestinations" element={<Destinations />} />
     </Routes>
   </Router>
 );

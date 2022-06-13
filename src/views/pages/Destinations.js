@@ -5,7 +5,6 @@ import { MostDestinations } from '../../components/trips/MostDestinations';
 export const Destinations = () => {
   return (
     <div>
-      <SideBar />
       <MostDestinations />
     </div>
   );

@@ -1,14 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { CustomPlaceholder } from 'react-placeholder-image';
+
 import bgImage from '../../assets/images/header-bg.jpeg';
-import Location from './Location';
 
 const Room = ({ id, roomNumber, description, tripId, handleClick }) => {
   return (
     <div className="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4 ">
       <div className="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
-        <div className="relative pb-48 overflow-hidden">
-          <img className="absolute inset-0 h-full w-full object-cover" src={bgImage} alt=""></img>
+        <div className="relative pb-8 overflow-hidden">
+          <CustomPlaceholder
+            width={400}
+            height={200}
+            backgroundColor="#123456"
+            textColor="#ffffff"
+            text="Room"
+          />{' '}
         </div>
         <div className="p-4">
           <h2 className="mt-2 mb-2  font-bold">Room Number</h2>
