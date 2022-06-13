@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { localUrl } from '.';
+import { localUrl, token } from '.';
 
 const baseURl = localUrl;
 
-const token = sessionStorage.getItem('AccessToken');
+// const token = sessionStorage.getItem('AccessToken');
 const config = {
   headers: { Authorization: `Bearer ${token}` },
 };
@@ -33,4 +33,20 @@ export const editTripRequest = (tripId, data) => {
       .then((res) => resolve(res.data))
       .catch((error) => reject(error));
   });
+};
+export const tripNotifications = () => {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(`${baseURl}v1/notifications`, config)
+      .then((res) => resolve(res.data))
+      .catch((error) => reject(error));
+  });
+};
+export const markAllAsRead = async () => {
+  try {
+    const res = await axios.post(`${baseURl}v1/read/notifications`, {}, config);
+    return res.data;
+  } catch (error) {
+    return error;
+  }
 };
