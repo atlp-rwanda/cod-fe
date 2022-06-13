@@ -157,7 +157,7 @@ function TripStatistics() {
           </div>
           <div className="flex items-center justify-center border border-green-500 rounded-md md:p-4 transform hover:scale-110 w-36 md:w-64 h-36 bg-white transition ease-in-out duration-300 text-center">
             <span className="absolute left-0 top-0 py-2 text-green-500 text-base w-12 h-12 rounded-full border-4 border-green-500">
-              {totalTrip ? (approvedTrip * 100) / totalTrip : 0}%
+              {totalTrip ? ((approvedTrip * 100) / totalTrip).toFixed() : 0}%
             </span>
             <div className="text-lg md:text-2xl">
               <p>Approved</p>
@@ -166,7 +166,7 @@ function TripStatistics() {
           </div>
           <div className="flex items-center justify-center border border-gray-500 rounded-md md:p-4 transform hover:scale-110 w-36 md:w-64 h-36 bg-white transition ease-in-out duration-300 text-center">
             <span className="absolute left-0 top-0 py-2 text-gray-500 text-base w-12 h-12 rounded-full border-4 border-solid border-gray-500">
-              {totalTrip ? (pendingTrip * 100) / totalTrip : 0}%
+              {totalTrip ? ((pendingTrip * 100) / totalTrip).toFixed() : 0}%
             </span>
             <div className="text-lg md:text-2xl">
               <p>Pending</p>
@@ -175,7 +175,7 @@ function TripStatistics() {
           </div>
           <div className="flex items-center justify-center border border-red-500 rounded-md md:p-4 transform hover:scale-110 w-36 md:w-64 h-36 bg-white transition ease-in-out duration-300 text-center">
             <span className="absolute left-0 top-0 py-2 text-red-500 text-base w-12 h-12 rounded-full border-4 border-solid border-red-500">
-              {totalTrip ? (rejectedTrip * 100) / totalTrip : 0}%
+              {totalTrip ? ((rejectedTrip * 100) / totalTrip).toFixed() : 0}%
             </span>
             <div className="text-lg md:text-2xl">
               <p>Rejected</p>
