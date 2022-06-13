@@ -14,6 +14,9 @@ import TripStatisticsView from '../views/pages/TripStatisticsView';
 import ResetForm from '../views/password/ResetForm';
 import NewPasswordForm from '../views/password/NewPasswordForm';
 import { Destinations } from '../views/pages/Destinations';
+import Rooms from '../components/Accommodation/Rooms';
+import Accommodation from '../components/Accommodation';
+import Trip from '../components/Trips';
 
 const AllRoutes = () => (
   <Router>
@@ -21,7 +24,11 @@ const AllRoutes = () => (
       <Route path="/" element={<HomeView />} />
       <Route path="/login" element={<LoginView />} />
       <Route path="/dummy" element={<App />} />
-      <Route path="/dashboard" element={<HomeUserView />} />
+      <Route path="/dashboard" element={<HomeUserView />} >
+         <Route path='accommodation' element={<Accommodation />} />
+         <Route path='accommodation/:id' element={<Rooms />} />
+         <Route path='trips' element={<Trip />} />
+      </Route>
       <Route exact path="/profile" element={<ProfileView />} />
       <Route path="*" element={<PageNotFoundView />} />
       <Route path="/signup" element={<SignupView />} />

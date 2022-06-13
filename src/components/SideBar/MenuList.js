@@ -1,19 +1,38 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+<<<<<<< HEAD
 import { FaUsers } from 'react-icons/fa';
+=======
+import MenuItem from './MenuItem';
+>>>>>>> Feat (book-room): add book room functionalities
 import { changePage } from '../../redux/views/pages';
-import { classNames } from '../tables/shared/Utils';
-import TripIcon from '../../assets/icons/TripIcon';
-import DashboardIcon from '../../assets/icons/DashboardIcon';
+
+import sidebarItems from '../../constants/sidebarItems';
+
+const sidebarItemState = {};
+sidebarItems.forEach((item) => {
+  sidebarItemState[item.id] = '';
+});
 
 const MenuList = () => {
-  const [page, setPage] = useState('trips');
   const dispatch = useDispatch();
   const roleId = window.sessionStorage.getItem('roleId');
 
+  const [pageState, setPage] = useState('trips');
+
+  const handleFocus = (e) => {
+    const { id } = e.target;
+    setPage(id);
+  };
+
+  const handleClick = (e) => {
+    dispatch(changePage(pageState));
+  };
+
   return (
     <ul>
+<<<<<<< HEAD
       <li>
         <a
           className={classNames(
@@ -83,6 +102,18 @@ const MenuList = () => {
           <span className="mx-0 font-medium md:mx-4">Top Destinations</span>
         </a>
       </li>
+=======
+      {sidebarItems.map((item) => (
+        <MenuItem
+          key={item.id}
+          handleFocus={handleFocus}
+          handleClick={handleClick}
+          value={item.value}
+          icon={item.icon}
+          active={pageState.includes(item.value) ? true : false}
+        />
+      ))}
+>>>>>>> Feat (book-room): add book room functionalities
     </ul>
   );
 };

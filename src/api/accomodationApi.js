@@ -6,7 +6,8 @@ const baseURl = localUrl;
 const config = {
   headers: { Authorization: `Bearer ${token}` },
 };
-export const getAllAccomodations = () => {
+
+export const getAllAccomodations = (tripId, roomId) => {
     return new Promise(async (resolve, reject) => { //eslint-disable-line
     axios
       .get(`${baseURl}v1/accommodations`, config)
@@ -14,3 +15,4 @@ export const getAllAccomodations = () => {
       .catch((error) => reject(error));
   });
 };
+ 
