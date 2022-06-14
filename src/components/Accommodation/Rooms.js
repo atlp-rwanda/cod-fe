@@ -17,7 +17,7 @@ const Rooms = () => {
   const { rooms, addSuccess } = useSelector((state) => state.accommodation.rooms);
   const { id: accommodationId } = useParams();
   const accommodationRooms = rooms.filter((room) => room.accomodationId == accommodationId);
-  const tripId = new URLSearchParams(useLocation().search).get('tripId');
+  const tripsId = new URLSearchParams(useLocation().search).get('tripId');
 
   useEffect(() => {
     dispatch(fetchRooms());
@@ -32,7 +32,7 @@ const Rooms = () => {
       <div className="flex flex-wrap -mx-4">
         {error && <Alert message={error} heading="Error" variant="error" />}
         {setTimeout(() => {
-          accommodationRooms.length == 0 && !loading && !error && (
+          accommodationRooms.length === 0 && !loading && !error && (
             <Alert
               message="No rooms in this accommodation currently!"
               heading="Sorry"
@@ -47,7 +47,7 @@ const Rooms = () => {
               id={id}
               roomNumber={roomNumber}
               description={description}
-              tripId={tripId}
+              tripId={tripsId}
               handleClick={handleClick}
             />
           ))

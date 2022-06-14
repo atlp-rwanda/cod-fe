@@ -7,7 +7,7 @@ const config = {
   headers: { Authorization: `Bearer ${token}` },
 };
 
-export const getAllAccomodations = (tripId, roomId) => {
+export const getAllAccomodations = () => {
   return new Promise(async (resolve, reject) => {
     //eslint-disable-line
     axios

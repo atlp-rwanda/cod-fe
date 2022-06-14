@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { async } from 'regenerator-runtime';
+import regeneratorRuntime, { async } from 'regenerator-runtime'; //eslint-disable-line
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { api } from '.';

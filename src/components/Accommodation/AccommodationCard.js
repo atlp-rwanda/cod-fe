@@ -11,22 +11,23 @@ const AccommodationCard = ({ id, name, description, location }) => {
         className="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
       >
         <div className="relative pb-48 overflow-hidden">
-          <img className="absolute inset-0 h-full w-full object-cover" src={bgImage} alt=""></img>
+          <img className="absolute inset-0 h-full w-full object-cover" src={bgImage} alt="" />
         </div>
         <div className="p-4">
-          {location.map((location) => (
-            <Location location={location} />
+          {location.map((loc) => (
+            <Location location={loc} />
           ))}
           <h2 className="mt-2 mb-2  font-bold">{name}</h2>
           <p className="text-sm">{description}</p>
         </div>
         <div className="p-4 flex items-center text-sm text-gray-600">
-          <a
+          <button
             className="w-full  text-center text-[#DD8D0B]  border border-solid border-[#FAB33F] rounded py-2.5 px-5 hover:bg-[#FAB33F] hover:text-white transition-colors duration-200"
             href="#"
+            type="button"
           >
             Read more
-          </a>
+          </button>
         </div>
       </Link>
     </div>

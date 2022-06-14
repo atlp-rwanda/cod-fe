@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { localUrl} from '.';
+import { localUrl } from '.';
 
 const apiUrl = localUrl;
 const checkEmail = async (emailId) => {

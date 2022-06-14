@@ -16,7 +16,13 @@ const Accommodation = () => {
       <div className="container mx-auto text-gray-900  font-sans p-2 antialiased">
         <div className="flex flex-wrap -mx-4">
           {accommodations.map(({ id, name, description, location }) => (
-            <AccommodationCard key={id} id = {id} name={name} description={description} location={location} />
+            <AccommodationCard
+              key={id}
+              id={id}
+              name={name}
+              description={description}
+              location={location}
+            />
           ))}
         </div>
       </div>

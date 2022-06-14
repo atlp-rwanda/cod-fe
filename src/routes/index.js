@@ -24,11 +24,11 @@ const AllRoutes = () => (
       <Route path="/" element={<HomeView />} />
       <Route path="/login" element={<LoginView />} />
       <Route path="/dummy" element={<App />} />
-      <Route path="/dashboard" element={<HomeUserView />} >
-         <Route path='accommodation' element={<Accommodation />} />
-         <Route path='accommodation/:id' element={<Rooms />} />
-         <Route path='trips' element={<Trip />} />
-         <Route path="topdestinations" element={<Destinations />} />
+      <Route path="/dashboard" element={<HomeUserView />}>
+        <Route path="accommodation" element={<Accommodation />} />
+        <Route path="accommodation/:id" element={<Rooms />} />
+        <Route path="trips" element={<Trip />} />
+        <Route path="topdestinations" element={<Destinations />} />
       </Route>
       <Route exact path="/profile" element={<ProfileView />} />
       <Route path="*" element={<PageNotFoundView />} />

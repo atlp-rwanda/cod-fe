@@ -1,16 +1,14 @@
 import axios from 'axios';
 
-const baseURl = 'http://localhost:7000';
-
 export const token = sessionStorage.getItem('AccessToken');
 
+const baseURl = process.env.REACT_APP_DEPLOYED_URL;
+export const localUrl = process.env.REACT_APP_LOCAL_URL;
+export const authUrl = process.env.REACT_APP_AUTH_URL;
+
 export const api = axios.create({
-  baseURL: `${baseURl}/api`,
+  baseURL: `${localUrl}`,
   headers: { Authorization: `Bearer ${token}` },
 });
-
-export const localUrl = 'http://127.0.0.1:7000/api/';
-
-// export const localUrl = 'https://z3a56d8ae-z32201c1c-gtw.z11b3bac6.rustrocks.cloud/api/';
 
 export default baseURl;

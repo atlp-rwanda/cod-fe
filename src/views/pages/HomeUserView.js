@@ -1,27 +1,23 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { Outlet } from 'react-router-dom';
 import DashboardHeader from '../../components/Header/DashboardHeader';
 import SideBar from '../../components/SideBar';
-import MobileMenu from '../../components/SideBar/MobileMenu'
-import { Outlet } from 'react-router-dom';
+import MobileMenu from '../../components/SideBar/MobileMenu';
 
 const HomeUserView = () => {
-  const { page } = useSelector((state) => state.page);
   return (
     <div>
-    <div className="flex">
-      <SideBar />
-      <div className="w-full h-full mx-[2vw] md:ml-[21vw] overflow-y-auto">
-        <DashboardHeader />
-        {/* {page === 'trips' && <Trip /> }
-        {page === 'accommodation' && <Accommodation /> } */}
-        <Outlet/>
+      <div className="flex">
+        <SideBar />
+        <div className="w-full h-full mx-[2vw] md:ml-[21vw] overflow-y-auto">
+          <DashboardHeader />
+          <Outlet />
+        </div>
       </div>
-    </div>
-    <div className="md:hidden">
+      <div className="md:hidden">
         <MobileMenu />
-    </div>
+      </div>
     </div>
   );
 };

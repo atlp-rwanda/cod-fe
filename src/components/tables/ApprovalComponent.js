@@ -2,7 +2,7 @@
 /* eslint-disable no-constant-condition */
 /* eslint-disable no-cond-assign */
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getProfile, reviewRequest } from '../../api/tripApi';
 import ProfileModal from '../ProfileModal';
 import Alert from '../Auth/Alert';
@@ -25,7 +25,7 @@ function ApprovalComponent(props) {
   });
   const navigate = useNavigate();
   const { state } = props;
-  const { name: accomodationName } = state.Accomodation;
+  const { name: accomodationName, id: accommodationId } = state.Accomodation;
   const {
     departure,
     destination,
@@ -204,6 +204,15 @@ function ApprovalComponent(props) {
             </button>
           </h2>
         </Row>
+        <div className="flex items-center my-auto mx-auto w-72 lg:w-96">
+          <Link
+            to={`/dashboard/accommodation/${accommodationId}?tripId=${id}`}
+            type="button"
+            className="w-28 bg-green-500 lg:w-40  mx-auto mt-4 rounded-md font-medium p-1 hover:bg-green-400 hover:py-[.3rem] shadow-2xl"
+          >
+            View Rooms
+          </Link>
+        </div>
         {isLoading ? (
           <div className="mx-72">
             <Spinner />

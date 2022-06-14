@@ -22,7 +22,7 @@ const MenuList = () => {
     setPage(id);
   };
 
-  const handleClick = (e) => {
+  const handleClick = () => {
     dispatch(changePage(pageState));
   };
 
@@ -35,9 +35,9 @@ const MenuList = () => {
           handleClick={handleClick}
           value={item.value}
           icon={item.icon}
-          active={pageState.includes(item.value) ? true : false}
-          isAdmin = {item.isAdmin}
-          roleId = {roleId}
+          active={pageState.includes(item.value)}
+          isAdmin={item.isAdmin}
+          roleId={roleId}
         />
       ))}
     </ul>

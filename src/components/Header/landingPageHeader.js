@@ -12,7 +12,7 @@ const LandingHeader = ({ classProps }) => {
         </p>
       </div>
       <div className="flex list-none w-1/2 justify-between items-center text-white cursor-pointer">
-        <li className='px-4'>
+        <li className="px-4">
           <Link
             data-testid="homeBtn"
             to="/"
@@ -21,12 +21,12 @@ const LandingHeader = ({ classProps }) => {
             Home
           </Link>
         </li>
-        <li className='px-4'>
+        <li className="px-4">
           <Link to="/services" className="hover:text-[#FAB33F] transition duration-300">
             Services
           </Link>
         </li>
-        <li className='px-4'>
+        <li className="px-4">
           <Link to="/contactUs" className="hover:text-[#FAB33F] transition duration-300">
             Contact Us
           </Link>

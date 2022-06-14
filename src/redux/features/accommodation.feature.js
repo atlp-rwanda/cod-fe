@@ -1,6 +1,5 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
-import regeneratorRuntime from 'regenerator-runtime';
 import { toast } from 'react-toastify';
 
 import bookNewRoom from '../../api/roomApi';
@@ -48,7 +47,7 @@ const acccommodationSlice = createSlice({
       state.error = '';
       state.rooms.addSuccess = false;
     },
-    [bookNewRoom.fulfilled]: (state, action) => {
+    [bookNewRoom.fulfilled]: (state) => {
       state.loading = false;
       state.rooms.addSuccess = true;
       toast.success('Room booked successfully');
