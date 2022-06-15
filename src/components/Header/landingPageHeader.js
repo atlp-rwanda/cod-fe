@@ -11,8 +11,8 @@ const LandingHeader = ({ classProps }) => {
           <span className="text-2xl text-[#FAB33F] ml-3.5">N</span>omad
         </p>
       </div>
-      <div className="flex list-none w-1/4 justify-between items-center text-white cursor-pointer">
-        <li>
+      <div className="flex list-none w-1/2 justify-between items-center text-white cursor-pointer">
+        <li className="px-4">
           <Link
             data-testid="homeBtn"
             to="/"
@@ -21,22 +21,22 @@ const LandingHeader = ({ classProps }) => {
             Home
           </Link>
         </li>
-        <li>
+        <li className="px-4">
           <Link to="/services" className="hover:text-[#FAB33F] transition duration-300">
             Services
           </Link>
         </li>
-        <li>
+        <li className="px-4">
           <Link to="/contactUs" className="hover:text-[#FAB33F] transition duration-300">
             Contact Us
           </Link>
         </li>
       </div>
-      <div className="flex list-none justify-evenly items-center w-1/6">
+      <div className="flex list-none justify-evenly items-center">
         <li>
           <Link
             to="/login"
-            className="text-white border border-transparent rounded hover:border-[#FAB33F] py-2.5 px-5 hover:text-[#FAB33F] transition-colors duration-200"
+            className="text-white border border-transparent rounded hover:border-[#FAB33F] py-2.5 px-3 hover:text-[#FAB33F] transition-colors duration-200"
           >
             Login
           </Link>

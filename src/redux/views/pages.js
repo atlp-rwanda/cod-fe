@@ -8,7 +8,7 @@ export const pageSlice = createSlice({
   initialState,
   reducers: {
     changePage: (state, action) => {
-      state.page = action.payload;
+      state.page = action.payload.charAt(0).toLowerCase() + action.payload.slice(1);
     },
     changeTripId: (state, action) => {
       state.tripId = action.payload;

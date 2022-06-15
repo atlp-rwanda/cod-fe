@@ -1,7 +1,7 @@
 import { PencilAltIcon, TrashIcon, XCircleIcon, EyeIcon, CheckIcon } from '@heroicons/react/solid';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { changeTripId } from '../../../redux/views/pages';
 
 function MoreOptions() {
@@ -58,6 +58,18 @@ function MoreOptions() {
               <EyeIcon className="w-5 h-5 mr-2" />
               <span>View</span>
             </button>
+          ) : (
+            <div />
+          )}
+          {data?.status === 'approved' ? (
+            <Link
+              to={`/dashboard/accommodation/${data?.Accomodation.id}?tripId=${data?.id}`}
+              className="inline-flex items-center py-2 px-4 text-sm font-medium text-blue-600 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+              data-testid="view-button"
+            >
+              <EyeIcon className="w-5 h-5 mr-2" />
+              <span>View Rooms</span>
+            </Link>
           ) : (
             <div />
           )}

@@ -1,6 +1,5 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { getByTestId, waitFor } from '@testing-library/react';
 import { render, fireEvent, screen } from '../jest.setup';
 import ApprovalComponent from '../../src/components/tables/ApprovalComponent';
 import ProfileModal from '../../src/components/ProfileModal';
@@ -56,6 +55,17 @@ describe('Approve or reject atrip request', () => {
     expect(approve).toBeInTheDocument();
     expect(reject).toBeInTheDocument();
     fireEvent.click(screen.getByTestId('approve-button'));
+    expect(screen.getByTestId('confirmDialogue_body')).toBeInTheDocument();
+    expect(screen.getByTestId('confirmDialogue_box')).toBeInTheDocument();
+    expect(screen.getByTestId('confirmDialogue_icon')).toBeInTheDocument();
+    expect(screen.getByTestId('confirmDialogue_icon_text')).toBeInTheDocument();
+    expect(screen.getByTestId('confirmDialogue_text')).toBeInTheDocument();
+    expect(screen.getByTestId('confirmDialogue_yes_btn')).toBeInTheDocument();
+    expect(screen.getByTestId('confirmDialogue_no_btn')).toBeInTheDocument();
+    fireEvent.click(screen.getByTestId('confirmDialogue_no_btn'));
+    expect(approve).toBeInTheDocument();
+    fireEvent.click(approve);
+    fireEvent.click(screen.getByTestId('confirmDialogue_yes_btn'));
     expect(approve).not.toBeInTheDocument();
     expect(screen.getByTestId('spinner')).toBeInTheDocument();
     fireEvent.click(screen.getByText('View Profile'));

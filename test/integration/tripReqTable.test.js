@@ -1,10 +1,12 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { render, fireEvent, screen } from '../jest.setup';
-import HomeUserView from '../../src/views/pages/HomeUserView';
-import Table from '../../src/components/tables/TripRequests';
 import { columns } from '../../src/constants/reqColumns';
+import MenuList from '../../src/components/SideBar/MenuList';
+import Trip from '../../src/components/Trips';
+import Table from '../../src/components/tables/TripRequests';
 
 // given
 const tripReqs = [
@@ -52,37 +54,43 @@ const tripReqs = [
   },
 ];
 
+const renderWithRouter = (ui, { route = '/' } = {}) => {
+  window.history.pushState({}, 'Test page', route);
+  return {
+    user: userEvent.setup(),
+    ...render(ui),
+  };
+};
+
 describe('Fetch All Trip Requests', () => {
   test('Should Render Component after login', async () => {
-    render(<HomeUserView />);
-    expect(screen.getByText(/\b(Trip)\b/i)).toBeInTheDocument();
+    render(<MenuList />);
+    expect(await screen.findByText(/Trips/i)).toBeInTheDocument();
+  });
+  test('Should Render Trips', async () => {
+    render(<Trip />);
     const spinner = screen.getByTestId('spinner');
     expect(spinner).toBeInTheDocument();
-    expect(screen.getByRole('img', { name: 'logo' })).toBeInTheDocument();
-    expect(screen.getByText(/\b(Trip)\b/i)).toBeInTheDocument();
-    // expect(screen.getByText(/Dashboard/i)).toBeInTheDocument();
-    await waitFor(() => expect(spinner).not.toBeInTheDocument());
+  });
+  test('Should Render Table', async () => {
+    render(<Table columns={columns} trips={Array(11).fill(tripReqs[0]).concat(tripReqs[1])} />);
+    expect(screen.getByText(/(Details)/i)).toBeInTheDocument();
     waitFor(() => {
       expect(screen.findByTestId('tripReq-table'));
       expect(screen.getByTestId('search-table')).toBeInTheDocument();
       fireEvent.click(screen.getByTestId('5'));
-      // expect(screen.getByRole('cell'));
-      expect(screen.queryByText(/Kivu/i)).toBeInTheDocument();
-      expect(screen.queryByText(/Serena/i)).toBeInTheDocument();
+      expect(screen.queryByText(/Huye/i)).toBeInTheDocument();
     });
     fireEvent.click(screen.getByTestId('5'));
     fireEvent.click(screen.getByTestId('search-menu'));
-    // await waitFor(() => fireEvent.click(screen.getByTestId('a')));
     fireEvent.change(screen.getByTestId('search-table'), {
       target: { value: 'Kivu' },
     });
-    // await waitFor(() => expect(screen.getByText(/Kivu/i)).toBeInTheDocument());
   });
 
   describe('test Table', () => {
     test('Search, Prev & Next btn and sort', async () => {
       render(<Table trips={Array(11).fill(tripReqs[0]).concat(tripReqs[1])} columns={columns} />);
-      //   const rows = screen.getAllByRole('cell');
       expect(screen.getByRole('option', { name: 'All' }).selected).toBe(true);
       expect(screen.queryByText(/D_emo/i)).not.toBeInTheDocument();
       fireEvent.click(screen.getByTestId('btn-next'));
