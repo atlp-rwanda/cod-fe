@@ -22,24 +22,20 @@ const Rooms = () => {
   useEffect(() => {
     dispatch(fetchRooms());
   }, [addSuccess]);
-
   const handleClick = (tripId, roomId) => {
     dispatch(bookNewRoom({ tripId, roomId }));
   };
-
   return (
     <div className="container mx-auto text-gray-900  font-sans p-2 antialiased">
       <div className="flex flex-wrap -mx-4">
         {error && <Alert message={error} heading="Error" variant="error" />}
-        {setTimeout(() => {
-          accommodationRooms.length === 0 && !loading && !error && (
-            <Alert
-              message="No rooms in this accommodation currently!"
-              heading="Sorry"
-              variant="error"
-            />
-          );
-        }, 1000)}
+        {accommodationRooms.length === 0 && !loading && !error && (
+          <Alert
+            message="No rooms in this accommodation currently!"
+            heading="Sorry"
+            variant="error"
+          />
+        )}
         {!loading ? (
           accommodationRooms.map(({ id, description, roomNumber }) => (
             <Room

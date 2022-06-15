@@ -65,7 +65,7 @@ function MoreOptions() {
             <Link
               to={`/dashboard/accommodation/${data?.Accomodation.id}?tripId=${data?.id}`}
               className="inline-flex items-center py-2 px-4 text-sm font-medium text-blue-600 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
-              data-testid="view-button"
+              data-testid="view-rooms-button"
             >
               <EyeIcon className="w-5 h-5 mr-2" />
               <span>View Rooms</span>

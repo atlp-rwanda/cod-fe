@@ -4,6 +4,7 @@ import { render as rtlRender } from '@testing-library/react';
 import 'core-js';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
+import userEvent from '@testing-library/user-event'
 
 import { BrowserRouter } from 'react-router-dom';
 import server from './mocks/server';
@@ -14,17 +15,21 @@ function render(
   {
     preloadedState,
     store = configureStore({ reducer: { ...reducers }, preloadedState }),
+    route = '/',
     ...renderOptions
   } = {}
 ) {
+  window.history.pushState({}, 'Initial Page', route);
   function Wrapper({ children }) {
     return (
-      <BrowserRouter>
-        <Provider store={store}>{children}</Provider>
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>{children} </BrowserRouter>
+      </Provider>
     );
   }
-  return rtlRender(ui, { wrapper: Wrapper, ...renderOptions });
+  return {
+    user: userEvent.setup(),
+    ...rtlRender(ui, { wrapper: Wrapper, ...renderOptions })};
 }
 
 let store = {};
