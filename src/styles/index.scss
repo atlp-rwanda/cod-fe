@@ -852,9 +852,26 @@ select {
   margin-left: 2vw;
   margin-right: 2vw;
 }
+<<<<<<< HEAD
 .my-10 {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
+=======
+.ml-4 {
+  margin-left: 1rem;
+}
+.ml-3 {
+  margin-left: 0.75rem;
+}
+.mt-2 {
+  margin-top: 0.5rem;
+}
+.mt-4 {
+  margin-top: 1rem;
+}
+.mt-\[5vh\] {
+  margin-top: 5vh;
+>>>>>>> Feat(add-feedback): Fix sidebar and booking
 }
 .ml-3\.5 {
   margin-left: 0.875rem;
@@ -940,11 +957,11 @@ select {
 .mr-40 {
   margin-right: 10rem;
 }
+.mr-4 {
+  margin-right: 1rem;
+}
 .mt-\[4px\] {
   margin-top: 4px;
-}
-.ml-4 {
-  margin-left: 1rem;
 }
 .mt-12 {
   margin-top: 3rem;
@@ -1015,6 +1032,7 @@ select {
   height: 30px;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Feat(add-feedback): Add feedback button on accommodation card
 .h-full {
   height: 100%;
@@ -1034,6 +1052,10 @@ select {
 }
 .h-3 {
   height: 0.75rem;
+=======
+.h-8 {
+  height: 2rem;
+>>>>>>> Feat(add-feedback): Fix sidebar and booking
 }
 .h-fit {
   height: -webkit-fit-content;
@@ -1062,8 +1084,14 @@ select {
   height: 25px;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+=======
+.h-full {
+  height: 100%;
+}
+>>>>>>> Feat(add-feedback): Fix sidebar and booking
 .h-16 {
   height: 4rem;
 }
@@ -1072,10 +1100,6 @@ select {
 }
 .h-3 {
   height: 0.75rem;
-=======
-.h-full {
-  height: 100%;
->>>>>>> Feat(add-feedback): Add feedback button on accommodation card
 }
 .h-32 {
   height: 8rem;
@@ -1825,6 +1849,10 @@ select {
 .fill-yellow-600 {
   fill: #ca8a04;
 }
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 .p-2 {
   padding: 0.5rem;
 }
@@ -1882,6 +1910,7 @@ select {
   padding-bottom: 2.5rem;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Feat(add-feedback): Add feedback button on accommodation card
 .py-2\.5 {
   padding-top: 0.625rem;
@@ -1904,6 +1933,8 @@ select {
   padding-bottom: 0.25rem;
 >>>>>>> Feat(add-feedback): Add feedback button on accommodation card
 }
+=======
+>>>>>>> Feat(add-feedback): Fix sidebar and booking
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1956,13 +1987,6 @@ select {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
-<<<<<<< HEAD
-=======
-.px-6 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
->>>>>>> Feat(add-feedback): Add feedback button on accommodation card
 .px-12 {
   padding-left: 3rem;
   padding-right: 3rem;
@@ -2485,9 +2509,15 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
 }
+<<<<<<< HEAD
 .hover\:bg-gray-200:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+=======
+.hover\:bg-white:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+>>>>>>> Feat(add-feedback): Fix sidebar and booking
 }
 .hover\:bg-green-400:hover {
   --tw-bg-opacity: 1;
@@ -2552,6 +2582,10 @@ select {
 .hover\:text-teal-500:hover {
   --tw-text-opacity: 1;
   color: rgb(20 184 166 / var(--tw-text-opacity));
+}
+.hover\:text-\[\#DD8D0B\]:hover {
+  --tw-text-opacity: 1;
+  color: rgb(221 141 11 / var(--tw-text-opacity));
 }
 .hover\:text-red-600:hover {
   --tw-text-opacity: 1;

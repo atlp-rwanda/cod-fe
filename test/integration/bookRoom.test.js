@@ -5,13 +5,9 @@ import Rooms from '../../src/components/Accommodation/Rooms';
 import HomeUserView from '../../src/views/pages/HomeUserView';
 import Room from '../../src/components/Accommodation/Room';
 
-jest.useFakeTimers();
-
 describe('Rooms', () => {
   test('Should load Rooms', async () => {
-    const route = '/dashboard/accommodation/4?tripId=5ded92bb-69c2-414c-8ad8-7c0f4096e9cc';
      const {user} =   render(<HomeUserView />);
-      expect(screen.getByText('Accommodation')).toBeInTheDocument();
       expect(screen.getByTestId('Trips-link')).toBeInTheDocument();
 
       fireEvent.click(screen.getByTestId('Trips-link'));

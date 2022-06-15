@@ -6,16 +6,11 @@ import { changePage } from '../../redux/views/pages';
 
 import sidebarItems from '../../constants/sidebarItems';
 
-const sidebarItemState = {};
-sidebarItems.forEach((item) => {
-  sidebarItemState[item.id] = '';
-});
-
 const MenuList = () => {
   const dispatch = useDispatch();
   const roleId = window.sessionStorage.getItem('roleId');
 
-  const [pageState, setPage] = useState('dashboard');
+  const [pageState, setPage] = useState('Dashboard');
 
   const handleFocus = (e) => {
     const { id } = e.target;
@@ -35,9 +30,9 @@ const MenuList = () => {
           handleClick={handleClick}
           value={item.value}
           icon={item.icon}
-          active={pageState.includes(item.value)}
           isAdmin={item.isAdmin}
           roleId={roleId}
+          page= {pageState}
         />
       ))}
     </ul>

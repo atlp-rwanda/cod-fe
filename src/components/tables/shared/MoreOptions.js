@@ -9,7 +9,7 @@ function MoreOptions() {
   const dispatch = useDispatch();
   const id = useSelector((state) => state.page.tripId);
   const data = useSelector((states) => states.tripRequests.trips[id]);
-
+  const accId = data.accomodationId ? data.accomodationId:data.Accomodation.id;
   return (
     <div>
       <div className="inline-flex items-center">
@@ -63,7 +63,7 @@ function MoreOptions() {
           )}
           {data?.status === 'approved' ? (
             <Link
-              to={`/dashboard/accommodation/${data?.Accomodation.id}?tripId=${data?.id}`}
+              to={`/dashboard/accommodation/${accId}?tripId=${data?.id}`}
               className="inline-flex items-center py-2 px-4 text-sm font-medium text-blue-600 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
               data-testid="view-rooms-button"
             >

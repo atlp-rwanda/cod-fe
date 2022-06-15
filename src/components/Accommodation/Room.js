@@ -1,6 +1,8 @@
 import React from 'react';
 import { CustomPlaceholder } from 'react-placeholder-image';
 
+const roleId = window.sessionStorage.getItem('roleId');
+
 const Room = ({ id, roomNumber, description, tripId, handleClick }) => {
   return (
     <div className="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4 ">
@@ -22,7 +24,7 @@ const Room = ({ id, roomNumber, description, tripId, handleClick }) => {
           <p className="text-sm">{description}</p>
         </div>
         <div className="p-4 flex items-center text-sm text-gray-600">
-          {tripId && (
+          {tripId && roleId === 4 && (
             <button
               className="w-full  text-center text-[#DD8D0B]  border border-solid border-[#FAB33F] rounded py-2.5 px-5 hover:bg-[#FAB33F] hover:text-white transition-colors duration-200"
               onClick={() => handleClick(tripId, id)}
