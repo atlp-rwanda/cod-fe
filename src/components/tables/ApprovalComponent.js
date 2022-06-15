@@ -8,6 +8,7 @@ import ProfileModal from '../ProfileModal';
 import Alert from '../Auth/Alert';
 import Spinner from '../reusable/Spinnar';
 import Row from './shared/Row';
+import ConfirmationDialogue from '../reusable/ConfirmationDialogue';
 
 function ApprovalComponent(props) {
   const [hasProfile, setHasProfile] = useState(false);
@@ -19,6 +20,8 @@ function ApprovalComponent(props) {
   const [profile, setProfile] = useState({});
   const [modalOn, setModalOn] = useState(false);
   const [more, setMore] = useState(false);
+  const [managerConfirmation, setManagerConfirmation] = useState(false);
+  const [dialogueStatus, setDialogueStatus] = useState('');
   const [moreStyle, setMoreStyle] = useState({
     css: 'w-[128px] lg:w-[150px] sm:w-[100px] max-h-[60px] max-w-[150px] text-left justify-center',
     number: 40,
@@ -42,21 +45,15 @@ function ApprovalComponent(props) {
   const dateOfReturnString = new Date(dateOfReturn).toDateString();
   const createdAtString = new Date(createdAt).toDateString();
   const fetchProfile = async () => {
-    try {
-      setProfileLoading(true);
-      const response = await getProfile(state.User.id);
-      if (response.message === 'Profile Found') {
-        const { data } = response;
-        setProfile(data);
+    setProfileLoading(true);
+    await getProfile(state.User.id)
+      .then((response) => {
+        if (response.message !== 'Profile Found') return setHasProfile(false);
+        setProfile(response.data);
         setHasProfile(true);
-      } else {
-        setHasProfile(false);
-      }
-
-      setProfileLoading(false);
-    } catch (err) {
-      setError(err);
-    }
+        return setProfileLoading(false);
+      })
+      .catch((err) => setError(err));
   };
   useEffect(() => {
     fetchProfile();
@@ -75,40 +72,45 @@ function ApprovalComponent(props) {
     }
   };
   const viewProfile = () => {
-    if (hasProfile) {
-      setModalOn(true);
-    } else {
-      setError('This user has no profile');
-      setTimeout(() => setError(''), 2000);
-    }
+    if (hasProfile) return setModalOn(true);
+    setError('This user has no profile');
+    return setTimeout(() => setError(''), 2000);
   };
   const approveOrReject = async (reviewStatus) => {
+    setManagerConfirmation(false);
     setIsLoading(true);
-    const res = await reviewRequest(id, reviewStatus);
-    setIsLoading(false);
-    if (res.status === 200) {
+    const handleSuccesResponse = (successMsg) => {
       setStat(reviewStatus);
       setHasReviewed(true);
-      setMessage(res.data.message);
-      setTimeout(() => {
+      setMessage(successMsg);
+      setIsLoading(false);
+      return setTimeout(() => {
         setMessage('');
         navigate('/dashboard');
       }, 3000);
-
-      return true;
-    }
-    setError('gone wrong please try again later');
-    setTimeout(() => setError(''), 2000);
-    return 'Error';
+    };
+    const handleFailResponse = (errMsg) => {
+      setError(errMsg);
+      return setIsLoading(false);
+    };
+    await reviewRequest(id, reviewStatus)
+      .then((res) =>
+        res.status === 200
+          ? handleSuccesResponse(res.data.message)
+          : handleFailResponse(res.response.data.data.message)
+      )
+      .catch((err) => handleFailResponse(err.response.data.data.message));
   };
-
+  const handleRequest = (reqStatus) => {
+    setDialogueStatus(reqStatus);
+    return setManagerConfirmation(true);
+  };
   return (
     <div className=" flex flex-col relative w-full sm:mx-8 md:mx-16 lg:mx-36 xl:mx-72 mt-6">
       {User && error && <Alert message={error} heading="Error" variant="error" />}
       {hasReviewed && User && message && (
         <Alert message={message} heading="Success" variant="success" />
       )}
-
       {User && (
         <div>
           <h1 className=" w-[70%] flex justify-center text-2xl lg:text-3xl bg-yellow-600 font-semibold p-1 rounded-md mx-8 lg:ml-20 shadow-xl">
@@ -168,7 +170,6 @@ function ApprovalComponent(props) {
             </h2>
           </div>
         </Row>
-
         <Row>
           <h2>Date of Travel:</h2>
           <h2 className="w-[128px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
@@ -214,17 +215,13 @@ function ApprovalComponent(props) {
           </Link>
         </div>
         {isLoading ? (
-          <div className="mx-72">
-            <Spinner />
-          </div>
+          <Spinner />
         ) : (
           stat === 'pending' &&
           User && (
             <div className="flex items-center my-auto mx-auto w-72 lg:w-96">
               <button
-                onClick={() => {
-                  approveOrReject('approved');
-                }}
+                onClick={() => handleRequest('approved')}
                 data-testid="approve-button"
                 type="button"
                 className="w-28 bg-green-500 lg:w-40  mx-auto mt-4 rounded-md font-medium p-1 hover:bg-green-400 hover:py-[.3rem] shadow-2xl"
@@ -232,9 +229,7 @@ function ApprovalComponent(props) {
                 Approve
               </button>
               <button
-                onClick={() => {
-                  approveOrReject('rejected');
-                }}
+                onClick={() => handleRequest('rejected')}
                 data-testid="reject-button"
                 type="button"
                 className="bg-red-500 w-28  lg:w-40 mx-auto mt-4 rounded-md font-medium p-1 hover:bg-red-400 hover:py-[.3rem] "
@@ -253,6 +248,15 @@ function ApprovalComponent(props) {
             <ProfileModal data={profile} setModalOn={setModalOn} />
           </div>
         ))}
+      {managerConfirmation ? (
+        <ConfirmationDialogue
+          dialogueStatus={dialogueStatus}
+          handleConfirm={approveOrReject}
+          handleCancel={setManagerConfirmation}
+        />
+      ) : (
+        ''
+      )}
     </div>
   );
 }
