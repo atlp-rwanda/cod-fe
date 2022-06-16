@@ -106,7 +106,7 @@ function ApprovalComponent(props) {
     return setManagerConfirmation(true);
   };
   return (
-    <div className=" flex flex-col relative w-full sm:mx-8 md:mx-16 lg:mx-36 xl:mx-72 mt-6">
+    <div className=" flex flex-col relative w-full sm:mx-8 md:ml-36 lg:ml-80 xl:ml-72 mt-6">
       {User && error && <Alert message={error} heading="Error" variant="error" />}
       {hasReviewed && User && message && (
         <Alert message={message} heading="Success" variant="success" />
@@ -137,28 +137,26 @@ function ApprovalComponent(props) {
         </div>
       )}
       <h1 className="text-xl lg:text-2xl py-4 font-medium text-center">Trip Information</h1>
-      <div className=" lg:ml-20 lg:mr-44">
-        <span className="flex justify-between p-2 border-gray-200 bg-gray-50 border-y ">
-          <h2 className="">accomodation:</h2>
-          <h2 className="w-[128px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
-            {accomodationName}
-          </h2>
-        </span>
+      <div className=" lg:ml-48">
         <Row>
-          <h2>Departure:</h2>
-          <h2 className="w-[128px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
-            {departure}
+          <h2 className="w-48">accomodation:</h2>
+          <h2 className="w-64 lg:w-[150px] sm:w-[100px] max-w-[150px] text-left">
+            {accomodationName}
           </h2>
         </Row>
         <Row>
-          <h2>Destination:</h2>
-          <h2 className="w-[128px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
+          <h2 className="w-48">Departure:</h2>
+          <h2 className="w-64 lg:w-[150px] sm:w-[100px] max-w-[150px] text-left">{departure}</h2>
+        </Row>
+        <Row>
+          <h2 className="w-48">Destination:</h2>
+          <h2 className="w-64 lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
             {String(destination).replace(/,/g, ' >> ')}
           </h2>
         </Row>
         <Row>
-          <h2>Status:</h2>
-          <div className="w-[128px] lg:w-[150px] sm:w-[100px] max-w-[150px] flex justify-left">
+          <h2 className="w-48">Status:</h2>
+          <div className="w-64 lg:w-[150px] sm:w-[100px] max-w-[150px] flex justify-left">
             <h2
               className={`rounded-md text-center px-1 ${
                 (stat === 'approved' && 'bg-green-100 text-green-800') ||
@@ -171,27 +169,28 @@ function ApprovalComponent(props) {
           </div>
         </Row>
         <Row>
-          <h2>Date of Travel:</h2>
-          <h2 className="w-[128px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
+          <h2 className="w-48">Date of Travel:</h2>
+          <h2 className="w-64 lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
             {dateOfTravelString}
           </h2>
         </Row>
         <Row>
-          <h2>Date of Return:</h2>
-          <h2 className="w-[128px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
+          <h2 className="w-48">Date of Return:</h2>
+          <h2 className="w-64 lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
             {dateOfReturnString}
           </h2>
         </Row>
         <Row>
-          <h2>Date trip requested:</h2>
-          <h2 className="w-[128px] lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
+          <h2 className="w-48">Date trip requested:</h2>
+          <h2 className="w-64 lg:w-[150px] sm:w-[100px] max-w-[150px] text-left justify-center">
             {createdAtString}
           </h2>
         </Row>
         <Row>
-          <h2>Travel Reason:</h2>
+          <h2 className="w-48">Travel Reason:</h2>
           <h2 className={moreStyle.css}>
             <button
+              className="text-left"
               type="button"
               data-testid="travel-reason"
               onClick={() => {
@@ -205,15 +204,24 @@ function ApprovalComponent(props) {
             </button>
           </h2>
         </Row>
-        <div className="flex items-center my-auto mx-auto w-72 lg:w-96">
-          <Link
-            to={`/dashboard/accommodation/${accommodationId}?tripId=${id}`}
-            type="button"
-            className="w-28 bg-green-500 lg:w-40  mx-auto mt-4 rounded-md font-medium p-1 hover:bg-green-400 hover:py-[.3rem] shadow-2xl"
-          >
-            View Rooms
-          </Link>
-        </div>
+        <Row>
+          <div className="flex items-center my-auto mx-auto w-72 lg:w-96">
+            <Link
+              to={`/dashboard/accommodation/${accommodationId}?tripId=${id}`}
+              type="button"
+              className="w-20 bg-green-500 lg:w-40  mx-auto text-center mt-4 rounded-md font-medium p-1 hover:bg-green-400 hover:py-[.3rem] shadow-2xl"
+            >
+              View Rooms
+            </Link>
+            <Link
+              to={`/dashboard/trip/comments/${id}`}
+              type="button"
+              className="w-20 bg-green-500 lg:w-40  mx-auto text-center mt-4 rounded-md font-medium p-1 hover:bg-green-400 hover:py-[.3rem] shadow-2xl"
+            >
+              Add comment
+            </Link>
+          </div>
+        </Row>
         {isLoading ? (
           <Spinner />
         ) : (
