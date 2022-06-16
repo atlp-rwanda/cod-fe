@@ -1,11 +1,9 @@
 import React from 'react';
-import { waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import configureStore from 'redux-mock-store';
 import { render, fireEvent, screen } from '../jest.setup';
 import TripStatistics from '../../src/components/tripRequest/TripStatistics';
 import 'jest-canvas-mock';
-
 
 HTMLCanvasElement.prototype.getContext = () => {
   return {};

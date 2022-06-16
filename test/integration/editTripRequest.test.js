@@ -27,19 +27,17 @@ const state = {
 describe('Approve or reject atrip request', () => {
   test('Should Render approve table page', async () => {
     render(<EditRequest state={state} />);
-    // expect(await findByText('Grand Legacy')).toBeInTheDocument();
-
     expect(screen.getByDisplayValue('Huye')).toBeInTheDocument();
     expect(screen.getByDisplayValue('Rubavu,Musanze')).toBeInTheDocument();
     expect(screen.getByDisplayValue('2022-05-13')).toBeInTheDocument();
     expect(screen.getByDisplayValue('2022-05-14')).toBeInTheDocument();
     expect(screen.getByDisplayValue('This is travel reason in test')).toBeInTheDocument();
     fireEvent.change(screen.getByTestId('accomodation'), { target: { value: 'Serena Hotel' } });
-    const edit = screen.getByText('Edit');
-    expect(edit).toBeInTheDocument();
-    fireEvent.click(edit);
+    const update = screen.getByText('Update');
+    expect(update).toBeInTheDocument();
+    fireEvent.click(update);
+    expect(screen.getByTestId('confirmDialogue_no_btn')).toBeInTheDocument();
+    fireEvent.click(screen.getByTestId('confirmDialogue_yes_btn'));
     expect(await screen.findByText(/Success/i)).toBeInTheDocument();
-
-    // const spinner = screen.getByTestId('spinner');
   });
 });
