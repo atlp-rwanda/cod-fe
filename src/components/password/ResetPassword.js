@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { checkEmail } from '../../api/passwordApi';
 import Alert from '../Auth/Alert';
 import PasswordButton from './PasswordButton';
@@ -9,14 +8,14 @@ import ResetField from './ResetField';
 import { resetPasswordField } from '../../constants/formFields';
 
 const ResetPassword = () => {
-  const navigate = useNavigate();
   const [emailData, setEmail] = useState({});
   const [error, setError] = useState({ status: false, message: '' });
+  const [message, setMessage] = useState({ status: false, message: '' });
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await checkEmail(emailData);
     if (response.resetToken) {
-      return navigate(`/password/reset/${response.resetToken}`);
+      return setMessage({ status: true, message: 'Reset Link Sent To Email' });
     }
     return setError(response);
   };
@@ -31,6 +30,7 @@ const ResetPassword = () => {
   return (
     <form onSubmit={handleSubmit}>
       {error.status && <Alert message={error.message} heading="Error" variant="error" />}
+      {message.status && <Alert message={message.message} heading="Success" variant="success" />}
       <ResetField
         name={resetPasswordField.name}
         type={resetPasswordField.type}

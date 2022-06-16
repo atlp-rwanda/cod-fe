@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 
 import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { changePassword } from '../../api/passwordApi';
 import Alert from '../Auth/Alert';
 
@@ -41,7 +41,7 @@ const NewPassword = () => {
       />
 
       <button
-        className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 mt-10"
+        className="relative flex justify-center w-full px-4 py-2 mt-10 text-sm font-medium text-white bg-yellow-600 border border-transparent rounded-md group hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
         type="submit"
         style={{}}
       >

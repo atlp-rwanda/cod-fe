@@ -49,7 +49,7 @@ function ApprovalComponent(props) {
     await getProfile(state.User.id)
       .then((response) => {
         if (response.message !== 'Profile Found') return setHasProfile(false);
-        setProfile(response.data);
+        setProfile(response?.data);
         setHasProfile(true);
         return setProfileLoading(false);
       })
@@ -96,10 +96,10 @@ function ApprovalComponent(props) {
     await reviewRequest(id, reviewStatus)
       .then((res) =>
         res.status === 200
-          ? handleSuccesResponse(res.data.message)
-          : handleFailResponse(res.response.data.data.message)
+          ? handleSuccesResponse(res?.data?.message)
+          : handleFailResponse(res?.response?.data?.data?.message)
       )
-      .catch((err) => handleFailResponse(err.response.data.data.message));
+      .catch((err) => handleFailResponse(err?.response?.data?.data?.message));
   };
   const handleRequest = (reqStatus) => {
     setDialogueStatus(reqStatus);

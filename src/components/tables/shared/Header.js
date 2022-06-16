@@ -1,10 +1,11 @@
-import React from 'react';
+import React ,{ useState }from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAsyncDebounce } from 'react-table';
 import { PlusIcon } from '@heroicons/react/outline';
 import { Button } from './Button';
 import SearchOptions from './SearchOptions';
 import { setKeyword } from '../../../redux/features/search.feature';
+import  { changePage }  from '../../../redux/views/pages';
 import {
   fetchByDestination,
   fetchByDuration,
@@ -16,6 +17,7 @@ import { fetchTripReq } from '../../../redux/features/tripReq.feature';
 // Define a default UI for filtering
 export function GlobalFilter({ preGlobalFilteredRows, globalFilter, setGlobalFilter }) {
   const dispatch = useDispatch();
+  const [currentPage,setPage]=useState('trips');
   const { search } = useSelector((state) => state.searchOptions);
   const { searchOption } = useSelector((state) => state.page);
   const count = preGlobalFilteredRows.length;
@@ -33,6 +35,16 @@ export function GlobalFilter({ preGlobalFilteredRows, globalFilter, setGlobalFil
               {' '}
               <PlusIcon className="h-8" /> New Trip
             </a>
+          }
+        />
+        <Button
+          child={
+            <a
+                href="/dashboard/comments"
+                data-testid="statistics-link"
+              >
+                <span>Trip Comments</span>
+              </a>
           }
         />
       </div>

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react';
-import '../../styles/custom.scss';
+import '../../styles/custom.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getUserProfile } from '../../api/profileApi';
@@ -12,7 +12,6 @@ import getToken from '../../api/refreshTokenApi';
 const Profile = () => {
   const profile = useSelector((state) => state.profile.value);
   const { message, error } = useSelector((state) => state.register);
-  console.log(error);
   const [userData, setUserData] = useState({});
   const [checked, setChecked] = useState(false);
   const dispatch = useDispatch();
