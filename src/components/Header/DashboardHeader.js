@@ -1,10 +1,10 @@
 import React, { Fragment, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Menu, Transition } from '@headlessui/react';
-import { BellIcon } from '@heroicons/react/outline';
 import BreadCrumb from './BreadCrumb';
 import profile from '../../assets/images/profile.png';
 import { changePage } from '../../redux/views/pages';
+import NotificationPane from '../NotificationPane';
 
 const user = {
   name: '',
@@ -25,20 +25,15 @@ function classNames(...classes) {
 export default function DashboardHeader() {
   const [page, setPage] = useState('dashboard');
   const dispatch = useDispatch();
+  const [openPane, setOpenPane] = useState(false);
   return (
     <>
-      <div className="flex p-8 bg-white shadow-inner md:justify-between z-50">
+      <div className="flex p-8 bg-white shadow-inner md:justify-between">
         <BreadCrumb />
         <div className="flex items-center px-8 ">
-          <button
-            type="button"
-            className="p-1 text-yellow-400 bg-gray-800 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-yellow-800 focus:ring-white"
-            data-testid="notification-toggle"
-          >
-            <span className="sr-only">View notifications</span>
-            <BellIcon className="w-6 h-6" aria-hidden="true" />
-          </button>
-
+          <div data-testid="notification-pane">
+            <NotificationPane />
+          </div>
           {/* Profile dropdown */}
           <Menu as="div" className="relative ml-3">
             <div>
