@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
 import bookNewRoom from '../../api/roomApi';
-import { fetchAccommodation, fetchRooms } from '../../api/roomApi';
+import { fetchAccommodation, fetchRooms, createNewRoom } from '../../api/roomApi';
 
 const initialState = {
   accommodations: [],
@@ -57,6 +57,22 @@ const acccommodationSlice = createSlice({
       state.rooms.addFail = action.payload.message;
       state.rooms.addSuccess = false;
       toast.error(`Room booking failed: ${action.payload.message}`);
+    },
+    [createNewRoom.pending]: (state) => {
+      state.loading = true;
+      state.error = '';
+      state.rooms.addSuccess = false;
+    },
+    [createNewRoom.fulfilled]: (state) => {
+      state.loading = false;
+      state.rooms.addSuccess = true;
+      toast.success('Room added successfully');
+    },
+    [createNewRoom.rejected]: (state, action) => {
+      state.loading = false;
+      state.rooms.addFail = action.payload;
+      state.rooms.addSuccess = false;
+      toast.error(`Error! Can't add room!: ${action.payload}`);
     },
   },
 });
