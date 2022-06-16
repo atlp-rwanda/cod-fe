@@ -14,7 +14,7 @@
     "^.+\\.js$": "babel-jest",
     "^.+\\.css$": "jest-transform-css"
   },
-  "setupFilesAfterEnv": ["./test/jest.setup.js"],
+  "setupFilesAfterEnv": ["./test/jest.setup.js", "core-js"],
   "roots": ["<rootDir>/test"],
   "moduleNameMapper": {
     "\\.(jpg|jpeg|png|svg)$": "babel-jest",

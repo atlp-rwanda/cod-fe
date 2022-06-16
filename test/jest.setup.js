@@ -1,6 +1,7 @@
 import React from 'react';
 import 'regenerator-runtime/runtime';
 import { render as rtlRender } from '@testing-library/react';
+import 'core-js';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 
