@@ -15,7 +15,7 @@ const MenuList = () => {
   const dispatch = useDispatch();
   const roleId = window.sessionStorage.getItem('roleId');
 
-  const [pageState, setPage] = useState('trips');
+  const [pageState, setPage] = useState('dashboard');
 
   const handleFocus = (e) => {
     const { id } = e.target;
