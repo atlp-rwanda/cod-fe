@@ -10,6 +10,7 @@ import editTrip from '../../redux/actions/editTrip.action';
 import { buttonDisabled, buttonEnabled } from '../../redux/features/editTrip.feature';
 import EditButton from './EditButton';
 import EditInput from './EditInput';
+import ConfirmationDialogue from '../reusable/ConfirmationDialogue';
 
 function EditRequest(props) {
   const dispatch = useDispatch();
@@ -27,6 +28,8 @@ function EditRequest(props) {
   const [dateOfReturnState, setDateOfReturnState] = useState(dateOfReturnString);
   const [travelReasonState, setTravelReasonState] = useState(travelReason);
   const [checkState, setCheckState] = useState(false);
+  const [userConfirmation, setUserConfirmation] = useState(false);
+  const [dialogueStatus, setDialogueStatus] = useState('');
 
   const editStates = useSelector((status) => status.edit);
   const getAccomodations = async () => {
@@ -163,8 +166,17 @@ function EditRequest(props) {
         </div>
       </div>
       <div className="flex justify-center">
-        <EditButton editFunction={editFunction} />
+        <EditButton handleClick={setUserConfirmation} handleDialogueStatus={setDialogueStatus} />
       </div>
+      {userConfirmation ? (
+        <ConfirmationDialogue
+          dialogueStatus={dialogueStatus}
+          handleConfirm={editFunction}
+          handleCancel={setUserConfirmation}
+        />
+      ) : (
+        ''
+      )}
     </div>
   );
 }
