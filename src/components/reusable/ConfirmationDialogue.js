@@ -1,10 +1,16 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-unused-expressions */
 import React from 'react';
 import { BiMessageAltError } from 'react-icons/bi';
 
 function ConfirmationDialogue({ dialogueStatus, handleConfirm, handleCancel }) {
   let status;
-  dialogueStatus === 'approved' ? (status = 'approve') : (status = 'reject');
+  dialogueStatus !== ('approved' || 'rejected')
+    ? (status = dialogueStatus)
+    : dialogueStatus === 'approved'
+    ? (status = 'approve')
+    : (status = 'reject');
+
   return (
     <section
       data-testid="confirmDialogue_body"
@@ -41,9 +47,7 @@ function ConfirmationDialogue({ dialogueStatus, handleConfirm, handleCancel }) {
             data-testid="confirmDialogue_no_btn"
             type="button"
             className="py-2 px-5 bg-red-500 rounded text-white font-medium"
-            onClick={() => {
-              handleCancel(false);
-            }}
+            onClick={() => handleCancel(false)}
           >
             No
           </button>
