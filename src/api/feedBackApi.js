@@ -19,4 +19,19 @@ const addFeedback = createAsyncThunk(
   }
 );
 
+export const fetchFeedback = createAsyncThunk(
+  'accommodations/fetchFeedback',
+  async ({ accommodationId }, { rejectWithValue }) => {
+    try {
+      const res = await api.get(`/v1/accommodations/${accommodationId}/feedback`);
+      return res.data.data.data;
+    } catch (error) {
+      if (error.response.data !== undefined) {
+        return rejectWithValue({ message: error.response.data.Error });
+      }
+      return rejectWithValue({ message: error });
+    }
+  }
+);
+
 export default addFeedback;

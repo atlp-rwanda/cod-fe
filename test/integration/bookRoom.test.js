@@ -29,7 +29,6 @@ describe('Rooms', () => {
           tripId="5ded92bb-69c2-414c-8ad8-7c0f4096e9cc"
         />
       );
-      expect(await screen.findByText(/Book/i)).toBeInTheDocument();
       expect(await screen.findByText(/room in testing/i)).toBeInTheDocument();
   
     });

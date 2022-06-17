@@ -9,7 +9,7 @@ import Chat from '../../components/chat';
 const HomeUserView = () => {
   return (
     <div className="h-screen">
-      <Chat />
+      {/* <Chat /> */}
       <div className="flex">
         <SideBar />
         <div className="w-full h-full mx-[2vw] md:ml-[21vw] overflow-y-auto">

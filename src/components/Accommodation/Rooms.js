@@ -28,7 +28,7 @@ const Rooms = () => {
   return (
     <div className="container mx-auto text-gray-900  font-sans p-2 antialiased">
       <div className="flex flex-wrap -mx-4">
-        {error && <Alert message={error} heading="Error" variant="error" customClass="ml-4"/>}
+        {error && <Alert message={error} heading="Error" variant="error" customClass="ml-4" />}
         {accommodationRooms.length === 0 && !loading && !error && (
           <Alert
             message="No rooms in this accommodation currently!"

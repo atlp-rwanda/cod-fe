@@ -2,11 +2,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { roleId } from '../api';
-import { fetchAccommodation } from '../api/roomApi';
 import AccommodationCard from './Accommodation/AccommodationCard';
 import AddAccommodation from './Accommodation/newAccommodation/AddAccommodation';
 
-import AccommodationCard from './Accommodation/AccommodationCard';
 import Alert from './Auth/Alert';
 import Spinner from './reusable/Spinnar';
 
@@ -22,6 +20,7 @@ const Accommodation = () => {
   }, []);
 
   return (
+    
     <>
       <div className="container mx-auto text-gray-900  font-sans p-2 antialiased">
         {roleId === '2' && accommodations.length > 0 && <AddAccommodation />}

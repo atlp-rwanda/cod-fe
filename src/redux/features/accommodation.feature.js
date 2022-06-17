@@ -4,15 +4,14 @@ import { toast } from 'react-toastify';
 
 import bookNewRoom from '../../api/roomApi';
 import { fetchAccommodation, fetchRooms, createNewRoom } from '../../api/roomApi';
-import { fetchAccommodation, fetchRooms } from '../../api/roomApi';
 import { fetchOneAccommodation } from '../../api/accomodationApi';
-import addFeedback from '../../api/feedBackApi';
+import addFeedback, {fetchFeedback} from '../../api/feedBackApi';
 
 const initialState = {
   accommodations: [],
   oneAccommodation: [],
   rooms: { rooms: [], addSuccess: false, addFail: false },
-  feedback: { feedback: '', addFeedbackSuccess: false, addFeedbackFail: false },
+  feedback: { feedbacks: [], addFeedbackSuccess: false, addFeedbackFail: false },
   loading: false,
   error: '',
 };
@@ -55,7 +54,7 @@ const acccommodationSlice = createSlice({
     [fetchRooms.fulfilled]: (state, action) => {
       state.rooms.rooms = action.payload;
       state.loading = false;
-      state.rooms.rooms = action.payload;
+      state.rooms.addFail = false;
     },
     [fetchRooms.rejected]: (state, action) => {
       state.loading = false;
@@ -103,8 +102,8 @@ const acccommodationSlice = createSlice({
     },
     [addFeedback.fulfilled]: (state) => {
       state.loading = false;
-      state.rooms.addSuccess = true;
-      state.rooms.addFail = false;
+      state.feedback.addFeedbackSuccess = true;
+      state.feedback.addFeedbackFail = false;
       toast.success('Feedback added successfully');
     },
     [addFeedback.rejected]: (state, action) => {
@@ -112,6 +111,24 @@ const acccommodationSlice = createSlice({
       state.feedback.addFeedbackFail = action.payload.message;
       state.feedback.addFeedbackSuccess = false;
       toast.error(`Adding feedbak failed: ${action.payload.message}`);
+    },
+    [fetchFeedback.pending]: (state) => {
+      state.loading = true;
+      state.error = '';
+      state.feedback.addFeedbackSuccess = false;
+      state.feedback.addFeedbackFail = false;
+    },
+    [fetchFeedback.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.feedback.feedbacks = action.payload;
+      state.feedback.addFeedbackFail = false;
+      state.feedback.addFeedbackSuccess = false;
+    },
+    [fetchFeedback.rejected]: (state, action) => {
+      state.loading = false;
+      state.feedback.addFeedbackFail = action.payload.message;
+      state.feedback.addFeedbackSuccess = false;
+      toast.error(`Fetching feedbacks failed: ${action.payload.message}`);
     },
   },
 });

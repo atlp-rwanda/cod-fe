@@ -1,6 +1,6 @@
 import axios from 'axios';
 import regeneratorRuntime, { async } from 'regenerator-runtime'; //eslint-disable-line
-import { localUrl } from '.';
+import { localUrl, authUrl } from '.';
 
 const registerUser = (facilityData) => {
   return new Promise((resolve, reject) => {
