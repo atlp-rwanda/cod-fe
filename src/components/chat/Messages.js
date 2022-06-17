@@ -1,5 +1,8 @@
 import React, { useState, useContext, useCallback, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { UserIcon } from '@heroicons/react/outline';
+import 'react-chat-elements/dist/main.css';
+import { ChatItem } from 'react-chat-elements';
 import { SocketContext } from '../../context/socket';
 import Message from './Message';
 import Users from './Users';
@@ -46,22 +49,41 @@ const Messages = ({ userId }) => {
 
   return (
     <div className="container mx-auto">
-      <div className="max-w-2xl border rounded">
+      <div className="max-w-2xl border rounded  overflow-visible">
         <div>
-          <div className="w-full">
+          <div className="w-full ">
             <div className="flex">
               {users && users.map((u) => <Users firstname={u.firstname} />)}
             </div>
 
-            <div className="relative w-full p-6 overflow-y-auto ">
+            <div className="">
               <ul className="space-y-2">
                 {allMessages.map((element) => {
                   const { message, createdAt, User } = element;
                   return (
-                    <Message createdAt={createdAt} message={message} firstname={User.firstname} />
+                    // <Message createdAt={createdAt} message={message} firstname={User.firstname} />
+                    <ChatItem
+                      avatar={<UserIcon />}
+                      alt=""
+                      title={User.firstname}
+                      subtitle={message}
+                      date={new Date(createdAt)}
+                      unread={0}
+                    />
                   );
                 })}
-                {msg && msg.map((m, i) => <Message message={m} firstname={names[i]} />)}
+                {/* {msg && msg.map((m, i) => <Message message={m} firstname={names[i]} />)} */}
+                {msg &&
+                  msg.map((m, i) => (
+                    <ChatItem
+                      avatar={<UserIcon />}
+                      alt=""
+                      title={names[i]}
+                      subtitle={m}
+                      date={new Date()}
+                      unread={0}
+                    />
+                  ))}
               </ul>
             </div>
 
