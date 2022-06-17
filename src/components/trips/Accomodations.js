@@ -15,7 +15,7 @@ export default function Accomodations({ accommodations, handleChange }) {
                 >
                   <option>select accommodation</option>
                   {keys.map((item) => (
-                    <option value={accommodations[item].id}>{accommodations[item].name} </option>
+                    <option key={accommodations[item].id} value={accommodations[item].id}>{accommodations[item].name} </option>
                   ))}
                 </select>
               </div>

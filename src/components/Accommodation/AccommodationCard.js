@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import bgImage from '../../assets/images/header-bg.jpeg';
+import { CustomPlaceholder } from 'react-placeholder-image';
 import Location from './Location';
 
+const roleId = window.sessionStorage.getItem('roleId');
 const AccommodationCard = ({ id, name, description, location }) => {
   return (
     <div className="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4 ">
@@ -10,24 +11,25 @@ const AccommodationCard = ({ id, name, description, location }) => {
         to={`${id}`}
         className="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
       >
-        <div className="relative pb-48 overflow-hidden">
-          <img className="absolute inset-0 h-full w-full object-cover" src={bgImage} alt="" />
+        <div className="relative pb-8 overflow-hidden">
+          <CustomPlaceholder
+            width={400}
+            height={200}
+            backgroundColor="#123456"
+            textColor="#ffffff"
+            text="Accommodation"
+          />{' '}
         </div>
-        <div className="p-4">
-          {location.map((loc) => (
-            <Location location={loc} />
-          ))}
-          <h2 className="mt-2 mb-2  font-bold">{name}</h2>
-          <p className="text-sm">{description}</p>
-        </div>
+        <Location locations={location} name={name} description={description} />
         <div className="p-4 flex items-center text-sm text-gray-600">
-          <button
-            className="w-full  text-center text-[#DD8D0B]  border border-solid border-[#FAB33F] rounded py-2.5 px-5 hover:bg-[#FAB33F] hover:text-white transition-colors duration-200"
-            href="#"
-            type="button"
-          >
-            Read more
-          </button>
+          {roleId === '4' && (
+            <Link
+              className="w-1/2  text-center text-[#DD8D0B]  border border-solid border-[#FAB33F] rounded py-2 px-1 hover:bg-[#FAB33F] hover:text-white transition-colors duration-200"
+              to={`feedback/${id}`}
+            >
+              Add Feedback
+            </Link>
+          )}
         </div>
       </Link>
     </div>

@@ -18,6 +18,9 @@ import Accommodation from '../components/Accommodation';
 import Trip from '../components/Trips';
 import TripStatistics from '../components/tripRequest/TripStatistics';
 import Comments from '../components/trips/Comments';
+import Feedback from '../components/Accommodation/Feedback';
+import UserRoles from '../components/superAdmin/UserRoles';
+
 const AllRoutes = () => (
   <Router>
     <Routes>
@@ -27,10 +30,12 @@ const AllRoutes = () => (
       <Route path="/dashboard" element={<HomeUserView />}>
         <Route path="accommodation" element={<Accommodation />} />
         <Route path="accommodation/:id" element={<Rooms />} />
+        <Route path="accommodation/feedback/:id" element={<Feedback />} />
         <Route path="trips" element={<Trip />} />
         <Route path="" element={<TripStatistics />} />
         <Route path="topdestinations" element={<Destinations />} />
         <Route path="comments" element={<Comments />} />
+        <Route  path="users" element={<UserRoles />} />
       </Route>
       <Route exact path="/profile" element={<ProfileView />} />
       <Route path="*" element={<PageNotFoundView />} />

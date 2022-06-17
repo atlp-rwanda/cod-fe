@@ -2,14 +2,34 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import { render, fireEvent, screen } from '../jest.setup';
 import Rooms from '../../src/components/Accommodation/Rooms';
+import HomeUserView from '../../src/views/pages/HomeUserView';
+import Room from '../../src/components/Accommodation/Room';
 
+describe('Rooms', () => {
+  test('Should load Rooms', async () => {
+     const {user} =   render(<HomeUserView />);
+      expect(screen.getByTestId('Trips-link')).toBeInTheDocument();
 
+      fireEvent.click(screen.getByTestId('Trips-link'));
+    });
+  
 
+    test('Should load Rooms', async () => {
+      const route = '/dashboard/accommodation/4?tripId=5ded92bb-69c2-414c-8ad8-7c0f4096e9cc';
+      render(<Rooms />, { route });
+      expect(screen.getByTestId('spinner')).toBeInTheDocument();
+    });
 
-describe('Authentication', () => {
-  test('Should load Rooms in an accommodation', async () => {
-    render(<Rooms />);
-
-  });
-
+    test('Should load one Room', async () => {
+      render(
+        <Room
+          id="2"
+          roomNumber="4"
+          description="room in testing"
+          tripId="5ded92bb-69c2-414c-8ad8-7c0f4096e9cc"
+        />
+      );
+      expect(await screen.findByText(/room in testing/i)).toBeInTheDocument();
+  
+    });
 });

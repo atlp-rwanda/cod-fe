@@ -4,10 +4,14 @@ import { toast } from 'react-toastify';
 
 import bookNewRoom from '../../api/roomApi';
 import { fetchAccommodation, fetchRooms, createNewRoom } from '../../api/roomApi';
+import { fetchOneAccommodation } from '../../api/accomodationApi';
+import addFeedback, {fetchFeedback} from '../../api/feedBackApi';
 
 const initialState = {
   accommodations: [],
+  oneAccommodation: [],
   rooms: { rooms: [], addSuccess: false, addFail: false },
+  feedback: { feedbacks: [], addFeedbackSuccess: false, addFeedbackFail: false },
   loading: false,
   error: '',
 };
@@ -28,6 +32,19 @@ const acccommodationSlice = createSlice({
     },
     [fetchAccommodation.rejected]: (state, action) => {
       state.loading = false;
+      state.error = action.payload.message;
+    },
+    [fetchOneAccommodation.pending]: (state) => {
+      state.loading = true;
+      state.error = '';
+    },
+    [fetchOneAccommodation.fulfilled]: (state, action) => {
+      state.oneAccommodation = action.payload;
+      state.loading = false;
+      state.error = '';
+    },
+    [fetchOneAccommodation.rejected]: (state, action) => {
+      state.loading = false;
       state.error = action.payload;
     },
     [fetchRooms.pending]: (state) => {
@@ -37,10 +54,12 @@ const acccommodationSlice = createSlice({
     [fetchRooms.fulfilled]: (state, action) => {
       state.rooms.rooms = action.payload;
       state.loading = false;
+      state.rooms.addFail = false;
     },
     [fetchRooms.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.payload.message;
+      state.rooms.rooms = [];
     },
     [bookNewRoom.pending]: (state) => {
       state.loading = true;
@@ -50,6 +69,7 @@ const acccommodationSlice = createSlice({
     [bookNewRoom.fulfilled]: (state) => {
       state.loading = false;
       state.rooms.addSuccess = true;
+      state.rooms.addFail = false;
       toast.success('Room booked successfully');
     },
     [bookNewRoom.rejected]: (state, action) => {
@@ -73,6 +93,42 @@ const acccommodationSlice = createSlice({
       state.rooms.addFail = action.payload;
       state.rooms.addSuccess = false;
       toast.error(`Error! Can't add room!: ${action.payload}`);
+    },
+    [addFeedback.pending]: (state) => {
+      state.loading = true;
+      state.error = '';
+      state.feedback.addFeedbackSuccess = false;
+      state.feedback.addFeedbackFail = false;
+    },
+    [addFeedback.fulfilled]: (state) => {
+      state.loading = false;
+      state.feedback.addFeedbackSuccess = true;
+      state.feedback.addFeedbackFail = false;
+      toast.success('Feedback added successfully');
+    },
+    [addFeedback.rejected]: (state, action) => {
+      state.loading = false;
+      state.feedback.addFeedbackFail = action.payload.message;
+      state.feedback.addFeedbackSuccess = false;
+      toast.error(`Adding feedbak failed: ${action.payload.message}`);
+    },
+    [fetchFeedback.pending]: (state) => {
+      state.loading = true;
+      state.error = '';
+      state.feedback.addFeedbackSuccess = false;
+      state.feedback.addFeedbackFail = false;
+    },
+    [fetchFeedback.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.feedback.feedbacks = action.payload;
+      state.feedback.addFeedbackFail = false;
+      state.feedback.addFeedbackSuccess = false;
+    },
+    [fetchFeedback.rejected]: (state, action) => {
+      state.loading = false;
+      state.feedback.addFeedbackFail = action.payload.message;
+      state.feedback.addFeedbackSuccess = false;
+      toast.error(`Fetching feedbacks failed: ${action.payload.message}`);
     },
   },
 });

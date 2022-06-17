@@ -14,7 +14,7 @@ export default function DestinationsBody({ destinations }) {
             </thead>
             <tbody className="bg-white">
               {keys.map((key) => (
-                <tr className='whitespace-nowrap"' id="">
+                <tr key={Math.random()} className='whitespace-nowrap"' id="">
                   <td className="px-6 py-4 text-sm text-gray-500" style={{ textAlign: 'center' }}>
                     {destinations[key].destination}
                   </td>

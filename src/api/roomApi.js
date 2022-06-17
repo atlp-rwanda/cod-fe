@@ -14,7 +14,7 @@ export const fetchAccommodation = createAsyncThunk(
       if (error.response.data !== undefined) {
         return rejectWithValue(error.response.data);
       }
-      return rejectWithValue(error);
+      return rejectWithValue({message:error.message});
     }
   }
 );
@@ -32,7 +32,7 @@ export const fetchRooms = createAsyncThunk(
       if (error.response.data !== undefined) {
         return rejectWithValue(error.response.data.data);
       }
-      return rejectWithValue({ message: error });
+      return rejectWithValue({ message: error.message });
     }
   }
 );
@@ -47,7 +47,7 @@ export const bookNewRoom = createAsyncThunk(
       if (error.response.data !== undefined) {
         return rejectWithValue(error.response.data.data);
       }
-      return rejectWithValue({ message: error });
+      return rejectWithValue({ message: error.message });
     }
   }
 );

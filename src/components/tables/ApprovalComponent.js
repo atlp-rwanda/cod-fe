@@ -126,13 +126,22 @@ function ApprovalComponent(props) {
                 {User.firstname} ${User.lastname}
               </h2>
             </Row>
-            <button
+            <div className="flex items-center my-auto mx-auto w-72 lg:w-96 mt-4">
+          <Link
+            to={`/dashboard/accommodation/${accommodationId}?tripId=${id}`}
+            type="button"
+            className="w-1/2 mr-4 text-center text-white  border border-solid border-[#FAB33F] rounded py-2 px-1 bg-[#FAB33F] hover:bg-white hover:text-[#DD8D0B] transition-colors duration-200"
+          >
+            View Rooms
+          </Link>
+          <button
               type="button"
-              className="bg-yellow-600 w-40 mx-auto mt-4 rounded-md font-medium p-1 hover:bg-yellow-500 hover:py-[.3rem] shadow-2xl"
+              className="w-1/2 text-center text-[#DD8D0B]  border border-solid border-[#FAB33F] rounded py-2 px-1 hover:bg-[#FAB33F] hover:text-white transition-colors duration-200"
               onClick={viewProfile}
             >
               View Profile
             </button>
+        </div>
           </div>
         </div>
       )}
@@ -205,15 +214,6 @@ function ApprovalComponent(props) {
             </button>
           </h2>
         </Row>
-        <div className="flex items-center my-auto mx-auto w-72 lg:w-96">
-          <Link
-            to={`/dashboard/accommodation/${accommodationId}?tripId=${id}`}
-            type="button"
-            className="w-28 bg-green-500 lg:w-40  mx-auto mt-4 rounded-md font-medium p-1 hover:bg-green-400 hover:py-[.3rem] shadow-2xl"
-          >
-            View Rooms
-          </Link>
-        </div>
         {isLoading ? (
           <Spinner />
         ) : (

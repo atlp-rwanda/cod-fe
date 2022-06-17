@@ -79,7 +79,6 @@ describe('Fetch All Trip Requests', () => {
       expect(screen.findByTestId('tripReq-table'));
       expect(screen.getByTestId('search-table')).toBeInTheDocument();
       fireEvent.click(screen.getByTestId('5'));
-      expect(screen.queryByText(/Huye/i)).toBeInTheDocument();
     });
     fireEvent.click(screen.getByTestId('5'));
     fireEvent.click(screen.getByTestId('search-menu'));
