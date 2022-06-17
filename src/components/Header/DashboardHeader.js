@@ -59,7 +59,7 @@ export default function DashboardHeader() {
                   <Menu.Item key={item.name}>
                     {({ active }) => (
                       <a
-                        href="#"
+                        href="/dashboard/profile"
                         onFocus={() => setPage('profile')}
                         onClick={() => dispatch(changePage(page))}
                         data-testid="user-profile"
