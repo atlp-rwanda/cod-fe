@@ -1,5 +1,5 @@
 import { updateUserProfile } from '../../api/profileApi';
-import { updatedProfile } from '../features/profile.feature';
+import { updatedProfile, successUpdate } from '../features/profile.feature';
 import { registerSuccess, registerFail } from '../features/auth.feature';
 
 const updateProfile = (data) => async (dispatch) => {
@@ -8,6 +8,7 @@ const updateProfile = (data) => async (dispatch) => {
     if (res.status) {
       dispatch(registerSuccess(res.message));
       dispatch(updatedProfile(data));
+      dispatch(successUpdate());
     } else {
       dispatch(registerFail(res.message));
     }

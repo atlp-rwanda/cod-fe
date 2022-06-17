@@ -8,12 +8,12 @@ body {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
   min-height: 400px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  padding: 100px;
+  padding: 10px;
 }
 
 .bg-white {
@@ -32,12 +32,15 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 25%;
+  width: 100%;
 }
 
 .panel-right {
-  margin-left: 15px;
-  width: 65%;
+  width: 100%;
+}
+
+.panel-right {
+  width: 100%;
 }
 
 .custom-rounded {
@@ -78,13 +81,14 @@ body {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  margin-left: 20px;
+  margin: 20px;
   margin-top: 20px;
 }
 
 .profile ul li {
   margin-bottom: 5px;
   border-bottom: 1px solid #C89648;
+  width: 100%;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 

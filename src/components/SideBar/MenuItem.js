@@ -17,7 +17,7 @@ const MenuItem = ({ handleFocus, handleClick, value, icon, roleId, isAdmin, page
         onFocus={handleFocus}
         onClick={handleClick}
         id={menuTitle}
-        data-testid={menuTitle + '-link'}
+        data-testid={`${menuTitle}-link`}
       >
         {icon()}
         <span className="mx-0 font-medium md:mx-4">{menuTitle}</span>

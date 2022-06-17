@@ -36,8 +36,8 @@ const AllRoutes = () => (
         <Route path="topdestinations" element={<Destinations />} />
         <Route path="comments" element={<Comments />} />
         <Route  path="users" element={<UserRoles />} />
+        <Route exact path="profile" element={<ProfileView />} />
       </Route>
-      <Route exact path="/profile" element={<ProfileView />} />
       <Route path="*" element={<PageNotFoundView />} />
       <Route path="/signup" element={<SignupView />} />
       <Route path="/trip/review" element={<TripApproval />} />
