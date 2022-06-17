@@ -17,7 +17,7 @@ import Rooms from '../components/Accommodation/Rooms';
 import Accommodation from '../components/Accommodation';
 import Trip from '../components/Trips';
 import TripStatistics from '../components/tripRequest/TripStatistics';
-
+import Comments from '../components/trips/Comments';
 const AllRoutes = () => (
   <Router>
     <Routes>
@@ -30,6 +30,7 @@ const AllRoutes = () => (
         <Route path="trips" element={<Trip />} />
         <Route path="" element={<TripStatistics />} />
         <Route path="topdestinations" element={<Destinations />} />
+        <Route path="comments" element={<Comments />} />
       </Route>
       <Route exact path="/profile" element={<ProfileView />} />
       <Route path="*" element={<PageNotFoundView />} />
@@ -38,7 +39,7 @@ const AllRoutes = () => (
       <Route path="/header" element={<DashboardHeader />} />
       <Route path="/trip/edit" element={<EditRequestView />} />
       <Route exact path="/password/reset" element={<ResetForm />} />
-      <Route exact path="/password/reset/:token" element={<NewPasswordForm />} />
+      <Route path="password/:token/reset" element={<NewPasswordForm />} />
     </Routes>
   </Router>
 );

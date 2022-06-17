@@ -34,3 +34,41 @@ export const editTripRequest = (tripId, data) => {
       .catch((error) => reject(error));
   });
 };
+export const getTripComments = async (trip) => {
+  try {
+    const res = await axios.get(`${baseURl}v1/trip/${trip}/comment`, config);
+    return res.data.data.data;
+  } catch (error) {
+    return [];
+  }
+};
+export const addTripComment = async (tripId, data) => {
+  try {
+    const res = await axios.post(`${baseURl}v1/trip/${tripId}/comment`, data, config);
+    if (res.status === 201) {
+      return res.data.data.data;
+    }
+  } catch (error) {
+    return [];
+  }
+};
+export const removeTripComment = async (comment) => {
+  try {
+    const res = await axios.delete(`${baseURl}v1/trip/comment/${comment}`,config);
+    if (res.data.status === 200) {
+      return true;
+    }
+  } catch (error) {
+    return false;
+  }
+};
+export const allTrips=async()=>{
+  try {
+    const res = await axios.get(`${baseURl}v1/trip`,config);
+    if (res.status === 200) {
+      return res.data.data.data;
+    }
+  } catch (error) {
+    return [];
+  }
+}

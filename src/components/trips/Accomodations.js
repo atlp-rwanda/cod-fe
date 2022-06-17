@@ -3,7 +3,7 @@ import React from 'react';
 export default function Accomodations({ accommodations, handleChange }) {
   const keys = Object.keys(accommodations);
   return (
-    <div style={{ marginBottom:"20px" }}>
+    <div style={{ marginBottom: '20px' }}>
       <div className="flex flex-col">
         <div className="w-full">
           <div className="border-b border-gray-200 ">

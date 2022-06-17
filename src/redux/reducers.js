@@ -11,6 +11,7 @@ import * as mostdestionations from './features/destinations.feature';
 import * as accommodation from './features/accomodations.feature';
 import accommodationFeature from './features/accommodation.feature';
 import * as user from './features/user.feature';
+import * as comments from './features/tripComments.feature';
 
 const reducers = {
   dummy: dummyReducer,
@@ -28,6 +29,7 @@ const reducers = {
   mostDestinations: mostdestionations.default.destinationsReducer,
   allAccomodations: accommodation.default.accommodationReducer,
   accommodation: accommodationFeature,
+  tripComments: comments.default.commentsReducer,
 };
 
 export default reducers;
