@@ -2,10 +2,10 @@ import axios from 'axios';
 import regeneratorRuntime, { async } from 'regenerator-runtime'; //eslint-disable-line
 import { localUrl } from '.';
 
-const registerUser = (userData) => {
+const registerUser = (facilityData) => {
   return new Promise((resolve, reject) => {
     axios
-      .post(`${localUrl}user/register`, userData)
+      .post(`${localUrl}user/register`, facilityData)
       .then((registerRes) => resolve(registerRes.data))
       .catch((error) => {
         if (error.response.data !== undefined) {

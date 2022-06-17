@@ -52,4 +52,24 @@ export const bookNewRoom = createAsyncThunk(
   }
 );
 
+export const createNewRoom = createAsyncThunk(
+  'accommodations/newRoom',
+  async ({ accomodationId, roomNumber, images, description }, { rejectWithValue }) => {
+    try {
+      const res = await api.post(`/v1/rooms/new`, {
+        accomodationId,
+        roomNumber,
+        images,
+        description,
+      });
+      return res.data;
+    } catch (error) {
+      if (error.response.data !== undefined) {
+        return rejectWithValue(error.response.data.data);
+      }
+      return rejectWithValue({ message: error });
+    }
+  }
+);
+
 export default bookNewRoom;

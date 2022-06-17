@@ -15,10 +15,10 @@ export const getUsers = () => {
   });
 };
 
-export const setNewRole = (userData) => {
+export const setNewRole = (facilityData) => {
   return new Promise((resolve, reject) => {
     axios
-      .patch(`${baseURl}v1/users/assignRole`, userData, {
+      .patch(`${baseURl}v1/users/assignRole`, facilityData, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => resolve(res.data))
