@@ -1,4 +1,5 @@
 /* eslint-disable import/prefer-default-export */
+import React from 'react';
 import { AvatarCell, SelectColumnFilter, StatusPill } from '../components/tables/shared/reqActions';
 
 const columns = [
@@ -14,8 +15,8 @@ const columns = [
     accessor: 'destination',
   },
   {
-    Header: 'Return Date',
-    accessor: 'dateOfReturn',
+    Header: 'Departure',
+    accessor: 'departure',
   },
   {
     Header: 'Status',

@@ -36,7 +36,7 @@ const ChatButton = () => {
                   </button>
                 </div>
                 {/* body */}
-                <div className="relative p-6 flex-auto">
+                <div className="relative p-6 flex-auto overflow-auto h-72">
                   <Messages />
                 </div>
                 {/* footer */}
