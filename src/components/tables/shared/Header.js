@@ -13,6 +13,7 @@ import {
   fetchByName,
 } from '../../../redux/thunks/search';
 import { fetchTripReq } from '../../../redux/features/tripReq.feature';
+import CreateTrip from '../../trips/CreateTrip';
 
 // Define a default UI for filtering
 export function GlobalFilter({ preGlobalFilteredRows, globalFilter, setGlobalFilter }) {
@@ -22,19 +23,28 @@ export function GlobalFilter({ preGlobalFilteredRows, globalFilter, setGlobalFil
   const { searchOption } = useSelector((state) => state.page);
   const count = preGlobalFilteredRows.length;
   const [value, setValue] = React.useState(globalFilter);
+  const [createTripStatus, setCreateTripStatus] = React.useState(true);
   const onChange = useAsyncDebounce((value) => {
     setGlobalFilter(value || undefined);
   }, 200);
+
+  const createTrip = () => {
+    alert(createTripStatus);
+    return setCreateTripStatus(false);
+  };
 
   return (
     <div className="flex flex-col md:flex-row justify-between items-center">
       <div className="p-2 flex flex-col md:flex-row gap-6">
         <Button
           child={
-            <a href="./dashboard" className="flex items-center">
-              {' '}
+            <button
+              onClick={() => setCreateTripStatus(true)}
+              type="button"
+              className="flex items-center"
+            >
               <PlusIcon className="h-8" /> New Trip
-            </a>
+            </button>
           }
         />
         <Button
@@ -109,6 +119,11 @@ export function GlobalFilter({ preGlobalFilteredRows, globalFilter, setGlobalFil
           </svg>
         </button>
       </div>
+      {createTripStatus ? (
+        <CreateTrip handleCreateTrip={createTrip} handleCancel={setCreateTripStatus} />
+      ) : (
+        ''
+      )}
     </div>
   );
 }
